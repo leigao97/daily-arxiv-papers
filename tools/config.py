@@ -17,12 +17,10 @@ INDEX_FILE = Path("web/public/arxiv.json")
 # FIXME: Adding cs.LG/cs.AI can bring in many irrelevant papers (need stronger LLM filtering)
 ARXIV_CATEGORIES: List[str] = ["cs.DC", "cs.OS"]
 
-# Use SiliconFlow by default; keep names consistent with original script
+# Use OpenRouter (OpenAI-compatible); set API_KEY to your OpenRouter key
 API_KEY = os.environ["API_KEY"]  # Use .get to avoid error if not set locally
-BASE_URL = "https://api.siliconflow.cn/v1"
-# MODEL = "Qwen/Qwen3-Next-80B-A3B-Instruct"
-# MODEL = "deepseek-ai/DeepSeek-V3.1-Terminus"
-MODEL = "deepseek-ai/DeepSeek-R1"
+BASE_URL = "https://openrouter.ai/api/v1"
+MODEL = "deepseek/deepseek-r1"
 
 # --- Crawling Config ----------------------------------------------------------
 # How many days back to look for delayed papers

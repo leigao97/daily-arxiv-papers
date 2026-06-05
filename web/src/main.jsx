@@ -43,9 +43,9 @@ const SITE_METADATA = {
   about: {
     title: "About",
     description: "A daily updated feed of Large Model Systems papers.",
-    author: "Zhixin Zhao",
-    authorUrl: "https://github.com/zhixin612",
-    repoUrl: "https://github.com/zhixin612/awesome-papers-LMsys",
+    author: "leigao97",
+    authorUrl: "https://github.com/leigao97",
+    repoUrl: "https://github.com/leigao97/daily-arxiv-papers",
   },
   features: [
     {
@@ -56,17 +56,17 @@ const SITE_METADATA = {
     {
       title: "AI Explanation",
       icon: MessageSquareText,
-      description: "Integrated AI agents (SiliconFlow/OpenRouter) to explain papers."
+      description: "Integrated AI agents (OpenRouter) to explain papers."
     },
     {
       title: "Easy Reading",
       icon: BookOpen,
-      description: "Embedded PDF viewer with resizable layout. Markdown rendering for AI outputs."
+      description: "Embedded PDF viewer with resizable layout, quick link to Semantic Scholar, and Markdown rendering for AI outputs."
     },
     {
       title: "Efficiency Tools",
       icon: Zap,
-      description: "One-click 'Ask AI' redirection (ChatGPT/Kimi), copy title&links, and favorites management."
+      description: "One-click 'Ask AI' redirection (ChatGPT/Claude), copy title&links, and favorites management."
     }
   ]
 };
@@ -74,36 +74,21 @@ const SITE_METADATA = {
 const DEFAULT_PROMPT = "你是这篇论文的作者，运用费曼学习法简洁清晰地向我解释一下这篇论文，不要用类比，用中文回答";
 
 const API_PROVIDERS = {
-  siliconflow: {
-    name: "SiliconFlow",
-    url: "https://api.siliconflow.cn/v1/chat/completions",
-    defaultModel: "deepseek-ai/DeepSeek-V3.2",
-    models: [
-      "moonshotai/Kimi-K2-Thinking",
-      "deepseek-ai/DeepSeek-V3.2",
-      "deepseek-ai/DeepSeek-R1",
-      "Qwen/Qwen3-Next-80B-A3B-Thinking",
-      "MiniMaxAI/MiniMax-M2"
-    ]
-  },
   openrouter: {
     name: "OpenRouter",
     url: "https://openrouter.ai/api/v1/chat/completions",
-    defaultModel: "google/gemini-3-flash-preview",
+    defaultModel: "openrouter/free",
     models: [
-      "openai/gpt-5.2",
-      "google/gemini-3-pro-preview",
-      "google/gemini-3-flash-preview",
-      "x-ai/grok-4.1-fast",
-      "deepseek/deepseek-v3.2",
-      "minimax/minimax-m2"
+      "openrouter/free",
+      "deepseek/deepseek-v4-pro",
+      "anthropic/claude-opus-4.8"
     ]
   }
 };
 
 const REDIRECTION_MODELS = {
   chatgpt: "ChatGPT",
-  kimi: "Kimi"
+  claude: "Claude"
 };
 
 // --- Helper Functions ---
@@ -146,6 +131,15 @@ const extractCodeLink = (abstract) => {
     const match = abstract.match(githubRegex);
     if (match) return match[0].replace(/\.$/, '');
     return null;
+};
+
+// --- Semantic Scholar link helper ---
+// Build the Semantic Scholar page URL for a paper from its arXiv id.
+const getSemanticScholarUrl = (link) => {
+    if (!link) return null;
+    const m = link.match(/(\d{4}\.\d{4,5})(v\d+)?/);
+    // Official redirect endpoint: 302s to the canonical S2 paper page for this arXiv id.
+    return m ? `https://api.semanticscholar.org/arXiv:${m[1]}` : null;
 };
 
 // --- Components ---
@@ -337,7 +331,7 @@ const AISettingsModal = ({ isOpen, onClose, settings, onSave }) => {
     if (isOpen) {
         let initializedSettings = { ...settings };
         if (!initializedSettings.apiKeys) {
-            initializedSettings.apiKeys = { siliconflow: '', openrouter: '' };
+            initializedSettings.apiKeys = { openrouter: '' };
             if (initializedSettings.apiKey && initializedSettings.provider) {
                    initializedSettings.apiKeys[initializedSettings.provider] = initializedSettings.apiKey;
             }
@@ -396,25 +390,8 @@ const AISettingsModal = ({ isOpen, onClose, settings, onSave }) => {
             </div>
 
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">API Provider</label>
-              <select
-                value={formData.provider}
-                onChange={(e) => {
-                  const newProvider = e.target.value;
-                  handleChange('provider', newProvider);
-                  handleChange('model', API_PROVIDERS[newProvider].defaultModel);
-                }}
-                className="w-full rounded-lg border border-gray-300 dark:border-gray-700 bg-white dark:bg-gray-800 px-3 py-2 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white cursor-pointer"
-              >
-                {Object.entries(API_PROVIDERS).map(([key, val]) => (
-                  <option key={key} value={key}>{val.name}</option>
-                ))}
-              </select>
-            </div>
-
-            <div>
               <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1 flex items-center justify-between">
-                  <span>API Key</span>
+                  <span>OpenRouter API Key</span>
                   <span className="flex items-center text-[10px] text-green-600 dark:text-green-400 bg-green-50 dark:bg-green-900/30 px-1.5 py-0.5 rounded">
                       <ShieldCheck className="w-3 h-3 mr-1" />
                       Local Only
@@ -492,7 +469,7 @@ const AISettingsModal = ({ isOpen, onClose, settings, onSave }) => {
                 <h4 className="text-xs font-bold uppercase tracking-wider text-gray-500 dark:text-gray-400">AI Settings for Redirection</h4>
             </div>
             <div>
-              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Target Model</label>
+              <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-1">Chat with</label>
               <select
                 value={formData.redirectionModel}
                 onChange={(e) => handleChange('redirectionModel', e.target.value)}
@@ -762,8 +739,8 @@ const PaperCard = React.memo(({ paper, isStarred, toggleStar, aiSettings }) => {
     let url = "";
 
     switch (aiSettings.redirectionModel) {
-        case 'kimi':
-            url = `http://kimi.com/_prefill_chat?prefill_prompt=${encodedPrompt}&send_immediately=true&force_search=false&enable_reasoning=false`;
+        case 'claude':
+            url = `https://claude.ai/new?q=${encodedPrompt}`;
             break;
         case 'chatgpt':
             url = `https://chatgpt.com/?q=${encodedPrompt}`;
@@ -775,6 +752,7 @@ const PaperCard = React.memo(({ paper, isStarred, toggleStar, aiSettings }) => {
   }, [aiSettings.redirectionModel, prompt]);
 
   const pdfUrl = link.replace(/^http:/, 'https:').replace('/abs/', '/pdf/') + ".pdf";
+  const s2Url = getSemanticScholarUrl(link);
   const formatCategory = (cat) => cat ? cat.replace(/^cs\./, '') : 'N/A';
   const codeLink = extractCodeLink(paper.abstract || "");
 
@@ -873,10 +851,15 @@ const PaperCard = React.memo(({ paper, isStarred, toggleStar, aiSettings }) => {
              </div>
 
              <div className="flex items-center bg-gray-50 dark:bg-gray-700/50 rounded-md border border-gray-200 dark:border-gray-600 h-8 overflow-hidden">
-                 <a href={link} target="_blank" rel="noopener noreferrer" className="h-full flex items-center px-2.5 hover:bg-white dark:hover:bg-gray-600 border-r border-gray-200 dark:border-gray-600 transition-colors text-gray-500 dark:text-gray-300" title="ArXiv Page">
+                 <a href={link} target="_blank" rel="noopener noreferrer" className="h-full flex items-center px-2.5 hover:bg-white dark:hover:bg-gray-600 border-r border-gray-200 dark:border-gray-600 transition-colors text-[#b31b1b] dark:text-[#e06363]" title="ArXiv Page">
                     <ExternalLink className="w-4 h-4" />
                  </a>
-                 <button onClick={handleAskAI} className="h-full flex items-center px-2.5 hover:bg-white dark:hover:bg-gray-600 border-r border-gray-200 dark:border-gray-600 transition-colors text-purple-600 dark:text-purple-400 group/ai" title={`Ask ${aiSettings.redirectionModel === 'kimi' ? 'Kimi' : 'ChatGPT'}`}>
+                 {s2Url && (
+                    <a href={s2Url} target="_blank" rel="noopener noreferrer" className="h-full flex items-center px-2.5 hover:bg-white dark:hover:bg-gray-600 border-r border-gray-200 dark:border-gray-600 transition-colors text-[#1857b6] dark:text-[#6fa0e0]" title="Semantic Scholar Page">
+                       <ExternalLink className="w-4 h-4" />
+                    </a>
+                 )}
+                 <button onClick={handleAskAI} className="h-full flex items-center px-2.5 hover:bg-white dark:hover:bg-gray-600 border-r border-gray-200 dark:border-gray-600 transition-colors text-purple-600 dark:text-purple-400 group/ai" title={`Ask ${REDIRECTION_MODELS[aiSettings.redirectionModel] || 'ChatGPT'}`}>
                     <Bot className="w-4 h-4 group-hover/ai:animate-bounce" />
                  </button>
                  <button onClick={toggleStar} className={`h-full flex items-center px-2.5 transition-colors ${isStarred ? 'bg-yellow-50 dark:bg-yellow-900/20 text-yellow-500 hover:bg-yellow-100 dark:hover:bg-yellow-900/40' : 'hover:bg-white dark:hover:bg-gray-600 text-gray-400 hover:text-yellow-500'}`} title={isStarred ? "Remove from favorites" : "Save for later"}>
@@ -949,13 +932,12 @@ const App = () => {
   const [aiSettings, setAiSettings] = useState(() => {
     const saved = localStorage.getItem('daily_arxiv_ai_settings');
     const defaultSettings = {
-        provider: 'siliconflow',
+        provider: 'openrouter',
         apiKey: '',
         apiKeys: {
-            siliconflow: '',
             openrouter: ''
         },
-        model: 'moonshotai/Kimi-K2-Thinking',
+        model: 'openrouter/free',
         customPrompt: '',
         redirectionModel: 'chatgpt'
     };
@@ -965,11 +947,19 @@ const App = () => {
     const parsedSaved = JSON.parse(saved);
     const merged = { ...defaultSettings, ...parsedSaved };
 
-    if (parsedSaved.apiKey && (!parsedSaved.apiKeys || !parsedSaved.apiKeys[parsedSaved.provider])) {
-        merged.apiKeys = {
-            ...defaultSettings.apiKeys,
-            [parsedSaved.provider || 'siliconflow']: parsedSaved.apiKey
-        };
+    // OpenRouter is now the only provider; coerce any stale saved provider/model.
+    if (!API_PROVIDERS[merged.provider]) {
+        merged.provider = 'openrouter';
+        merged.model = defaultSettings.model;
+    }
+    merged.apiKeys = { ...defaultSettings.apiKeys, ...(parsedSaved.apiKeys || {}) };
+    if (parsedSaved.apiKey && !merged.apiKeys.openrouter) {
+        merged.apiKeys.openrouter = parsedSaved.apiKey;
+    }
+
+    // Drop redirection targets that no longer exist (e.g. the removed "kimi").
+    if (!REDIRECTION_MODELS[merged.redirectionModel]) {
+        merged.redirectionModel = 'chatgpt';
     }
 
     return merged;
@@ -1021,7 +1011,7 @@ const App = () => {
 
         const pathsToTry = [
             './arxiv.json',
-            'https://raw.githubusercontent.com/zhixin612/awesome-papers-LMsys/main/web/public/arxiv.json',
+            'https://raw.githubusercontent.com/leigao97/daily-arxiv-papers/main/web/public/arxiv.json',
         ];
 
         let data = null;
@@ -1097,7 +1087,7 @@ const App = () => {
         const paperTags = Array.isArray(paper.tags) ? paper.tags : [];
         const query = deferredSearchQuery.toLowerCase();
         const matchesSearch = title.includes(query) || abstract.includes(query) || authors.some(a => a.toLowerCase().includes(query));
-        const matchesTags = selectedTags.length === 0 || paperTags.some(t => selectedTags.includes(t));
+        const matchesTags = selectedTags.length === 0 || selectedTags.every(t => paperTags.includes(t));
         return matchesSearch && matchesTags;
       }).sort((a, b) => {
         const dateA = new Date(a.submit_date || 0);
@@ -1149,9 +1139,8 @@ const App = () => {
             <div className="bg-blue-600 p-1.5 rounded-lg">
                 <Calendar className="w-5 h-5 text-white" />
             </div>
-            <a href="https://github.com/zhixin612" target="_blank" rel="noopener noreferrer" className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 group cursor-pointer">
+            <a href="https://github.com/leigao97/daily-arxiv-papers" target="_blank" rel="noopener noreferrer" className="flex flex-col sm:flex-row sm:items-baseline sm:gap-2 group cursor-pointer">
                 <h1 className="text-xl font-bold text-gray-900 dark:text-white tracking-tight group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">Daily Arxiv: LLM Systems</h1>
-                <span className="text-xs text-gray-500 group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">by zhixin</span>
             </a>
           </div>
 
@@ -1168,7 +1157,7 @@ const App = () => {
               {darkMode ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
 
-            <a href="https://github.com/zhixin612/awesome-papers-LMsys" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="View on GitHub">
+            <a href="https://github.com/leigao97/daily-arxiv-papers" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg text-gray-500 hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors" title="View on GitHub">
                 <Github className="w-5 h-5" />
             </a>
           </div>

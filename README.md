@@ -11,15 +11,15 @@
 
 `Fetch from arxiv` → `LLM Filter` → `GitHub workflow update`
 
-## [🔥Daily Arxiv: LLM Systems 👉 paper.tju.chat 👈](https://paper.tju.chat)
+## [🔥Daily Arxiv: LLM Systems 👉 leigao97.github.io/daily-arxiv-papers 👈](https://leigao97.github.io/daily-arxiv-papers/)
+
+_Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMsys) by [Zhixin Zhao](https://github.com/zhixin612)_
 
 </div>
 
 **👍Conference Papers on LMSys**: [conference.md](conference.md)
 
 **⚠️NOTE**: Update papers up to last day every morning (8:00 UTC+8) automatically.
-
-**🙋WANT**: Keyword subscription (email); Functional web page.
 
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
@@ -1984,15 +1984,13 @@
 * `training` `kernel` `hardware` [Demystifying ARM SME to Optimize General Matrix Multiplications](http://arxiv.org/abs/2512.21473v1)
   > **TL;DR**: Optimizes GEMM performance for deep learning on ARM SME architectures. Proposes MpGEMM with cache-aware partitioning, data packing, and SME-specific micro-kernels. Achieves 1.23x average speedup over vendor library on Apple M4 Pro with DeepSeek/LLaMA workloads.
 
-### [🔥Daily Arxiv: LLM Systems 👉 paper.tju.chat 👈](https://paper.tju.chat)
+### [🔥Daily Arxiv: LLM Systems 👉 leigao97.github.io/daily-arxiv-papers 👈](https://leigao97.github.io/daily-arxiv-papers/)
 
 </div>
 
 **👍Conference Papers on LMSys**: [conference.md](conference.md)
 
 **⚠️NOTE**: Update papers up to last day every morning (8:00 UTC+8) automatically.
-
-**🙋WANT**: Keyword subscription (email); Functional web page.
 
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
