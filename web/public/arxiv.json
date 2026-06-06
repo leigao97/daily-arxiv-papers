@@ -131073,5 +131073,249 @@
         ],
         "tldr": "Proposes Agent libOS, a runtime for long-running LLM agents enabling scheduling, authorization, and audit. Designs AgentProcesses with explicit capabilities and runtime primitives as the authority boundary. Includes prototype with async scheduling and 123 regression tests.",
         "indexed_date": "2026-06-04"
+    },
+    "http://arxiv.org/abs/2606.06438v1": {
+        "title": "CarbonSim: A Lifecycle-Aware Framework for Evaluating Carbon Tradeoffs in Hardware Upgrade Decisions",
+        "link": "http://arxiv.org/abs/2606.06438v1",
+        "abstract": "As the demand for information and communication technologies (ICT) continues to rise, the environmental impact of computing systems is becoming an increasingly critical concern. Although newer hardware often improves performance and energy efficiency, these gains do not always offset the carbon cost of premature replacement, particularly under low-utilization workloads or low-carbon electricity grids. We present CarbonSim, a lifecycle-aware simulation framework for evaluating carbon tradeoffs in hardware upgrade decisions. CarbonSim combines workload execution profiles, machine-level power characteristics, embodied carbon inventories, scheduling policies, and time-varying grid carbon intensity to estimate total emissions under alternative deployment scenarios. The framework supports multiple embodied-carbon accounting strategies, including uniform amortization and front-loaded lifecycle attribution, enabling analysis under different hardware lifespan assumptions. Using heterogeneous CPU generations as calibration platforms, we demonstrate that newer machines do not always minimize total emissions: under lightly loaded workloads or cleaner electricity mixes, extending the useful life of existing hardware can reduce lifecycle carbon despite lower operational efficiency. These results highlight that hardware refresh decisions should be workload-aware, location-aware, and lifecycle-aware.",
+        "authors": [
+            "Kartik Hans",
+            "Kaiwen Zhao",
+            "Stephen Lee"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.OS"
+        ],
+        "id": "http://arxiv.org/abs/2606.06438v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.06386v1": {
+        "title": "On GPU Implementation for Multi-Precision Integer Division",
+        "link": "http://arxiv.org/abs/2606.06386v1",
+        "abstract": "This paper presents the issues arising in implementing a fast integer division algorithm on general purpose GPUs. The algorithm uses a Newton iteration based on the shifted inverse operation, keeping all arithmetic in the integer domain and relying on data-parallel operators. The principal contribution is an efficient GPU/CUDA implementation for integer precisions from $2^{15}$ to $2^{18}$ -- sizes not supported by \\cgbn{} division. We propose algorithmic refinements, define a cost model in terms of multiplications, build on prefix sums and previous work on multi-precision multiplication, and present an evaluation showing near-optimal performance relative to the model for the target precision.",
+        "authors": [
+            "Martin B. Marchioro",
+            "Aske N. Raahauge",
+            "Marc I. Løvenskjold",
+            "Cosmin E. Oancea",
+            "Stephen M. Watt"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.MS",
+            "cs.SC"
+        ],
+        "id": "http://arxiv.org/abs/2606.06386v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.06381v1": {
+        "title": "Discrete Incremental Voting: New Bounds for General Graphs and Expanders",
+        "link": "http://arxiv.org/abs/2606.06381v1",
+        "abstract": "We analyze the discrete incremental voting process (DIV) introduced by Cooper, Radzik, and Shiraga [OPODIS '23]. In this process, we consider a set $V$ of $n$ nodes connected in an undirected graph $G = (V, E)$ where each node has an integer opinion. In one step a randomly selected node interacts with its randomly selected neighbor and changes its opinion by $1$ in the direction of the neighbour's opinion. The process converges to a unique opinion that, in expectation, is the degree-weighted average of the initial opinions.\n  We show that if the graph has conductance $Φ(G)$, the ratio of the average to smallest degree is $γ(G)$, and the maximal difference between initial opinions is $K$, then the expected convergence time is ${O}\\left({n\\left(K\\log (Kn)+γ(G) n \\right)}/{Φ(G)^2}\\right)$. This bound is essentially optimal for a large class of graphs of bounded expansion. We also show that for regular graphs, if the second largest eigenvalue is $o(1/\\log^2 n)$ and $K$ is $o\\left({n}/{\\log^2 n}\\right)$, then w.h.p.\\ DIV converges to the initial average opinion (rounded up or down).",
+        "authors": [
+            "Petra Berenbrink",
+            "Colin Cooper",
+            "Thorsten Götte",
+            "Lukas Hintze",
+            "Tomasz Radzik"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.06381v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.06255v1": {
+        "title": "RadiusFPS: Efficient Farthest Point Sampling on CPUs and GPUs via Spherical Voxel Pruning",
+        "link": "http://arxiv.org/abs/2606.06255v1",
+        "abstract": "Point clouds are a primary sensory representation for robotic perception, underpinning LiDAR-based autonomous driving, simultaneous localization and mapping (SLAM), and navigation. Within these pipelines, Farthest Point Sampling (FPS) is the most well-known downsampling operator, as its uniform coverage preserves the geometric structure on which downstream perception relies. However, the large time complexity of classical FPS scales poorly with the million-point-per-second rates of modern 3D sensors, making it a dominant latency bottleneck that conflicts with the real-time and limited onboard compute budgets of robotic systems. Therefore, we propose RadiusFPS, an FPS acceleration framework based on spherical voxel pruning that preserves the standard FPS update rule under the same initialization and tie-breaking policy. By indexing the point cloud with spherical voxels, RadiusFPS derives a conservative geometric bound that prunes redundant distance computations in each iteration, complemented by a coordinate-wise point-skip test that removes residual updates. We further introduce RadiusFPS-G, a warp-level GPU implementation that fuses voxel selection, pruning, and distance update into memory-coalesced kernels, eliminating costly global-memory round-trips. On indoor (S3DIS, ScanNet) and outdoor LiDAR (SemanticKITTI) benchmarks, RadiusFPS-G attains up to 2.5x speedup over GPU-based FPS and matches or exceeds QuickFPS among the evaluated methods while using roughly half its GPU memory, with comparable segmentation accuracy. When coupled with the learning-based FastPoint sampler, the resulting pipeline achieves the fastest End-to-End inference among all evaluated configurations. These properties make high-quality FPS-style sampling practical for latency- and memory-constrained robotic vision.",
+        "authors": [
+            "Ziyang Yu",
+            "Xiang Li",
+            "Qiong Chang",
+            "Jun Miyazaki"
+        ],
+        "categories": [
+            "cs.RO",
+            "cs.CV",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.06255v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.06063v1": {
+        "title": "LLM-Based Porting of Optimized C++ to CUDA Through Deoptimization and Reoptimization",
+        "link": "http://arxiv.org/abs/2606.06063v1",
+        "abstract": "When porting high-performance computing (HPC) code from CPU to GPU, CPU-oriented optimizations may obstruct LLM-based CUDA translation. We design and evaluate a Deopt-Reopt workflow that first simplifies the input C++ code and then retranslates and reoptimizes it for CUDA, comparing it against direct translation (Direct) on twelve HPC kernels with two LLMs (gpt-oss-120b (O120) and qwen-3-235b-a22b-instruct-2507 (Q235)) in Single-shot (one pass) and Iterative (repeated refinement) settings. In Single-shot, among 18 testable cases Deopt-Reopt was significantly faster among successful trials (after BH-FDR correction) in five - most clearly for conv2d, where CPU- and GPU-oriented designs diverge - but Direct was faster in three, so removing CPU-specific optimizations is not universally beneficial. An exploratory Direct-3 control that equalizes the LLM-call count left Deopt-Reopt ahead in only four of nineteen testable cases, with Direct-3 ahead in four others. In Iterative, repeated generation and repair narrow the mode gap - markedly so for O120 - while Q235 retains large Deopt-Reopt advantages on conv2d, ddgemm, and bgemm. Deopt-Reopt's effect on feasibility is also mixed - sharply higher for some kernels Direct rarely compiles, lower for others. Because performance is conditioned on successful trials, the benefit is conditional rather than a guaranteed end-to-end gain. Overall, Deopt-Reopt is an effective but non-universal technique for LLM-based GPU porting, with gains that depend on the kernel, the model, the search budget, and the success rate.",
+        "authors": [
+            "Daichi Mukunoki",
+            "Ryo Mikasa",
+            "Shunichiro Hayashi",
+            "Tetsuya Hoshino",
+            "Takahiro Katagiri"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.06063v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.05951v1": {
+        "title": "Demystifying NVSHMEM: A System-Level Analysis on Symmetric Memory and Device-Initiated Operations in GPU Communication",
+        "link": "http://arxiv.org/abs/2606.05951v1",
+        "abstract": "NVSHMEM is NVIDIA's OpenSHMEM-based PGAS communication library for GPU clusters, enabling GPU-initiated, one-sided communication through symmetric memory. Despite its growing adoption, a system-level understanding of its design and behavior remains scattered across documentation, source code, and application experience. This paper presents a concise study of NVSHMEM's programming model, implementation, and performance characteristics, focusing on symmetric memory, one-sided operations, and device-side collectives. We also examine DeepEP as a case study of NVSHMEM in performance-critical sparse deep learning workloads. Our analysis shows that NVSHMEM pioneered a device-side symmetric-memory programming model that enables fine-grained GPU-driven communication and is important for approaching the hardware performance limit. Overall, this work defines NVSHMEM's role as a systems building block, highlights its design tradeoffs, and identifies opportunities for improving GPU communication runtimes.",
+        "authors": [
+            "Yijun Ma",
+            "Siyuan Shen",
+            "Tiancheng Chen",
+            "Akhil Langer",
+            "Jiri Kraus",
+            "Benjamin Glick",
+            "Craig Belusar",
+            "Jeff Hammond",
+            "Torsten Hoefler"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.05951v1",
+        "submit_date": "2026-06-04",
+        "relevant": true,
+        "tags": [
+            "networking",
+            "sparse",
+            "training"
+        ],
+        "tldr": "Analyzes NVSHMEM's design for efficient GPU cluster communication. Studies symmetric memory and device-initiated operations, enabling fine-grained GPU-driven communication that approaches hardware performance limits, improving efficiency in sparse deep learning training workloads.",
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.05933v1": {
+        "title": "Beyond Greedy Chunking: SLO-Aware Sliding-Window Scheduling for LLM Inference",
+        "link": "http://arxiv.org/abs/2606.05933v1",
+        "abstract": "With the rapid growth of interactive applications in large language model (LLM) online services, maintaining high system throughput while ensuring user-perceived latency has become a key issue in inference scheduling. Existing LLM service systems rely on coarse-grained output constraints, making it difficult to effectively handle resource contention among multiple requests, resulting in low resource utilization efficiency and limited support for fine-grained quality of service (QoS) differentiation. We present SlidingServe, a sliding-window-driven SLO-Aware scheduling system for online LLM inference. SlidingServe designed a lightweight batch latency predictor to estimate the execution time of a batch. Based on this, SlidingServe uses SlidingChunker to combine information from the current iteration and the next iteration to achieve dynamic chunking and improve the overall system throughput while maintaining strict QoS guarantees. SlidingServe introduces Multi-Level Priority Sorter to sort candidate requests in order to balance fairness and efficiency. Additionally, when multiple requests within the same batch are at risk of SLO violating,SlidingServe introduces BatchConstructor, which uses dynamic programming to select the set of requests to execute in the current round, mitigating the SLO violation risk of critical requests.Our evaluation demonstrates that SlidingServe can improve service capacity by up to 30% compared to advanced scheduling systems under various load conditions, and further reduces the rate of SLO violation by 16%-53% under heavy-load inference mode.",
+        "authors": [
+            "Yuansheng Chen",
+            "Yue Zhang",
+            "Xuan Mo",
+            "Weigang Wu",
+            "Jialun Li"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.05933v1",
+        "submit_date": "2026-06-04",
+        "relevant": true,
+        "tags": [
+            "serving"
+        ],
+        "tldr": "Addresses inefficient scheduling in online LLM inference causing low throughput and SLO violations. Proposes SlidingServe with dynamic chunking, multi-level priority sorting, and SLO-aware batch construction. Achieves 30% higher service capacity and reduces SLO violations by 16%-53% versus state-of-the-art systems.",
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.05914v1": {
+        "title": "IN2P3 Computing Center 2024 Workload Dataset",
+        "link": "http://arxiv.org/abs/2606.05914v1",
+        "abstract": "This paper provides and analyzes a dataset detailing the characteristics and execution data of all jobs submitted to the IN2P3 Computing Center (Villeurbanne, France), a national research and support unit of the CNRS, in 2024. The main additional value of this contribution compared to previously available datasets consists in the combination of an extended time interval considered, the inclusion of memory usage data and its recency, on top on improving the diversity of datasets provenance. This allows researchers to simulate and evaluate scheduling algorithms on a real workload over a large time window. Thus, specificities due to seasonal, monthly, and weekly user behaviors can be taken into account, which is not possible with smaller or synthetic datasets. It is composed of 44M jobs submitted by 1k users running on a cluster of a maximum of 312 machines supporting 46k concurrent threads and providing 105To of RAM.",
+        "authors": [
+            "Guillaume Cochard",
+            "Bertrand Simon"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.05914v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.05642v1": {
+        "title": "PoCQ: Proof of Contribution Quality as a Lightweight Blockchain Consensus for Secure Federated Learning",
+        "link": "http://arxiv.org/abs/2606.05642v1",
+        "abstract": "Decentralized Federated Learning (FL) removes reliance on centralized coordinators but remains vulnerable to model poisoning, unreliable validation, and high validation overhead. This paper introduces Proof of Contribution Quality (PoCQ), a blockchain-based consensus framework designed to secure decentralized FL through reputation-aware validation and aggregation. PoCQ evaluates client updates using cryptographic commitments and lightweight norm-based validation, enabling efficient detection of malicious contributions while limiting validation cost. A reputation-driven consensus mechanism dynamically adjusts the influence of participants based on their historical contribution quality, while the blockchain stores only compact audit metadata to preserve scalability. Extensive experiments under poisoning scenarios across three benchmark datasets demonstrate that PoCQ outperforms the strongest state-of-the-art methods, achieving accuracy gains of 34.1% on challenging medical datasets in highly non-iid settings and an 11% improvement in global average accuracy. In addition, PoCQ reduces validation time by 21.27% on average per round, highlighting its effectiveness in jointly enhancing robustness and efficiency for fully decentralized federated learning.",
+        "authors": [
+            "Sudad Abed",
+            "Nasser Sabar",
+            "Abdun Mahmood",
+            "Mohammad Jabed Morshed Chowdhury"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.05642v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.05518v1": {
+        "title": "Latent Reasoning Guidance for Parallel Code Translation",
+        "link": "http://arxiv.org/abs/2606.05518v1",
+        "abstract": "Tackling complex coding tasks often requires autonomous agents and iterative repair pipelines. These increasingly rely on large amounts of test-time computation, often spending many decoding and repair steps before discovering whether a program compiles, runs, or validates. Executable parallel-code translation is an effective setting for earlier guidance because success is behavioral rather than textual. However, most guidance methods act only after complete programs or textual traces are decoded. This motivates the question: can latent reasoning provide an earlier intervention point, before the model commits to code?\n  We study a test-time latent guidance method for this setting that trains a smaller Process Reward Model (PRM) over continuous latent prefixes and uses it to select among alternate hidden-state trajectories before final code decoding, separately from but compatible with post-decoding optimization. On a 76-task ParaTrans benchmark evaluation, latent PRM guidance improves mean validation rate from 32.89% with unguided latent reasoning to 42.1%, outperforming fine-tuned and vanilla baselines in the same setting. These gains persist under the same three-iteration repair loop. These results provide bounded evidence that useful alternative latent continuations exist and that PRM-scored latent branch selection can improve executable outcomes in this setting without retraining the main generative model.",
+        "authors": [
+            "Tomer Bitan",
+            "Erel Kaplan",
+            "Roee Bar-Yadin",
+            "Lian Ghrayeb",
+            "Le Chen",
+            "Samyak Jhaveri",
+            "Niranjan Hasabnis",
+            "Gal Oren"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.05518v1",
+        "submit_date": "2026-06-03",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.05503v1": {
+        "title": "Bitcoin After Block Rewards",
+        "link": "http://arxiv.org/abs/2606.05503v1",
+        "abstract": "Bitcoin's block reward is scheduled to decline to zero, raising concerns about whether the network can remain secure once miners rely solely on transaction fees. This paper seeks to identify the conditions under which large-scale and persistent deviation from honest mining can arise.\n  We analyze and compare the payoffs of honest and deviating miners in a sequential decision model, and identify a deviation threshold $G_t$ at which honest mining ceases to be privately optimal. Around the 2024 Bitcoin halving, we show that current mining behavior does not exhibit large-scale or structural deviation. However, when the block reward is removed, the $G_t$ criterion implies that deviation can arise even with a very small fraction of transaction fees.\n  Finally, we evaluate three protocol-level mechanisms: Base Fee, Fee Floor, and an adaptive maximum block size rule, and show that their combination raises the deviation threshold and mitigates incentive breakdown in a fee-only regime. These results provide a practical benchmark for assessing Bitcoin's security as block rewards disappear.",
+        "authors": [
+            "Junhyuk Lee"
+        ],
+        "categories": [
+            "cs.CR",
+            "cs.DC",
+            "cs.GT"
+        ],
+        "id": "http://arxiv.org/abs/2606.05503v1",
+        "submit_date": "2026-06-03",
+        "relevant": false,
+        "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.05495v1": {
+        "title": "SET: Stream-Event-Triggered Scheduling for Efficient CUDA Graph Pipelines",
+        "link": "http://arxiv.org/abs/2606.05495v1",
+        "abstract": "Achieving peak GPU performance remains a significant challenge as the system throughput is constrained by host-device synchronization delays and kernel scheduling overheads, even with aggressive kernel optimizations and batch processing. Furthermore, existing approaches often underutilize hardware resources such as compute cores and copy engines due to scheduling overheads. To address these problems, we propose a CUDA runtime framework for task-parallel pipelines to minimize the synchronization overheads and the gap between kernel executions. The proposed solution combines two innovations: (1) a multi-stream task-parallel pipeline programming model that leverages event-chaining and work-stealing mechanisms to fully utilize available hardware resources; (2) a graph-based execution flow with per-stream buffers to ensure memory safety for multiple in-flight jobs running concurrently. Extensive evaluations on representative real-world workloads show 1.15--1.44X speedup and reduce scheduling overheads by 18--54% compared to state-of-the-art CUDA graph baselines.",
+        "authors": [
+            "Zhengxiong Li",
+            "Tsung-Wei Huang",
+            "Umit Ogras"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AR"
+        ],
+        "id": "http://arxiv.org/abs/2606.05495v1",
+        "submit_date": "2026-06-03",
+        "relevant": true,
+        "tags": [
+            "kernel"
+        ],
+        "tldr": "Minimizes GPU synchronization delays and kernel scheduling overheads in task-parallel pipelines. Introduces a CUDA runtime with event-chaining, work-stealing, and per-stream buffers for resource utilization and memory safety. Achieves 1.15–1.44× speedup and 18–54% reduction in scheduling overheads.",
+        "indexed_date": "2026-06-06"
     }
 }

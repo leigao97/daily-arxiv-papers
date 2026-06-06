@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2638-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.04-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2641-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.06-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,14 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-06
+* `networking` `sparse` `training` [Demystifying NVSHMEM: A System-Level Analysis on Symmetric Memory and Device-Initiated Operations in GPU Communication](http://arxiv.org/abs/2606.05951v1)
+  > **TL;DR**: Analyzes NVSHMEM's design for efficient GPU cluster communication. Studies symmetric memory and device-initiated operations, enabling fine-grained GPU-driven communication that approaches hardware performance limits, improving efficiency in sparse deep learning training workloads.
+* `serving` [Beyond Greedy Chunking: SLO-Aware Sliding-Window Scheduling for LLM Inference](http://arxiv.org/abs/2606.05933v1)
+  > **TL;DR**: Addresses inefficient scheduling in online LLM inference causing low throughput and SLO violations. Proposes SlidingServe with dynamic chunking, multi-level priority sorting, and SLO-aware batch construction. Achieves 30% higher service capacity and reduces SLO violations by 16%-53% versus state-of-the-art systems.
+* `kernel` [SET: Stream-Event-Triggered Scheduling for Efficient CUDA Graph Pipelines](http://arxiv.org/abs/2606.05495v1)
+  > **TL;DR**: Minimizes GPU synchronization delays and kernel scheduling overheads in task-parallel pipelines. Introduces a CUDA runtime with event-chaining, work-stealing, and per-stream buffers for resource utilization and memory safety. Achieves 1.15–1.44× speedup and 18–54% reduction in scheduling overheads.
+
 ### 2026-06-04
 * `serving` [Ekka: Automated Diagnosis of Silent Errors in LLM Inference](http://arxiv.org/abs/2606.04594v1)
   > **TL;DR**: Investigates automated diagnosis of silent errors in LLM inference serving frameworks. Proposes Ekka, which aligns intermediate execution states between target and reference systems for root cause identification. Achieves 80% pass@1 diagnosis accuracy on a benchmark of real-world errors.
