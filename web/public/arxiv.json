@@ -131317,5 +131317,319 @@
         ],
         "tldr": "Minimizes GPU synchronization delays and kernel scheduling overheads in task-parallel pipelines. Introduces a CUDA runtime with event-chaining, work-stealing, and per-stream buffers for resource utilization and memory safety. Achieves 1.15–1.44× speedup and 18–54% reduction in scheduling overheads.",
         "indexed_date": "2026-06-06"
+    },
+    "http://arxiv.org/abs/2606.07491v1": {
+        "title": "Twelve quick tips for designing AI-driven HPC workflows",
+        "link": "http://arxiv.org/abs/2606.07491v1",
+        "abstract": "High-performance computing (HPC) clusters remain the backbone of large-scale scientific computation, traditionally executing deterministic, linear pipelines optimised for predictable performance. However, the pervasive integration of artificial intelligence (AI) and foundation models into scientific research has introduced a fundamentally new computational paradigm. AI-driven workflows are characteristically iterative, data-driven, and probabilistic, introducing unique challenges regarding data gravity, heterogeneous resource management, and complex workflow orchestration.\n  This guide provides twelve practical tips designed to help researchers design efficient, scalable, and reproducible AI-driven HPC workflows. By addressing critical system-level bottlenecks - such as containerisation for environment portability, strategic deployment of job arrays, explicit feedback loop mechanics, and I/O optimisation for small files - this article offers a framework for transitioning from rigid execution pipelines to adaptive, intelligent computational environments. While these architectural principles are broadly applicable across distributed environments, they are particularly tailored to the resource-intensive throughput demands of modern computational biology.",
+        "authors": [
+            "Jamie J. Alnasir"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AI",
+            "cs.LG",
+            "cs.SE"
+        ],
+        "id": "http://arxiv.org/abs/2606.07491v1",
+        "submit_date": "2026-06-05",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.07316v1": {
+        "title": "Hierarchical Certified Semantic Commitment for Byzantine-Resilient LLM-Agent Collaboration",
+        "link": "http://arxiv.org/abs/2606.07316v1",
+        "abstract": "Byzantine collaboration among large-language-model agents requires a finality-control primitive: given delivered stochastic, structured natural-language proposals, the protocol must decide whether the round supports a commit, what kind of commit, or a typed safe abort. Naive aggregation hides this choice behind a single verdict; classical Byzantine fault tolerance hides it behind byte-identity that LLM proposals do not satisfy. We introduce Hierarchical Certified Semantic Commitment (H-CSC), a BFT-inspired protocol that converts embedding-derived finality signals over verdict-conditioned proposal groups into one of three typed outcomes: a semantic_commit (a 2f+1 within-verdict semantic core backs the verdict, emitting a parameter-bound digest over the quantised aggregate), a verdict_commit (strong verdict margin but dispersed semantic rationale, emitting a verdict-level certificate without claiming a semantic aggregate), or an explicit abort with a typed reason. The contribution is typed finality, not raw commit accuracy. On a controlled semantic-poisoning diagnostic (BCS_v1, 120 episodes), H-CSC commits with low angular deviation on BFT-feasible buckets (0.31 to 2.04 degrees) and aborts 100% of beyond-BFT rounds (n<3f+1) as intended. On a real LLM-agent claim-verification benchmark (MVR-50, 50 tasks) under paired static and rushing Byzantine attacks, H-CSC commits 0.90/0.92 with honest-reference-invalid rates of 0.02/0.00, statistically matching a strong certificate-emitting verdict-only baseline. Unlike that baseline, H-CSC also emits an embedding-backed semantic_commit digest on 74%/72% of rounds, supplying typed provenance. A strict-semantic ablation commits only 0.54/0.48, showing the verdict-level fallback is necessary for coverage (+0.36/+0.44) at the same <=0.04 safety floor; a 100-task cross-model check across four LLMs preserves invalid_hmaj within 0.00 to 0.03.",
+        "authors": [
+            "Haoran Xu",
+            "Lei Zhang",
+            "Iadh Ounis",
+            "Xianbin Wang"
+        ],
+        "categories": [
+            "cs.MA",
+            "cs.AI",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.07316v1",
+        "submit_date": "2026-06-05",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.07248v1": {
+        "title": "Clairvoyant: Predictive SJF Scheduling to Mitigate Head-of-Line Blocking in Serial LLM Backends",
+        "link": "http://arxiv.org/abs/2606.07248v1",
+        "abstract": "Serial LLM inference backends -- such as Ollama -- process requests one at a time under FCFS admission, causing Head-of-Line Blocking (HOLB) under mixed workloads at high utilisation: short factual queries can be delayed by minutes behind long generation jobs. While cloud-scale deployments mitigate HOLB via continuous batching (vLLM, Orca), these solutions require tens of GB of VRAM for concurrent KV-caches -- infeasible for memory-constrained edge and local deployments that rely on serial request dispatch. We present \\clairvoyant, a drop-in sidecar proxy for any serial OpenAI-compatible backend (e.g., Ollama, llama.cpp). \\clairvoyant predicts response length from 19 lightweight lexical features via an ONNX-exported XGBoost classifier, achieving 0.029\\,ms per-request latency (four orders of magnitude below typical generation time). Because admission scheduling depends on relative ordering rather than exact prediction, the system optimises ranking fidelity, achieving 62--96\\% in-distribution and 52--66\\% cross-distribution accuracy across natural conversation datasets. We find that curated instruction datasets are degenerate training sources for length prediction: GPT-imposed brevity constraints reduce Long-class representation to under 0.02\\% of examples, making natural conversation logs the only viable training source. End-to-end GPU benchmarks on an RTX~4090 show 70--76\\% P50 latency reduction for short requests under maximum queue pressure (100 concurrent requests) and 17\\% under steady-state Poisson arrivals ($ρ=0.74$). \\clairvoyant is open-source and requires no modifications to the inference backend.",
+        "authors": [
+            "Aravind Sundaresan"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.07248v1",
+        "submit_date": "2026-06-05",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "edge",
+            "offloading"
+        ],
+        "tldr": "Mitigates Head-of-Line Blocking in serial LLM backends for edge deployments. Proposes Clairvoyant, a sidecar proxy using lightweight response length prediction via lexical features for Shortest Job First scheduling. Achieves 70-76% P50 latency reduction for short requests under 100 concurrent loads.",
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.07046v1": {
+        "title": "Predictive Autoscaling in Cloud-Native and Federated Cloud-Edge Computing Environments: A Taxonomy and Future Directions",
+        "link": "http://arxiv.org/abs/2606.07046v1",
+        "abstract": "Autoscaling is a key capability in cloud-native systems, where dynamic workloads, heterogeneous environments, and latency-sensitive applications require efficient and adaptive resource management. Traditional reactive approaches based on fixed thresholds often respond too late, leading to resource imbalance, performance degradation, and unstable scaling behavior. Recent advances in predictive models, Kubernetes Custom Resource Definitions (CRDs), Monitor-Analyse-Plan-Execute (MAPE) based control loops, and federated learning (FL) have enabled more proactive and autonomous autoscaling strategies. This paper presents a structured review of these developments. It first introduces a taxonomy of autoscaling techniques based on triggers, targets, prediction models, and evaluation metrics. It then examines predictive autoscaling approaches and CRD-based mechanisms, including Kubernetes operators and reconciliation workflows. Further, it analyses autoscaling in federated learning environments, highlighting reactive and proactive strategies alongside privacy-preserving techniques and container-level isolation. The paper also discusses drift-aware and uncertainty-aware autoscaling, incorporating concepts such as the Autoscaling Drift Index (ADI), feedback-driven correction, and stability control for heterogeneous workloads. Finally, it outlines open challenges and future research directions, providing a foundation for next-generation intelligent predictive autoscaling in cloud-edge environments.",
+        "authors": [
+            "Bablu Kumar",
+            "Anshul Verma",
+            "Rajkumar Buyya"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.07046v1",
+        "submit_date": "2026-06-05",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.07019v1": {
+        "title": "PCCL: Process Group-Aware Scalable and Generic Collective Algorithm Synthesizer",
+        "link": "http://arxiv.org/abs/2606.07019v1",
+        "abstract": "Distributed machine learning has become increasingly important due to the massive scale of large-scale generative models. Both model parameters and data are distributed across many compute devices, which requires frequent collective communications to synchronize activations and parameter updates. Such collective communications have become a major bottleneck. While the performance of the collective algorithm depends on the physical network topology, the baseline collective algorithms in collective communication libraries are largely topology-agnostic. Collective algorithm synthesizers address this inefficiency by automatically generating topology-aware collective algorithms. However, prior works have largely overlooked that collective communication typically occurs only among a subset of devices, known as process groups. Additionally, most existing synthesizers are limited in the range of target collective patterns they can generate. We propose PCCL, a scalable and generic framework for synthesizing topology-aware collective algorithms. PCCL is process group-aware and capable of generating near-optimal collective algorithms even when only a subset of devices participates in collective operations. PCCL synthesizes arbitrary collective patterns, including 512-NPU All-to-All synthesis in 11.68 minutes.",
+        "authors": [
+            "William Won",
+            "Kartik Lakhotia",
+            "Madhu Kumar",
+            "Sudarshan Srinivasan",
+            "Tushar Krishna"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.07019v1",
+        "submit_date": "2026-06-05",
+        "relevant": true,
+        "tags": [
+            "training",
+            "networking",
+            "scaling"
+        ],
+        "tldr": "Addresses inefficiencies in collective communications for distributed training of large generative models. Proposes PCCL, a process group-aware framework synthesizing topology-aware collective algorithms. Achieves 512-NPU All-to-All synthesis in 11.68 minutes.",
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.06996v1": {
+        "title": "Mission-Level Runtime Assurance Framework for Autonomous Driving",
+        "link": "http://arxiv.org/abs/2606.06996v1",
+        "abstract": "This paper studies runtime safety for autonomous driving when high-level driving commands become faulty or unreliable. Unlike conventional runtime-safety approaches that mainly focus on immediate vehicle safety, the proposed framework evaluates both driving safety and whether the vehicle can still successfully complete its mission before a command is executed. The framework extends highway-env with mission-level fault scenarios such as skipping required checkpoints, entering restricted areas, and generating future routes that can no longer complete the mission successfully. A runtime monitoring system is introduced to detect and reject unsafe or mission-infeasible commands before execution. For comparison, an adapted Simplex-Drive runtime-safety baseline with learning-based driving control, safety fallback control, and runtime controller switching is implemented using the public Simplex-Drive framework. Experimental results show that platform-level runtime safety alone cannot detect mission-level planning faults, while the proposed framework successfully rejects mission-infeasible commands and improves mission success under randomized fault conditions.",
+        "authors": [
+            "Chieh Tsai",
+            "Salim Hariri"
+        ],
+        "categories": [
+            "cs.RO",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.06996v1",
+        "submit_date": "2026-06-05",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.04101v2": {
+        "title": "UltraEP: Unleash MoE Training and Inference on Rack-Scale Nodes with Near-Optimal Load Balancing",
+        "link": "http://arxiv.org/abs/2606.04101v2",
+        "abstract": "Large-scale expert parallelism (EP) is becoming pivotal for training and serving frontier MoE models, but it also amplifies device-level expert load imbalance into compute stragglers, token all-to-all bottlenecks, and activation-memory spikes. Existing balancers redistribute experts periodically based on historical load, which becomes unreliable for production deployments with non-stationary load patterns.\n  We present UltraEP, the first exact-load, real-time balancer for large-EP MoE training and serving prefill on rack-scale nodes (RSNs). Built upon the extended scale-up connectivity of RSNs, UltraEP rebalances every microbatch and layer on critical paths, which requires nontrivial co-design of plan solving and expert replication communication to minimize exposed overhead. To this end, UltraEP eagerly reacts to post-gating load with efficient quota-driven planning, and executes the resulting irregular expert-state transfers with RSN-native persistent tile streaming and relay-based fan-out mitigation. Averaged across MoE models from 106B to 671B parameters in training and prefill, UltraEP achieves 94.3% of the force-balanced ideal throughput, delivering 1.49$\\times$ improvement over non-balancing, while reducing the final inter-rank imbalance from 1.30$-$4.01 to 1.01$-$1.04. Additionally, we validate UltraEP's scalability and robustness in production MoE training with 2560 GPUs.",
+        "authors": [
+            "Xinming Wei",
+            "Chao Jin",
+            "Tuo Dai",
+            "Yinmin Zhong",
+            "Shan Yu",
+            "Chengxu Yang",
+            "Bingyang Wu",
+            "Zili Zhang",
+            "Jing Mai",
+            "Qianchao Zhu",
+            "Zhouyang Li",
+            "Yuliang Liu",
+            "Guojie Luo"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.04101v2",
+        "submit_date": "2026-06-05",
+        "relevant": true,
+        "tags": [
+            "MoE",
+            "training",
+            "serving"
+        ],
+        "tldr": "Addresses load imbalance in large-scale MoE training and serving prefill. Introduces UltraEP, a real-time balancer with quota-driven planning and optimized communication via persistent tile streaming. Achieves 94.3% of ideal throughput and 1.49× improvement over non-balancing.",
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.03163v3": {
+        "title": "OpenAgenet / OAN Yellow Paper: Technical Architecture for Trust-Governed Resource Identity and Discovery",
+        "link": "http://arxiv.org/abs/2606.03163v3",
+        "abstract": "This yellow paper describes the technical architecture of OpenAgenet / OAN. OAN is a protocol-neutral trust layer for open Agent interconnection and discoverable AI resource products. It specifies the role architecture, \\texttt{did:oan} identity objects, registration workflow, governance-backed Root lifecycle enforcement, Root-verified package model, authorization-aware Discovery, Root-issued infrastructure authorization VCs, signed trusted invocation, verification requirements, state transitions, security properties, implementation boundaries, and deployment considerations. The design is intended to support heterogeneous Agent frameworks and interaction protocols, including MCP, A2A, ANP-like systems, domain-specific Agent protocols, Skills, MCP Servers, and Tool/API resources. OAN does not define the entire business conversation among Agents or the native protocol of every resource; it defines how resource identities become admissible, discoverable, verifiable, and safe to approach before protocol-specific interaction begins.",
+        "authors": [
+            "Jinliang Xu"
+        ],
+        "categories": [
+            "cs.MA",
+            "cs.AI",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.03163v3",
+        "submit_date": "2026-06-05",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.06910v1": {
+        "title": "Communication Strategy Selection for Multi-GPU 3D FDTD with Convolutional Perfectly Matched Boundary Layers",
+        "link": "http://arxiv.org/abs/2606.06910v1",
+        "abstract": "In this paper we describe a communication-strategy study for multi-GPU three-dimensional finite-difference time-domain computation with convolutional perfectly matched layer boundary conditions using CUDA. The metrics used to determine the most effective implementation include runtime, throughput in millions of output points per second, strong-scaling efficiency, CPML overhead, host-staged versus direct GPU-to-GPU exchange speedup, and enlarged-ghost speedup. On a single NVIDIA Quadro RTX 6000 GPU, the CPML implementation sustains 2,889--3,290 million output points per second with less than 1\\% boundary-layer overhead, providing the single-GPU baseline for the multi-GPU study. The results show that direct GPU-to-GPU peer exchange is the dominant optimization with a 2.46--2.76$\\times$ speedup over host-staged exchange, while enlarged ghost regions give only modest benefits because the reduced communication frequency is partly offset by redundant computation and additional memory traffic. On NVIDIA Quadro RTX 8000 GPUs, the implementation gives up to a 1.51$\\times$ speedup on two GPUs for the tested strong-scaling cases, while four GPUs enable larger grids that approach or exceed single-GPU memory capacity.",
+        "authors": [
+            "Victory C. Obieke"
+        ],
+        "categories": [
+            "cs.DC",
+            "math-ph"
+        ],
+        "id": "http://arxiv.org/abs/2606.06910v1",
+        "submit_date": "2026-06-05",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.06818v1": {
+        "title": "Terastal: Layer-Variant-based Scheduling for Real-Time Multi-DNN Workloads on Heterogeneous Accelerators",
+        "link": "http://arxiv.org/abs/2606.06818v1",
+        "abstract": "Heterogeneous DNN accelerators improve soft real-time multi-DNN execution by mapping each layer to its preferred accelerator to reduce latency. However, under skewed workloads, large layer-latency differences across accelerators limit scheduling flexibility and increase deadline misses. To address this challenge, we introduce layer variants, customized layer implementations that reduce latency gaps on non-preferred accelerators. We then present Terastal, a soft real-time framework for layer-variant design and scheduling on heterogeneous DNN accelerators. Terastal combines offline heterogeneity-aware virtual budget assignment and layer-variant design, and online scheduling to jointly optimize accelerator mapping and variant selection under timing and accuracy constraints. Experimental results show that Terastal reduces deadline miss rate per model by 40.58%, 30.53%, and 36.27% compared with FCFS, EDF, and DREAM, respectively, while incurring only 2.24% average normalized accuracy loss across models with variants.",
+        "authors": [
+            "Sing-Yao Wu",
+            "Fengshuo Song",
+            "Eli Bozorgzadeh"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AR",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.06818v1",
+        "submit_date": "2026-06-05",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.06751v1": {
+        "title": "StageFrontier: Synchronization-Aware Stage Accounting for Distributed ML Training",
+        "link": "http://arxiv.org/abs/2606.06751v1",
+        "abstract": "When a distributed training job slows down, the hard part is knowing where to look. Synchronization hides the cause: a stall on one rank shows up as a wait on the others, so a data delay on a single rank can surface as backward time across the group. The cheap dashboards that run all the time -- per-stage averages and maxima -- misread this, double-counting the same exposed delay or burying the slow rank in an average, while full profilers see it clearly but are far too heavy to leave on.\n  StageFrontier is an always-on signal that closes this gap. Each rank reports only a short ordered vector of coarse stage durations -- data, forward, backward, and so on -- timed with CPU wall-clock, with no synchronized clocks and no kernel tracing. At each stage boundary, StageFrontier takes the cumulative time of whichever rank is furthest along; the increments of this frontier form an exact, additive accounting of the step's exposed time and point to the stage and rank where group-visible delay first appears, telling an operator where to aim a heavy profiler, not which fix to make. The accounting is exact, but the coarse signal alone cannot tell whether a leading stage truly caused the slowdown or merely ran alongside it; StageFrontier labels the windows where that distinction needs more evidence instead of guessing.\n  A PyTorch implementation adds under 0.2% throughput overhead through 128 ranks on Gloo and NCCL, places injected faults among its top two suspects on all 50 rows of a hidden-rank DDP test, and recovers the same top-stage routing as PyTorch Profiler, HTA, and Nsight Systems once their traces are reduced to the same coarse stages -- from a 0.11 MB summary instead of a 15.81 GB trace.",
+        "authors": [
+            "Boram Yoon",
+            "Wei Chen",
+            "Ville Kallioniemi"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.06751v1",
+        "submit_date": "2026-06-04",
+        "relevant": true,
+        "tags": [
+            "training"
+        ],
+        "tldr": "Proposes StageFrontier, a lightweight profiler for distributed training slowdown diagnosis using coarse stage durations and frontier-based synchronization accounting to pinpoint root-cause delays. Adds only 0.2% overhead while accurately identifying faults and matching detailed profiler results from 143x smaller data.",
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.06687v1": {
+        "title": "Towards Serverless Semi-Decentralized Federated Learning with Heterogeneous Optimizers",
+        "link": "http://arxiv.org/abs/2606.06687v1",
+        "abstract": "We investigate cluster formation, involving the number and composition of clusters, in decentralized federated learning (FL) with heterogeneous machine learning (ML) optimizers. While clustering in centralized FL has enabled scalability and resource savings, its value and development in fully decentralized environments have yet to be explored. Optimizing cluster formation in such environments is challenging, especially due to the complex coupling between network graph structures, local data heterogeneity, and different local ML model optimizers. To address these challenges, we propose serverless semi-decentralized FL (SSD-FL), a methodology requiring no persistent server infrastructure. In SSD-FL, cluster formation occurs via a lightweight, one-time device-to-device (D2D) initialization phase, after which actual ML model training (alongside consensus and convergence processes) is fully serverless. Functionally, SSD-FL segments global rounds into intra-cluster and inter-cluster regimes, ensuring global convergence and consensus through novel \"effective loss functions\" that integrate device-specific ML optimizers with network graph-based regularization. Next, SSD-FL leverages the consensus gap via the Cheeger inequality to develop an iterative clustering algorithm evaluated against our derived convergence and consensus bounds, which incorporate a unique scoring metric to quantify data and optimizer heterogeneity across devices. Finally, experimental evaluation against three categories of decentralized FL methodologies validate that SSD-FL improves both convergence speeds and communication efficiency across various network graphs, datasets, and local optimizer regimes.",
+        "authors": [
+            "Su Wang",
+            "Mung Chiang",
+            "H. Vincent Poor"
+        ],
+        "categories": [
+            "cs.LG",
+            "cs.DC",
+            "cs.NI",
+            "eess.SY"
+        ],
+        "id": "http://arxiv.org/abs/2606.06687v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.06521v1": {
+        "title": "P-Cast Precision in FP8 Attention: Sink-Induced Collapse and the Optimality of S=2^8",
+        "link": "http://arxiv.org/abs/2606.06521v1",
+        "abstract": "FP8 (E4M3) acceleration for attention computation offers significant throughput gains, but the 3-bit mantissa introduces precision challenges when the softmax probability matrix P is cast to FP8 before the P*V matrix multiplication. We analyze two implementation choices that affect output precision under the Attention Sink phenomenon: (1) the KV block iteration order, and (2) the static scaling factor applied to P before casting. We show that forward KV iteration causes \"P-collapse\" -- to leading order, a fraction Phi(Delta + delta_k - 6.93 - ln S) of non-sink P values underflow to zero, where the small shift delta_k ~ 1 (for k_sink = 4) is the expected within-sink-block score maximum -- and that reverse iteration removes it, with a zero-underflow guarantee when reverse is combined with S = 256. We further give a constructive characterization of S = 256 = 2^8 as the static scale that simultaneously satisfies (i) bit-exact IEEE 754 scaling, (ii) the lower envelope of a sawtooth function dp(S) over the E4M3 number line (dp = 2^-4, the minimum worst-case quantization step), and (iii) the maximum normal-range coverage among bit-exact (2^k) scales (a non-bit-exact scale such as 448 attains slightly higher coverage). Both optimizations are already deployed in FlashAttention-3/4 on engineering grounds; our contribution is a quantitative account of why these choices are good and a closed-form threshold Delta_c = 6.93 + ln S - delta_k for predicting kernel-level precision loss. Kernel-faithful experiments (Q, K, V in FP32 to isolate the P-cast effect) show 3-10x MSE improvement at moderate sink strengths, and paired tests confirm both fixes saturate to the same precision floor when combined.",
+        "authors": [
+            "Reed Lau"
+        ],
+        "categories": [
+            "cs.AR",
+            "cs.AI",
+            "cs.DC",
+            "cs.LG",
+            "cs.PF"
+        ],
+        "id": "http://arxiv.org/abs/2606.06521v1",
+        "submit_date": "2026-06-02",
+        "relevant": true,
+        "tags": [
+            "quantization",
+            "kernel"
+        ],
+        "tldr": "Addresses precision loss in FP8 attention computation when casting softmax matrix P to FP8. Proposes reverse KV iteration and optimal static scaling (S=256) to prevent underflow and minimize quantization errors. Achieves 3-10x MSE improvement in kernel experiments.",
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.06515v1": {
+        "title": "DxPTA: An Architecture Design Space Exploration with Optical Dataflow-guided Strategy for HW/SW Co-Design of Photonic Transformer Accelerators",
+        "link": "http://arxiv.org/abs/2606.06515v1",
+        "abstract": "Transformer-based networks have emerged as prominent AI models with state-of-the-art performance, which potentially pave the way toward artificial general intelligence (AGI). However, their large sizes still hinder their efficient implementation, thus highlighting the need for alternate solutions to enable their energy-efficient acceleration. Recently, state-of-the-art works propose photonic transformer accelerators (PTAs) with significant speedup and energy efficiency improvements over the conventional electronic accelerators. However, their PTA architectures are developed without considering the application constraints (e.g., area, power, energy, and latency). Moreover, their manual design approach also requires huge design time to determine a suitable architecture for the targeted application, hence making this approach not scalable. To address these limitations, we propose DxPTA, a novel design space exploration methodology for enabling efficient hardware/software co-design of the appropriate PTA architecture that meets all constraints. It is achieved by (1) identifying the PTA architecture parameters based on the coherent optical dataflow; (2) analyzing the impact/significance of the parameters; and (3) leveraging this analysis for devising a constraint-aware architecture search algorithm. Experimental results show that, our DxPTA can find the appropriate PTA architectures for different transformer-based models (i.e., DeiT-T/S/B and BERT-B/L). It achieves up to 26mm^2 area, 4.8W power, 39mJ energy, and 6ms latency, for constraints of 50mm^2 area, 5W power, 50mJ energy, and 10ms latency; with 15.2x faster searching time than the exhaustive approach. These results demonstrate the potential of DxPTA methodology for enabling efficient PTA designs for diverse AGI-based applications.",
+        "authors": [
+            "Rachmad Vidya Wicaksana Putra",
+            "Solomon Micheal Serunjogi",
+            "Mahmoud Rasras",
+            "Muhammad Shafique"
+        ],
+        "categories": [
+            "cs.AR",
+            "cs.AI",
+            "cs.DC",
+            "cs.ET",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.06515v1",
+        "submit_date": "2026-06-02",
+        "relevant": true,
+        "tags": [
+            "hardware"
+        ],
+        "tldr": "Proposes DxPTA, a HW/SW co-design methodology for photonic transformer accelerators to meet area, power, energy, and latency constraints. Uses optical dataflow-guided strategy and constraint-aware architecture search. Achieves 6ms latency and 39mJ energy for BERT models with 15.2x faster search time than exhaustive methods.",
+        "indexed_date": "2026-06-08"
+    },
+    "http://arxiv.org/abs/2606.06697v1": {
+        "title": "AgileOS: A GPU Operating System Layer for Protected CUDA Services",
+        "link": "http://arxiv.org/abs/2606.06697v1",
+        "abstract": "Modern GPU applications increasingly interact with storage systems, network devices, vendor libraries, and GPU-resident services rather than executing only isolated compute kernels. This shift creates a need for operating-system-like protection around GPU services, where service metadata, device queues, memory-mapped I/O regions, and library-internal state should not be directly exposed to untrusted application kernels. However, today's CUDA programming model, by default, still gives each application direct ownership of its CUDA context, device pointers, runtime handles, module loading path, and kernel launches, leaving protected GPU services to build their own ad hoc interfaces and isolation mechanisms.\n  This paper presents the initial design and prototype scope of AgileOS, a GPU operating-system layer for protected CUDA services. AgileOS virtualizes CUDA at the library boundary: applications link against client-side CUDA Runtime, Driver, and selected library shims, while a trusted runtime worker owns the real CUDA context and mediates supported operations. To protect service state and module interfaces, AgileOS also defines a GPU memory-management model that separates user allocations from protected module/MMIO ranges, using pointer validation and memory access guards via PTX injection. AgileOS is modularized and flexible, supporting a range of protected services and existing libraries such as cuFFT and PyTorch. The prototype includes client-side interceptors, worker-side CUDA handlers, virtualized CUDA object tables, protected AgileOS modules, a GPU memory manager that separates user allocations from protected module/MMIO ranges, selected trusted library adapters, and the PTX-level kernel memory guard.",
+        "authors": [
+            "Zhuoping Yang",
+            "Yiyu Shi",
+            "Alex Jones",
+            "Peipei Zhou"
+        ],
+        "categories": [
+            "cs.CR",
+            "cs.OS"
+        ],
+        "id": "http://arxiv.org/abs/2606.06697v1",
+        "submit_date": "2026-06-04",
+        "relevant": false,
+        "indexed_date": "2026-06-08"
     }
 }

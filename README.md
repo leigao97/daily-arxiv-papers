@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2641-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.06-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2647-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.08-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,20 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-08
+* `serving` `edge` `offloading` [Clairvoyant: Predictive SJF Scheduling to Mitigate Head-of-Line Blocking in Serial LLM Backends](http://arxiv.org/abs/2606.07248v1)
+  > **TL;DR**: Mitigates Head-of-Line Blocking in serial LLM backends for edge deployments. Proposes Clairvoyant, a sidecar proxy using lightweight response length prediction via lexical features for Shortest Job First scheduling. Achieves 70-76% P50 latency reduction for short requests under 100 concurrent loads.
+* `training` `networking` `scaling` [PCCL: Process Group-Aware Scalable and Generic Collective Algorithm Synthesizer](http://arxiv.org/abs/2606.07019v1)
+  > **TL;DR**: Addresses inefficiencies in collective communications for distributed training of large generative models. Proposes PCCL, a process group-aware framework synthesizing topology-aware collective algorithms. Achieves 512-NPU All-to-All synthesis in 11.68 minutes.
+* `MoE` `training` `serving` [UltraEP: Unleash MoE Training and Inference on Rack-Scale Nodes with Near-Optimal Load Balancing](http://arxiv.org/abs/2606.04101v2)
+  > **TL;DR**: Addresses load imbalance in large-scale MoE training and serving prefill. Introduces UltraEP, a real-time balancer with quota-driven planning and optimized communication via persistent tile streaming. Achieves 94.3% of ideal throughput and 1.49× improvement over non-balancing.
+* `training` [StageFrontier: Synchronization-Aware Stage Accounting for Distributed ML Training](http://arxiv.org/abs/2606.06751v1)
+  > **TL;DR**: Proposes StageFrontier, a lightweight profiler for distributed training slowdown diagnosis using coarse stage durations and frontier-based synchronization accounting to pinpoint root-cause delays. Adds only 0.2% overhead while accurately identifying faults and matching detailed profiler results from 143x smaller data.
+* `quantization` `kernel` [P-Cast Precision in FP8 Attention: Sink-Induced Collapse and the Optimality of S=2^8](http://arxiv.org/abs/2606.06521v1)
+  > **TL;DR**: Addresses precision loss in FP8 attention computation when casting softmax matrix P to FP8. Proposes reverse KV iteration and optimal static scaling (S=256) to prevent underflow and minimize quantization errors. Achieves 3-10x MSE improvement in kernel experiments.
+* `hardware` [DxPTA: An Architecture Design Space Exploration with Optical Dataflow-guided Strategy for HW/SW Co-Design of Photonic Transformer Accelerators](http://arxiv.org/abs/2606.06515v1)
+  > **TL;DR**: Proposes DxPTA, a HW/SW co-design methodology for photonic transformer accelerators to meet area, power, energy, and latency constraints. Uses optical dataflow-guided strategy and constraint-aware architecture search. Achieves 6ms latency and 39mJ energy for BERT models with 15.2x faster search time than exhaustive methods.
+
 ### 2026-06-06
 * `networking` `sparse` `training` [Demystifying NVSHMEM: A System-Level Analysis on Symmetric Memory and Device-Initiated Operations in GPU Communication](http://arxiv.org/abs/2606.05951v1)
   > **TL;DR**: Analyzes NVSHMEM's design for efficient GPU cluster communication. Studies symmetric memory and device-initiated operations, enabling fine-grained GPU-driven communication that approaches hardware performance limits, improving efficiency in sparse deep learning training workloads.
