@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2647-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.08-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2661-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.09-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,36 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-09
+* `serving` `kernel` `quantization` [AutoMegaKernel: A Statically-Checked Agent Harness for Self-Retargeting Megakernel Synthesis](http://arxiv.org/abs/2606.09682v1)
+  > **TL;DR**: Proposes AutoMegaKernel to compile LLMs into a single CUDA kernel for efficient inference, using static validation for deadlock/race safety. Achieves up to 1.33x speedup over cuBLAS on L4 GPU for batch-1 decode with W8A16 quantization.
+* `serving` `multi-modal` `scaling` [FMplex: Model Virtualization for Serving Extensible Foundation Models](http://arxiv.org/abs/2606.09643v1)
+  > **TL;DR**: Addresses inefficient serving of customized foundation model tasks by proposing FMplex, a virtualization system that shares backbone models among tasks with a batch-aware fair-queueing scheduler. Achieves up to 80% latency reduction and 6x more tasks hosted.
+* `training` `networking` `kernel` [Resource-aware Computation-Communication Overlap for multi-GPU ML Workloads](http://arxiv.org/abs/2606.09200v1)
+  > **TL;DR**: Reduces communication overhead in multi-GPU training by enabling computation-communication overlap. Uses shared-memory-driven occupancy shaping for computation kernels and elevated priority scheduling for communication streams. Achieves up to 25.5% reduction in total execution time across NVIDIA and AMD GPUs.
+* `serving` `disaggregation` [FlexNPU: Transparent NPU Virtualization for Dynamic LLM Prefill-Decode Co-location](http://arxiv.org/abs/2606.04415v2)
+  > **TL;DR**: Addresses phase interference in LLM serving by enabling dynamic prefill-decode co-location. Proposes FlexNPU, a transparent NPU virtualization layer for phase-aware scheduling. Reduces TTFT by over 92% on Qwen2.5-7B while maintaining throughput.
+* `serving` `disaggregation` `scaling` [Fairness-Aware and Latency-Controllable Scheduling for Chunked-Prefill LLM Serving](http://arxiv.org/abs/2606.09061v1)
+  > **TL;DR**: Addresses scheduling fairness and latency stability in chunked-prefill LLM serving. Proposes an aging-based policy with dynamic priorities, LPRS for target-time scheduling, and APC for prefill concurrency control. Achieves over 10% lower mean latency and significantly reduced P99 tail latency.
+* `RAG` `scaling` `storage` [When More Cores Hurts: The Vector Database Scaling Paradox in HPC](http://arxiv.org/abs/2606.08950v1)
+  > **TL;DR**: Investigates scaling inefficiencies of vector databases in HPC for AI workloads. Evaluates Qdrant/Milvus/Weaviate across 256 workers, revealing workload-core mismatches. Additional cores reduce throughput by 30.67%; 16x scaling yields only 5.46x speedup.
+* `RAG` `storage` `hardware` [Aperon Technical Report: Hierarchical No-Pointer Tangent-Local Search for High-Dimensional Approximate Nearest Neighbors](http://arxiv.org/abs/2606.08813v1)
+  > **TL;DR**: Addresses high memory overhead and irregular accesses in vector indexing for approximate nearest neighbor search. Proposes HNTL with local tangent space partitioning and pointerless Block-SoA layout for sequential scanning. Achieves 3.61x speedup (4.137 ns/vector vs. 14.951 ns/vector) and near-zero cache misses.
+* `quantization` `serving` `kernel` [APEX4: Efficient Pure W4A4 LLM Inference via Intra-SM Compute Rebalancing](http://arxiv.org/abs/2606.08761v1)
+  > **TL;DR**: Addresses dequantization bottlenecks in pure INT4 LLM inference. Designs APEX4 with ρ-aware granularity adaptation for INT4 GEMM kernels to balance intra-SM compute. Achieves up to 2.09× end-to-end speedup on A40 GPUs when integrated with vLLM.
+* `serving` `disaggregation` `quantization` [SpectrumKV: Per-Token Mixed-Precision KV Cache Transfer for Prefill-Decode Disaggregated LLM Serving](http://arxiv.org/abs/2606.08635v1)
+  > **TL;DR**: Addresses inefficient KV cache transfer in prefill-decode disaggregated LLM serving. Proposes SpectrumKV with per-token mixed precision (FP16/INT8/INT4) and deployment-time probing for adaptive quantization. Achieves 50-62% TTFT reduction at b=0.5 KV budget.
+* `training` [FlashCP: Load-Balanced Communication-Efficient Context Parallelism for LLM Training](http://arxiv.org/abs/2606.08476v1)
+  > **TL;DR**: Addresses workload imbalance and communication overhead in context parallelism for LLM training. Proposes FlashCP with sharding-aware KV communication elimination and Whole-Doc sharding, optimized via heuristic planning. Achieves up to 1.63× speedup over state-of-the-art frameworks.
+* `serving` `edge` `networking` [Multi-SPIN: Multi-Access Speculative Inference for Cooperative Token Generation at the Edge](http://arxiv.org/abs/2606.04581v2)
+  > **TL;DR**: Investigates optimizing speculative inference for LLMs in heterogeneous edge systems to maximize token goodput. Proposes Multi-SPIN with distributed on-device draft generation and server verification, jointly optimizing draft lengths and bandwidth allocation. Achieves up to 88% higher goodput over baselines.
+* `training` `RL` `edge` [AlignFed: Alignment-Aware Asynchronous Federated Fine-Tuning for Large Language Models in Heterogeneous Edge Environments](http://arxiv.org/abs/2606.08197v1)
+  > **TL;DR**: Addresses asynchronous federated fine-tuning of LLMs in heterogeneous edge environments with high latency and resource inefficiency. Proposes AlignFed, a framework with multi-stage semantic alignment (version-aware grouping, cross-version calibration, fairness-aware aggregation) to mitigate model drift and client drift. Improves system latency and resource utilization.
+* `agentic` `serving` [Cost-Aware Speculative Execution for LLM-Agent Workflows: An Integrated Five-Dimension Method](http://arxiv.org/abs/2606.07846v1)
+  > **TL;DR**: Reduces idle time and cost in LLM-agent workflows using speculative execution. Proposes a five-dimension method with dollar-based pricing, a latency-cost dial, and Bayesian probability estimation. Demonstrates improved latency-cost efficiency in synthetic validation against existing systems.
+* `serving` `scaling` [FMplex: Model Virtualization for Serving Extensible Foundation Models](http://arxiv.org/abs/2606.09643v1)
+  > **TL;DR**: Addresses resource waste from deploying independent instances for customized foundation model tasks. Proposes FMplex, a virtualization system with shared physical backbones and a batch-aware fair-queueing scheduler. Achieves 80% lower latency and hosts 6× more tasks compared to spatial partitioning.
+
 ### 2026-06-08
 * `serving` `edge` `offloading` [Clairvoyant: Predictive SJF Scheduling to Mitigate Head-of-Line Blocking in Serial LLM Backends](http://arxiv.org/abs/2606.07248v1)
   > **TL;DR**: Mitigates Head-of-Line Blocking in serial LLM backends for edge deployments. Proposes Clairvoyant, a sidecar proxy using lightweight response length prediction via lexical features for Shortest Job First scheduling. Achieves 70-76% P50 latency reduction for short requests under 100 concurrent loads.
