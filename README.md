@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2661-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.09-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2665-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.10-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,16 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-10
+* `training` `MoE` `offloading` [Piper: A Programmable Distributed Training System](http://arxiv.org/abs/2606.11169v1)
+  > **TL;DR**: Automates distributed training strategy implementation for large models. Proposes Piper, using model annotations and a unified IR for joint compute-communication scheduling. Achieves performance parity with ZeRO and gains in efficiency for strategies like DualPipe.
+* `MoE` `serving` `edge` [Achieving Cloud-Grade SLOs for Local Mixture-of-Experts Inference through CPU-GPU Hybrid Design](http://arxiv.org/abs/2606.10493v1)
+  > **TL;DR**: Addresses cloud-grade SLOs for local MoE inference on consumer hardware. Proposes a CPU-GPU hybrid system with stream-loading prefill, expert parallelism, disaggregation, and optimized kernels. Achieves 1,200 tokens/s prefill throughput enabling 32K prompts within 30 seconds and 28 tokens/s decode on INT4 DeepSeek-V3.
+* `networking` `hardware` [ASTRA-sim 3.0: Next-Level Distributed Machine Learning Simulations via High-Fidelity GPU and Infrastructure Modeling](http://arxiv.org/abs/2606.10440v1)
+  > **TL;DR**: Addresses high-fidelity simulation for distributed ML infrastructure. Proposes ASTRA-sim 3.0 with cache-line granularity, GPU execution model, and InfraGraph for network representation. Enables design explorations optimizing collective algorithms, improving simulation accuracy for latency-sensitive inference.
+* `training` `hardware` `networking` [RATrain: A Resource-Aware Training Runtime for Large Language Models on Bandwidth-Constrained Heterogeneous Supercomputing Platforms](http://arxiv.org/abs/2606.10415v1)
+  > **TL;DR**: Addresses efficient LLM training on bandwidth-constrained heterogeneous supercomputers. Proposes RATrain, a runtime that schedules gradient sync, parameter updates, and prefetching via layer-level state lifecycle management. Achieves up to 1.35× speedup and 97.0% scaling efficiency for LLaMA-2-7B at 1024 clusters.
+
 ### 2026-06-09
 * `serving` `kernel` `quantization` [AutoMegaKernel: A Statically-Checked Agent Harness for Self-Retargeting Megakernel Synthesis](http://arxiv.org/abs/2606.09682v1)
   > **TL;DR**: Proposes AutoMegaKernel to compile LLMs into a single CUDA kernel for efficient inference, using static validation for deadlock/race safety. Achieves up to 1.33x speedup over cuBLAS on L4 GPU for batch-1 decode with W8A16 quantization.
