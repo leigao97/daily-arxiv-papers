@@ -132651,5 +132651,372 @@
         "submit_date": "2026-06-08",
         "relevant": false,
         "indexed_date": "2026-06-10"
+    },
+    "http://arxiv.org/abs/2606.12343v1": {
+        "title": "Fair Comparison of Scheduling Algorithms on Heterogeneous Edge Clusters: A Continuous Adaptive Benchmark",
+        "link": "http://arxiv.org/abs/2606.12343v1",
+        "abstract": "Modern Artificial Intelligence (AI) workloads deployed across the heterogeneous tiers of an edge--cloud continuum must satisfy multi-dimensional Service Level Objectives (SLOs) over latency, throughput, and output quality. For each incoming task, the scheduler picks both a target node and a processing mode (e.g., full or reduced inference precision). We call this class of problems \\emph{Continuous Multi-Mode Scheduling} (CMMS). Comparing CMMS algorithms fairly is difficult because prior studies typically evaluate each controller in its own stack, under a single workload, and without reporting per-decision overhead. To close these gaps, we present an open source benchmark platform that features (i) a unified controller interface, (ii) a closed-loop workload driver covering multiple workload patterns, and (iii) dual-metric SLO scoring that reports raw SLO (overall compliance) and steady-state SLO (compliance during stable operation) separately. Running six controllers across five cluster configurations and two load regimes (424 episodes), we find that controller rankings are strongly configuration-dependent: a deep reinforcement-learning winner under light workloads loses to a rule-based heuristic by nearly 29 percentage points once load intensifies, at roughly 500$\\times$ the per-decision operational overhead. We further show that separating raw from steady-state SLOs exposes switching costs that a single aggregate score would otherwise conflate.",
+        "authors": [
+            "Zihang Wang",
+            "Boris Sedlak",
+            "Juan Luis Herrera",
+            "Schahram Dustdar"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.12343v1",
+        "submit_date": "2026-06-10",
+        "relevant": true,
+        "tags": [
+            "edge",
+            "serving",
+            "scaling"
+        ],
+        "tldr": "Addresses fair benchmarking of schedulers for edge-based AI inference under multi-mode SLOs. Designs a platform with unified controller interface, closed-loop workload driver, and dual-metric SLO scoring. Under heavy load, best controller changes with 29% SLO drop and 500× overhead increase.",
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.12246v1": {
+        "title": "Efficient and Robust Online Learning to Rank in Decentralized Systems",
+        "link": "http://arxiv.org/abs/2606.12246v1",
+        "abstract": "In Online Learning to Rank (OLTR), ranking models are trained directly from live user interactions, but existing systems rely on a trusted central server to collect and process these interactions. This leaves operators free to introduce biases that conflict with user interests. Decentralized learning offers an attractive alternative, allowing users to collaboratively train a shared ranking model by exchanging model updates directly with one another, without any central authority. In such settings, however, malicious nodes can send poisoned model updates that degrade the ranking quality of honest nodes. We introduce RankGuard, a decentralized OLTR framework in which users collaboratively train ranking models and exchange model updates directly with other nodes. RankGuard defends against poisoning attacks by carefully evaluating incoming models against the user's own private click history, corrected for position bias. An incoming model is only aggregated if it better explains the user's past interactions than the current local model, making it fundamentally hard for malicious nodes to craft updates that pass this test without also genuinely helping the user. We derive a theoretical convergence guarantee of RankGuard. To the best of our knowledge, this is the first formal convergence analysis of a decentralized OLTR algorithm. We evaluate RankGuard against four poisoning attacks, including a powerful adaptive attack, using four standard benchmarks and three click models. RankGuard outperforms all baselines in most settings while being up to 62x more efficient than its closest competitors.",
+        "authors": [
+            "Marcel Gregoriadis",
+            "Martijn de Vos",
+            "Sayan Biswas",
+            "Anne-Marie Kermarrec",
+            "Johan Pouwelse"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.IR"
+        ],
+        "id": "http://arxiv.org/abs/2606.12246v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.12103v1": {
+        "title": "The PM-EdgeMap: Towards Real-Time Process Mining on the Edge-Cloud Continuum",
+        "link": "http://arxiv.org/abs/2606.12103v1",
+        "abstract": "Smart factories are evolving into Cyber-Physical Systems (CPS), demanding increased autonomy. This necessitates real-time decision making, facilitated by insights derived from sensor data. Process mining offers a valuable approach to gain such insights and guide actions. The edge computing paradigm supports this real-time requirement by enabling network communication between sensors and leveraging nearby computing resources. This paper investigates the implications of performing real-time process mining algorithms on the edge. Within this paper, we first propose a formalism to describe relevant datasets and the computing topology. We then evaluate the edge computing approach through a case study involving an edge-based conformance checking algorithm. The results demonstrate the feasibility and benefits of edge-based real-time process mining for enhanced autonomous control in smart factories.",
+        "authors": [
+            "Hendrik Reiter",
+            "Christian Imenkamp",
+            "Olaf Landsiedel",
+            "Andrea Maldonado",
+            "Patrick Rathje",
+            "Wilhelm Hasselbring"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.12103v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11974v1": {
+        "title": "Near-Optimal Distributed 2-Ruling Sets on Graphs with Low Arboricity",
+        "link": "http://arxiv.org/abs/2606.11974v1",
+        "abstract": "Given a graph $G=(V,E)$, a $β$-ruling set is a subset of nodes $S\\subseteq V$ that is independent, and each node in $V$ is at distance at most $β$ from some node in $S$. In this paper, we present almost optimal distributed algorithms for finding $2$-ruling sets in the classical \\LOCAL model. Our main contribution is a randomized algorithm that w.h.p.\\ computes a $2$-ruling set on any $n$-node graph with bounded arboricity in $O(\\log \\log n)$ rounds. In fact, the algorithm works up to arboricity $O(\\log\\log n)$, improves exponentially over the prior state of the art that can be achieved by combining [Barenboim, Elkin, Pettie, Schneider; JACM'16], [Ghaffari; SODA'16], and [Bisht, Kothapalli and Pemmaraju; PODC'14], and nearly matches the lower bound of $Ω(\\log \\log n / \\log \\log \\log n)$ [Balliu, Brandt, Kuhn, Olivetti; FOCS'20]. The domination parameter $β=2$ is optimal for algorithms with runtime $\\log^{o(1)}n$: on graphs with arboricity $2$, there is a lower bound of $Ω(\\sqrt{\\log n})$ rounds for MIS (i.e., $β= 1$) [Khoury, Schild; FOCS'25].\n  Additionally, we obtain improved algorithms for larger arboricity. For general graphs with arboricity $α$, we present a randomized algorithm that computes a $2$-ruling set in $\\widetilde{O}(\\log^{5/8} α+\\log^{5/3} \\log n)$ rounds. This improves exponentially over the state of the art for a large range of non-constant arboricity.\n  Our techniques extend beyond distributed computing. We present an $O(\\log \\log \\log n)$-round algorithm in the low-space Massively Parallel Computation (\\mpc) model that w.h.p.\\ computes a $2$-ruling set on any graph with arboricity up to $2^{poly (\\log \\log n)}$, improving exponentially over the state of the art from [Kothapalli, Pai, Pemmaraju; FSTTCS'20] combined with [Fischer, Giliberti, Grunau; SPAA'23].",
+        "authors": [
+            "Malte Baumecker",
+            "Rustam Latypov",
+            "Yannic Maus",
+            "Jara Uitto"
+        ],
+        "categories": [
+            "cs.DS",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.11974v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11937v1": {
+        "title": "From Fork-Join to Asynchronous Tasks: Parallelizing Tiled Cholesky Decomposition with OpenMP and HPX",
+        "link": "http://arxiv.org/abs/2606.11937v1",
+        "abstract": "Fork-join parallelism, popularized by OpenMP, remains the dominant model for shared-memory parallel programming, but its implicit synchronization barriers can penalize algorithms with inhomogeneous workloads. Asynchronous many-task (AMT) runtimes sidestep these barriers by expressing work as a dependency graph of fine-grained tasks. Yet, the actual performance benefit over a carefully written fork-join baseline is rarely quantified. In this work, we introduce Cholesky-Bench and use it to revisit the tiled Cholesky decomposition, a canonical irregular kernel, comparing four parallelization variants of the right-looking algorithm across two runtimes: the OpenMP implementations shipped with GCC and LLVM, and the HPX AMT runtime. The variants span classical fork-join, a collapsed fork-join that exposes additional inner-loop parallelism, synchronous tasking, and asynchronous tasking with explicit data dependencies. We benchmark all eight combinations on a dual-socket 128-core AMD Zen 2 node across multiple tile sizes and problem sizes. Our results show that across all variants, HPX outperforms OpenMP at the optimal tile size by 15%-30%. Specifically, asynchronous HPX tasks are up to 26% faster than their OpenMP counterparts, and exhibit roughly 3.8x smaller task overhead. Furthermore, the collapsed fork-join variants close most of the gap to synchronous tasking. Removing redundant synchronization barriers yields an additional improvement of 7% (OpenMP) to 14% (HPX). A GCC-versus-LLVM comparison further reveals compiler-specific differences in fork-join scheduling and task-creation overheads.",
+        "authors": [
+            "Alexander Strack",
+            "Alexander Van Craen",
+            "Dirk Pflüger"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.PF"
+        ],
+        "id": "http://arxiv.org/abs/2606.11937v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11867v1": {
+        "title": "Harnessing Routing Foresight for Micro-step-level MoE load balancing in RL Post-training",
+        "link": "http://arxiv.org/abs/2606.11867v1",
+        "abstract": "Mixture-of-Experts (MoE) and reinforcement learning (RL) post-training now dominate large language model (LLM) development, yet expert load imbalance remains a critical challenge. Existing load-balancing systems target pre-training by relying on historical step-level statistics. However, these methods fail under the unique workload dynamics of RL post-training: the step-level load is stable, but the tiny batch sizes processed during micro-steps cause severe, high-frequency load fluctuations.\n  We introduce ForeMoE, a micro-step-level load balancing system for MoE RL post-training. Instead of relying on historical statistics, ForeMoE exploits the multi-stage RL pipeline (rollout, recompute, policy update) by using foreseeable routing information from the rollout stage to proactively guide load balancing in the remaining stages. To support frequent per-micro-step reconfiguration, ForeMoE employs a hierarchical planner that decomposes the NP-hard load balancing problem into tractable sub-components, alongside a transfer engine that leverages complementary hardware paths (CPU-assisted and GPU-direct) for overlapped expert transfer. Evaluations on 64 GPUs demonstrate that ForeMoE achieves up to a 1.45$\\times$ speedup over state-of-the-art RL post-training systems.",
+        "authors": [
+            "Yuming Zhou",
+            "Haoyang Li",
+            "Sheng Lin",
+            "Yanfeng Zhao",
+            "Tong Zhao",
+            "Xupeng Miao",
+            "Jie Jiang",
+            "Fangcheng Fu",
+            "Bin Cui"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.11867v1",
+        "submit_date": "2026-06-10",
+        "relevant": true,
+        "tags": [
+            "MoE",
+            "RL",
+            "training"
+        ],
+        "tldr": "Addresses expert load imbalance in MoE-based RL post-training due to micro-step fluctuations. Proposes ForeMoE, using foreseeable routing from rollout stages and a hierarchical planner with overlapped CPU-GPU transfer. Achieves 1.45× speedup over SOTA systems on 64 GPUs.",
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11824v1": {
+        "title": "Optimizing Cloud Deployment: Blending of IaaS and FaaS for Microservice Architecture",
+        "link": "http://arxiv.org/abs/2606.11824v1",
+        "abstract": "The rapid evolution of cloud computing has resulted in the adoption of hybrid deployments that blend Infrastructure-as-a-Service (IaaS) and Function-as-a-Service (FaaS) service models to optimize resource utilization, scalability, and operational efficiency. This paper presents a comprehensive study and practical implementation of a metrics-driven approach for migrating microservices from a traditional IaaS service model to a hybrid IaaS + FaaS model, using two microservice applications as case studies. The research develops an automated framework to analyze service-level performance metrics to identify microservices that are best suited for serverless execution. The findings of our research highlight the benefits and limitations of different cloud service models and provide a scalable and replicable automated methodology for optimized deployment of cloud-native applications.",
+        "authors": [
+            "Nikhil Kapoor",
+            "Sougata Mukherjea"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.11824v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11778v1": {
+        "title": "Consensus Time in 3-Majority and 2-Choices Is Determined by the Maximum Initial Opinion Density",
+        "link": "http://arxiv.org/abs/2606.11778v1",
+        "abstract": "We establish the correct parameter governing the convergence time of the 3-Majority and 2-Choices dynamics on the complete graph in the synchronous model. Recent work [Shimizu and Shiraga, PODC'25] provides matching upper and lower bounds on the number of rounds to consensus, but only in a weak sense: the bounds are shown to coincide for some initial opinion configuration.  In contrast, we obtain tight bounds in a strong sense, with upper and lower bounds matching up to logarithmic factors for every initial configuration. Let $α$ (0) be the initial opinion-frequency vector, and denote by ___$α$ (0) ___ $\\infty$ its maximum entry. We show that 3-Majority reaches consensus in $Θ$(min{___$α$ (0) ___ -1 $\\infty$ , $\\sqrt$ n}) rounds w.h.p., while 2-Choices reaches consensus in $Θ$(___$α$ (0) ___ -1 $\\infty$ ) rounds w.h.p. Our results demonstrate that the convergence time of both dynamics is governed not by global parameters such as the number of opinions k or the squared ${\\ell}$ 2 norm of the initial opinion distribution, but rather by the ''local'' parameter ___$α$ (0) ___ $\\infty$ , the maximum initial opinion density.",
+        "authors": [
+            "Niccolò D Archivio"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.11778v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11736v1": {
+        "title": "MHOT: Height-Optimized Authenticated Data Structure for Blockchain State Commitment",
+        "link": "http://arxiv.org/abs/2606.11736v1",
+        "abstract": "State root computation dominates (78%) blockchain block processing time. Ethereum's canonical authenticated data structure, i.e., Merkle Patricia Trie (MPT), suffers from severe tree-height growth and is vulnerable to \\textit{Nurgle attacks} (SP'24), where adversaries inflate path depth via hash collisions and degrade system performance at negligible cost. Existing defenses increase node fanout (span) to bound tree height, but higher span inflates proof size exponentially. Prior work mitigates this trade-off using vector commitments, at the cost of trusted setup or expensive verification.\n  We present \\textsc{Mhot}, a height-optimal authenticated data structure for blockchain state commitment that preserves standard hash-based verification without trusted setup. Unlike MPT's fixed-prefix indexing, which couples span and fanout exponentially, \\textsc{Mhot} indexes by discriminative bits that actually distinguish keys, achieving adaptive span with linear fanout coupling and provably minimal height. To prevent high fanout from inflating proofs, we introduce hierarchical proofs, a two-layer Merkle construction that reduces per-node proof overhead from O(k) to O(log k).\n  On Ethereum mainnet workloads, \\textsc{Mhot} achieves up to 9X higher write throughput, 4X lower write amplification, and 2X smaller proofs than MPT. Under Nurgle attacks, even when the adversary consumes an entire block's gas budget, \\textsc{Mhot} maintains a 0% attack success rate (v.s., 99.97% for MPT). Our results, somewhat surprisingly, show that height optimality (not new crypto primitives!) is the key abstraction for scalable and attack-resilient blockchain state commitment.",
+        "authors": [
+            "Sipeng Xie",
+            "Qianhong Wu",
+            "Minghang Li",
+            "Qiyuan Gao",
+            "Bo Qin",
+            "Qin Wang"
+        ],
+        "categories": [
+            "cs.CR",
+            "cs.DC",
+            "cs.ET"
+        ],
+        "id": "http://arxiv.org/abs/2606.11736v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11690v1": {
+        "title": "Beyond Per-Token Pricing: A Concurrency-Aware Methodology for LLM Infrastructure Cost Estimation",
+        "link": "http://arxiv.org/abs/2606.11690v1",
+        "abstract": "Every public LLM cost calculator we surveyed treats GPU utilization as a fixed input -- entered by the user, baked in as a preset, or silently assumed at 100% -- never measured against the operator's actual load. We show that this assumption is the dominant source of error: on identical H100 hardware, effective cost spans \\$0.21 to \\$15.25 per million output tokens, an underutilization penalty of 2.5-24x across low-to-moderate enterprise loads (1-10 rps) and up to 36.3x near idle -- driven by one operator-controlled variable, offered request rate lambda, which sets in-flight concurrency via Little's Law and which no open-source calculator exposes. Because calculators take utilization as a user-supplied input, any utilization-naive estimate understates true cost by exactly 1/U, systematically mispricing self-hosting -- most severely over-selling it for low-traffic workloads. We propose a measurement methodology that parameterizes the relationship as C_eff = f(H, M, Q, lambda, L), validate it with 42 benchmarks across dense, ultra-sparse MoE, and sparse MoE models, and release vllm-cost-meter, an open-source cost meter that attaches to a live vLLM server and reports real \\$/M-tokens against the operator's own traffic. We further show that FP8 quantization benefits the MoE architectures we tested roughly 2.2-2.4x more than the dense model (+69 to +74% vs. +31% peak throughput; n=3, broader validation needed), and our data are consistent with active parameter count, not total model size, being a primary predictor of saturation economics. To rule out single-hardware confounding we repeat the core sweep on A100 80GB PCIe (56 runs): the load-driven spread reproduces at 7.0-11.4x, the active-parameters ordering survives at FP8, and the dense-FP8 advantage inverts on silicon without native FP8 tensor cores -- a hardware-conditional caveat the framework already accommodates.",
+        "authors": [
+            "Chitral Patil"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.PF"
+        ],
+        "id": "http://arxiv.org/abs/2606.11690v1",
+        "submit_date": "2026-06-10",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "quantization",
+            "MoE"
+        ],
+        "tldr": "Addresses inaccurate LLM serving cost estimation by modeling GPU underutilization via concurrency. Proposes a measurement methodology and vllm-cost-meter tool for live traffic analysis. Quantifies underutilization penalties up to 36.3x near idle and FP8 throughput gains (+74% for MoE vs +31% dense).",
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.10982v2": {
+        "title": "FairWave : A Fairness-Aware Asynchronous DAG-BFT Consensus",
+        "link": "http://arxiv.org/abs/2606.10982v2",
+        "abstract": "Combining asynchronous Byzantine Fault Tolerant (BFT) consensus with Proof-of-Stake (PoS) creates a trilemma between Sybil resistance, reward distribution fairness, and protection against persistent plutocracy. Existing DAG-BFT approaches (Narwhal+Tusk, Bullshark, and Mysticeti) prioritize liveness over the fairness implications of stake-based selection, resulting in persistent longitudinal centralization. FairWave is a dual-channel DAG BFT protocol that separates anchor selection from reward distribution. The selection channel is super-linear in stake, guaranteeing Sybil gain < 1 for all split factors K > 1. The reward channel is sub-linear, using square-root stake normalization to mitigate rich-get-richer dynamics. The finalized DAG structure provides deterministic uptime and latency factors, allowing honest validators to agree on operational quality without any external oracle. To avoid circular dependency between selection outcomes and selection weights, reputation is used in a lagged form: the active value at epoch e equals the prior epoch's final value. We derive closed-form constraints for both channels and validate them through nine empirical analyses (approximately 550,000 Monte Carlo rounds) against eight baselines. FairWave achieves a Gini coefficient of 0.149 (vs. Pure-PoS's 0.488), a monotone HHI reduction from 0.039 to 0.021 over 50,000 epochs, an optimal-adversary Sybil split of K* = 1, and a success-rate coefficient of variation of 5.2% under +/-25% input perturbation. Safety (agreement and validity) is a formal consequence of the 2f+1 strong-support commit rule, holding unconditionally for f < n/3; the empirical differential is the monotone-continuous liveness-degradation curve, which decreases from 99.6% commit rate at b=0.20 to 71.1% at the theoretical bound b=1/3 without the discontinuous cliff characteristic of view-change-driven leader-BFT.",
+        "authors": [
+            "Syariful Mujaddiq"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.10982v2",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11632v1": {
+        "title": "Sovereign Assurance Boundary: Certificate-Bound Admission for Agentic Infrastructure",
+        "link": "http://arxiv.org/abs/2606.11632v1",
+        "abstract": "Agentic infrastructure introduces a critical control-plane authorization problem: non-deterministic reasoning systems can propose high-stakes mutations to production resources, yet existing security mechanisms -- such as identity and access management (IAM), policy engines, consensus protocols, and audit logs -- either enforce static, context-unaware permissions or merely record actions post-execution. This paper introduces the Sovereign Assurance Boundary (SAB), a certificate-bound runtime admission layer for autonomous execution authority. SAB intercepts agent proposals at an assurance airlock, compiles them into typed execution contracts $C$, and binds these contracts to cryptographic evidence digests $H(E)$ and policy versions. The contracts are then routed through consequence-aware certification paths. Upon successful admission, the system emits a signed Sovereign Assurance Certificate ($Ω$) that is strictly scoped to a specific execution identity, revocation epoch, and validity window. Finally, a sovereign execution broker verifies $Ω$ and performs fresh pre-execution revocation and drift checks before invoking infrastructure APIs. We detail the airlock-broker architecture, formalize its admission and revocation invariants, and report preliminary feasibility measurements from a Go prototype evaluated over 2,500 admission attempts. Ultimately, this broker-enforced model prevents autonomous reasoning from directly mutating state, transforming delegated execution authority into a cryptographically verifiable, evidence-bound, revocable, and replayable runtime artifact.",
+        "authors": [
+            "Jun He",
+            "Deying Yu"
+        ],
+        "categories": [
+            "cs.CR",
+            "cs.AI",
+            "cs.DC",
+            "cs.MA"
+        ],
+        "id": "http://arxiv.org/abs/2606.11632v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11579v1": {
+        "title": "Tensor-Network-Based Distributed Quantum Dynamics on Independent Quantum Computers",
+        "link": "http://arxiv.org/abs/2606.11579v1",
+        "abstract": "We present an approach based on tensor networks for distributed quantum computing simulation of chemical wavepacket dynamics in a continuous variable representation. The central idea is that the tensor-network representation of the multidimensional time-evolution operator naturally induces an elevated Hilbert space where the dynamics decomposes into a set of independent lower-dimensional propagations. This transformation converts an entangled quantum evolution into a set of parallel computational tasks that can be executed asynchronously across heterogeneous quantum and classical computing architectures. The resulting formalism establishes a direct connection between tensor-network decompositions, uniformly controlled quantum circuits, and asynchronous distributed quantum computing. The approach is developed with a goal towards hybrid quantum/classical implementation, and is appropriate for a general heterogeneous mixture of quantum hardware systems. The experimental realization of the asynchronously distributed quantum processes that arise from the tensor-network decomposition are carried out on the Sandia National Laboratories' trapped-ion quantum computer, where the circuits are compiled using native partial-entangling $XX(θ)$ gates, reducing the expected two-qubit gate infidelity by more than 30\\% relative to conventional fully entangling decompositions. We demonstrate the methodology by quantum computing the vibrational spectra of a small protonated water cluster that shows critical quantum nuclear behavior. Such water cluster systems have been found to be challenging for experimental action spectroscopy and for theory, and here, for the first time, we provide results for vibrational spectroscopy that are in agreement with the respective classical results to within 4cm$^{-1}$, thus allowing for the potential for spectroscopic accuracy from quantum computations.",
+        "authors": [
+            "Anurag Dwivedi",
+            "Melissa C. Revelle",
+            "Daniel S. Lobser",
+            "Brian K. McFarland",
+            "Edward C. Tortorici",
+            "Christopher G. Yale",
+            "Susan M. Clark",
+            "Philip Richerme",
+            "Srinivasan S. Iyengar"
+        ],
+        "categories": [
+            "quant-ph",
+            "cs.DC",
+            "physics.atm-clus",
+            "physics.atom-ph",
+            "physics.chem-ph"
+        ],
+        "id": "http://arxiv.org/abs/2606.11579v1",
+        "submit_date": "2026-06-10",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11390v1": {
+        "title": "A Scalable PyTorch Abstraction for Multi-GPU Gaussian Splatting",
+        "link": "http://arxiv.org/abs/2606.11390v1",
+        "abstract": "Gaussian splatting methods have become increasingly popular for neural reconstruction of the real world. However, they are often limited in scale and resolution due to compute and memory constraints. We present a multi-GPU Gaussian splatting approach that scales reconstruction to higher resolutions and larger scenes while abstracting away the code complexity typically associated with distributing a model. To accomplish this, we propose a PyTorch backend that distributes the Gaussian parameters and splatting operators across GPUs via CUDA unified memory and NVLink. Because distribution occurs at the operator level, the model code requires no explicit cross-device communication. More broadly, the backend exposes multiple GPUs as an aggregate PyTorch device and supports other PyTorch operators. We demonstrate city-scale reconstructions with street-level detail consisting of over 1 billion Gaussian splats, more than 25 times as many as the current state of the art.",
+        "authors": [
+            "Matthew Cong",
+            "Francis Williams",
+            "Jonathan Swartz",
+            "Mark Harris",
+            "Sanja Fidler",
+            "Ken Museth"
+        ],
+        "categories": [
+            "cs.CV",
+            "cs.DC",
+            "cs.GR",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.11390v1",
+        "submit_date": "2026-06-09",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11357v1": {
+        "title": "TileFuse: A Fused Mixed-Precision Kernel Library for Efficient Quantized LLM Inference on AMD NPUs",
+        "link": "http://arxiv.org/abs/2606.11357v1",
+        "abstract": "With the growing demand for on-device LLM inference, edge SoCs increasingly integrate NPUs to improve performance and energy efficiency under tight power and thermal budgets. However, practical LLM deployment on current client NPUs remains difficult: widely used quantization formats such as AWQ do not map cleanly onto many existing NPU software stacks, which are often proprietary and expose limited low-level control. In this work, we present \\textit{TileFuse}, a close-to-metal mixed-precision kernel library for AMD XDNA2 NPUs that targets transformer linear layers in quantized LLM inference. TileFuse brings practical low-bit formats such as AWQ-style W4A16 and W8A16 directly onto XDNA2, rather than forcing the model to be reshaped around an NPU-specific quantization scheme.\n  TileFuse co-designs weight layout, metadata placement, mixed-precision microkernels, and array-level dataflow. Specifically, it fuses unpacking, dequantization, and GEMM/GEMV execution into a single kernel flow, introduces an interleaved pre-tiling layout that supports GEMM dimensions up to 32K, and redesigns GEMV dataflow to utilize the full 4x8 AIE array. Across kernel-level evaluations, TileFuse improves performance by up to 121.6% for GEMM and 281% for GEMV over full-precision baselines, while delivering more than 2x performance and energy-efficiency gains over strong iGPU baselines on GEMM. In end-to-end LLM experiments on Ryzen AI laptops, TileFuse achieves up to 2.0x lower prefilling latency with more than 64.6% lower energy consumption. Together, these results show that XDNA2 is a practical target for AWQ-style edge LLM inference and that native NPU support for off-the-shelf quantization can make NPUs substantially more usable in real client deployments.",
+        "authors": [
+            "Wesley Pang",
+            "Gregory Hyegang Jun",
+            "Feiyang Liu",
+            "Deming Chen"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AI",
+            "cs.AR",
+            "cs.PF"
+        ],
+        "id": "http://arxiv.org/abs/2606.11357v1",
+        "submit_date": "2026-06-09",
+        "relevant": true,
+        "tags": [
+            "quantization",
+            "kernel",
+            "edge"
+        ],
+        "tldr": "Addresses efficient quantized LLM inference on AMD NPUs. Proposes TileFuse, a fused kernel library integrating unpacking, dequantization, and GEMM/GEMV execution with optimized layouts and dataflow. Achieves up to 2.0x lower prefilling latency and 64.6% lower energy consumption.",
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11356v1": {
+        "title": "An Ocean Model Ported by a Large Language Model: Experience and Lessons from FESOM2 (Fortran to C to C++/Kokkos)",
+        "link": "http://arxiv.org/abs/2606.11356v1",
+        "abstract": "Large language models (LLMs) can translate and modify source code, and have been shown to do so for codes of different complexity. Whether they can port a complete, production geophysical model to a different language without degrading its physics has not been established. We demonstrate that LLM-assisted code translation can preserve the physics of a complete production ocean model while moving it into a modern performance-portable form. We report our experience using an agentic LLM coding assistant, directed by domain experts, to port the FESOM2 unstructured mesh ocean--sea-ice model (about 74000 lines of core Fortran) first to C and then to C++/Kokkos for performance portability across CPUs and GPUs. We describe the practices that proved necessary, what worked and what did not, and the failure modes that we encountered. Three practices mattered most: translating in two stages that separate reproducing the numerics (Fortran to a clean C reference) from introducing parallelism (C to Kokkos); requiring a strictly literal translation in which the assistant was not permitted to ``improve'' the source; and validating each stage against an acceptance criterion suited to it.\n  The C port reproduces the original Fortran at the level of long-term simulation statistics over five years. The Kokkos port is bit-for-bit identical to the C reference on CPU and statistically close on GPU over multi-year runs. On eddy-rich meshes up to 7.4 million surface vertices a single A100 GPU node runs 1.6--3.7 times faster than a CPU node, reaching the 1-2 simulated-years-per-day required for production integrations. The result is more than a single GPU port: by following a clear validation procedure, an LLM moved a full Fortran ocean model into another language and onto accelerators while preserving its physics in a matter of weeks.",
+        "authors": [
+            "Nikolay V. Koldunov",
+            "Suvarchal K. Cheedela",
+            "Sergey Danilov",
+            "Dmitry Sidorenko",
+            "Sebastian Beyer",
+            "Thomas Jung"
+        ],
+        "categories": [
+            "physics.ao-ph",
+            "cs.DC",
+            "cs.SE",
+            "physics.comp-ph"
+        ],
+        "id": "http://arxiv.org/abs/2606.11356v1",
+        "submit_date": "2026-06-09",
+        "relevant": false,
+        "indexed_date": "2026-06-11"
+    },
+    "http://arxiv.org/abs/2606.11886v1": {
+        "title": "Real-Time Language Model Jamming: A Case Study for Live Music Accompaniment Generation",
+        "link": "http://arxiv.org/abs/2606.11886v1",
+        "abstract": "Language models (LMs) have become one of the most prominent paradigms in modern generative modeling. While making them faster has been the main focus of real-time deployment, speed alone is not enough. Many real-world applications, such as synchronized translation and voice synthesis, also require precise alignment between generation and external signals, both in terms of generation content and timing. We refer to this problem as \\textit{frame-synchronous streaming inference}. To address it, we present StreamMUSE, an inference system that performs LM generation in response to an external signal stream within a client-server architecture. The client continuously sends high-frequency inference requests based on the most recent inputs and receives outputs synchronized to the external clock, while the server executes model inference. We demonstrate the framework through a live music accompaniment task, showing how real-time synchronization can be achieved across different deployment environments with varying round-trip latencies. We further model the relationship between system hyperparameters and round-trip latency, and evaluate how different environments affect optimal configurations to achieve real-time performance. Experimental results show a consistent correspondence between system real-time performance and music quality, demonstrating the effectiveness of the proposed framework. The project is open source. Relevant code and the latest updates are available at https://stream-muse-webpage.vercel.app/#audio-library.",
+        "authors": [
+            "Bowen Zheng",
+            "Andrew H. Yang",
+            "Jiaqi Ruan",
+            "Jia He",
+            "Xinyue Li",
+            "Yuan-Hsin Chen",
+            "Ziyu Wang",
+            "Xiaosong Ma"
+        ],
+        "categories": [
+            "cs.SD",
+            "cs.OS"
+        ],
+        "id": "http://arxiv.org/abs/2606.11886v1",
+        "submit_date": "2026-06-10",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "networking"
+        ],
+        "tldr": "Addresses real-time, frame-synchronous streaming inference for aligning LM outputs with external signals like music. Proposes StreamMUSE, a client-server system with high-frequency requests to synchronize generation. Achieves real-time performance across environments with varying round-trip latencies.",
+        "indexed_date": "2026-06-11"
     }
 }
