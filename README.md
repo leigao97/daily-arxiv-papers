@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2670-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.11-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2677-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.12-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,22 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-12
+* `diffusion` `serving` `scaling` [GF-DiT: Scheduling Parallelism for Diffusion Transformer Serving](http://arxiv.org/abs/2606.13501v1)
+  > **TL;DR**: Addresses inefficient static parallelism for heterogeneous Diffusion Transformer (DiT) serving. Proposes GF-DiT, a runtime with asynchronous trajectory tasks and group-free collectives for dynamic GPU parallelism adaptation. Achieves up to 6.01× higher throughput versus fixed configurations.
+* `training` `networking` `scaling` [ScaleAcross: Designing Multi-Data-Center Infrastructure for Geo-Distributed AI Training](http://arxiv.org/abs/2606.12963v1)
+  > **TL;DR**: Explores infrastructure design for geo-distributed AI training across data centers. Proposes an emulation framework with EVPN-VXLAN overlays, ECMP routing, BFD, and queue-pair-aware traffic distribution. Evaluates AllReduce and Parameter Server workloads, providing insights on traffic behavior under realistic WAN conditions.
+* `serving` `scaling` `agentic` [Maestro: Workload-Aware Cross-Cluster Scheduling for LLM-Based Multi-Agent Systems](http://arxiv.org/abs/2606.12950v1)
+  > **TL;DR**: Addresses scheduling inefficiencies in LLM-based multi-agent systems under GPU constraints. Proposes Maestro, a hierarchical scheduler using agent semantics to predict memory/output lengths, enabling dynamic multi-model co-location and workflow-aware prioritization. Reduces KV-reservation HBM by 67.2% and improves SLO attainment by 23.6 percentage points.
+* `hardware` `kernel` [Rigel: Reverse-Engineering the Metal 4.1 Tensor Compute Path on the Apple M4 Max GPU](http://arxiv.org/abs/2606.12765v1)
+  > **TL;DR**: Reverse-engineers Apple Metal 4.1 tensor compute path on M4 Max GPU to uncover hidden hardware behavior. Uses microbenchmarking to reveal matmul2d execution details and fragment layouts. A hand-fused GEMM + bias + GELU kernel achieves 6.5-12.9% speedup over decomposed operations.
+* `serving` `multi-modal` `diffusion` [M*: A Modular, Extensible, Serving System for Multimodal Models](http://arxiv.org/abs/2606.12688v1)
+  > **TL;DR**: Addresses efficient serving of composite multimodal models with diverse components. Introduces M*, a system using Walk Graph dataflow abstraction for modular composition and distributed optimization. Achieves 20% lower end-to-end latency for text-to-image workloads on BAGEL compared to vLLM-Omni.
+* `training` `networking` `scaling` [Eidola: Modeling Multi-GPU Network Communication Traffic in Distributed AI Workloads](http://arxiv.org/abs/2606.12638v1)
+  > **TL;DR**: Models irregular inter-GPU communication in distributed training. Proposes Eidola, a gem5-based simulator using annotated timing profiles for cycle-precise peer-to-peer traffic emulation. Confirms reduced memory traffic via SyncMon-inspired synchronization in large-scale GPU configurations.
+* `serving` `offloading` `disaggregation` [ITME: Inference Tiered Memory Expansion with Disaggregated CXL-Hybrid Memories](http://arxiv.org/abs/2606.12556v1)
+  > **TL;DR**: Addresses scaling shared context infrastructure for LLM inference with large KV caches. Proposes ITME using CXL-hybrid memory for byte-addressable remote expansion and proactive data movement. Achieves up to 35.7% throughput improvement.
+
 ### 2026-06-11
 * `edge` `serving` `scaling` [Fair Comparison of Scheduling Algorithms on Heterogeneous Edge Clusters: A Continuous Adaptive Benchmark](http://arxiv.org/abs/2606.12343v1)
   > **TL;DR**: Addresses fair benchmarking of schedulers for edge-based AI inference under multi-mode SLOs. Designs a platform with unified controller interface, closed-loop workload driver, and dual-metric SLO scoring. Under heavy load, best controller changes with 29% SLO drop and 500× overhead increase.
