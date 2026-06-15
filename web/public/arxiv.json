@@ -133497,5 +133497,356 @@
         ],
         "tldr": "Addresses scaling shared context infrastructure for LLM inference with large KV caches. Proposes ITME using CXL-hybrid memory for byte-addressable remote expansion and proactive data movement. Achieves up to 35.7% throughput improvement.",
         "indexed_date": "2026-06-12"
+    },
+    "http://arxiv.org/abs/2606.14659v1": {
+        "title": "parRSB: Exascale Spectral Element Mesh Partitioning",
+        "link": "http://arxiv.org/abs/2606.14659v1",
+        "abstract": "We introduce parRSB - a parallel, highly scalable graph partitioner for spectral element meshes that produce high quality partitions. parRSB is based on Recursive Spectral Bisection (RSB) algorithm implemented on the dual graph of the input mesh. RSB uses the Fiedler vector, which is the eigenvector associated with the smallest non-zero eigenvalue of the Laplacian matrix of the dual graph for making partitioning decisions and tries to minimize the communication volume between the partitions. We implemented two numerical methods: Lanczos, and Inverse iteration using Conjugate Gradient method to compute the Fiedler vector. We present partitioning results using parRSB on Summit and Frontier supercomputers at Oak Ridge National Laboratory to illustrate the quality of the partitions produced by parRSB and the scalability of our implementation. We also present results for some of the optimizations we did to speed up the partitioning process.",
+        "authors": [
+            "Thilina Ratnayaka",
+            "Paul Fischer"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14659v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14607v1": {
+        "title": "Empowering Student Debugging in Parallel Programming with Execution Traces and Large Language Models",
+        "link": "http://arxiv.org/abs/2606.14607v1",
+        "abstract": "Concurrent programming is a core component of Computer Science curricula, yet remains notoriously difficult for students to master due to its inherent complexity and the nondeterministic nature of concurrency bugs such as deadlocks and race conditions. In this work, we present ParaView, an educational tool designed to help students understand, debug, and correct concurrency issues in parallel programs written in C/C++. ParaView provides transparent execution recording and visualization to make parallel execution observable and comprehensible. We evaluated ParaView through a series of debugging and implementation tasks, with 17 students participating. Results showed a significant improvement in debugging and implementation successes compared to previous course iterations. A student survey confirmed that most participants found ParaView helpful. To further support learning outside the classroom, we explored using Large Language Models (LLMs) to analyze concurrency bugs and suggest fixes. While LLMs were highly effective in identifying bugs and explaining execution traces, the correctness of their bug fixes varied, especially for more complex synchronization patterns. Our findings suggest that recording-visualization tools like ParaView, complemented by artificial intelligence (AI), can improve teaching and learning of concurrent programming.",
+        "authors": [
+            "God'salvation F. Oguibe",
+            "Vinodh Kumaran Jayakumar",
+            "Tongping Liu",
+            "Andrew Lan",
+            "Wei Wang"
+        ],
+        "categories": [
+            "cs.SE",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14607v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14589v1": {
+        "title": "When Errors Become Narratives: A Longitudinal Taxonomy of Silent Failures in a Production LLM Agent Runtime",
+        "link": "http://arxiv.org/abs/2606.14589v1",
+        "abstract": "LLM agent systems increasingly run as long-lived autonomous runtimes: scheduling jobs, calling tools, maintaining memory, and pushing results to humans. We present a longitudinal study of silent failures in one such system: a personal-assistant agent runtime in continuous production since March 2026, with roughly 40 scheduled jobs, 8 LLM providers, a tool-governance proxy, and a knowledge-base memory plane, defended by 4,286 unit tests and 827 governance checks. Over eight weeks we documented 22 incidents with full root-cause postmortems, in which one meta-pattern -- a failure whose error signal never reaches a human in actionable form -- manifested at least 28 times. We derive a five-class, mechanism-oriented taxonomy: (A) environment and platform quirks, (B) design-assumption mismatches, (C) error swallowing and dilution, (D) chained hallucination and fabrication, (E) operational omission and forensic blind spots. Class D is unique to LLM systems and the most dangerous: the system does not merely fail to report an error -- the LLM transforms it into fluent, plausible narrative delivered to the user. We term this fail-plausible: gray failure's differential observability escalated -- the observer is not just blind, it is convincingly lied to by the failure itself. Three findings: about 70% of silent failures were caught by human user-view observation, not tests or audits; a retrospective audit of 15 incidents found 0% ex-ante prevention but 87% regression blocking -- audits are regression engines, not prediction engines; incident latency (13 hours to 60 days) tracks failure mechanism, not code complexity -- the longest-lived failures lived in the seams between components, where no test runs. We describe the resulting defense framework and distill design principles for agent systems whose failures are loud, attributable, and boring. All postmortems and artifacts are public.",
+        "authors": [
+            "Wei Wu"
+        ],
+        "categories": [
+            "cs.SE",
+            "cs.AI",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14589v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14404v1": {
+        "title": "Simple-IT: Practical Low-Latency Signature-Free BFT Consensus",
+        "link": "http://arxiv.org/abs/2606.14404v1",
+        "abstract": "Recent advances in quantum computing pose a looming threat to most current Byzantine fault-tolerant (BFT) consensus protocols, which rely on quantum-vulnerable public-key signature schemes such as Ed25519 and BLS12-381. Instead of switching to much more expensive post-quantum secure signature schemes, an alternative is to use signature-free protocols, which rely only on cheap, post-quantum secure authenticated channels.\n  In this paper, we ask whether signature-free BFT consensus protocols can match the performance of current state-of-the-art, quantum-vulnerable BFT consensus protocols. While previous work on the Sailfish++ protocol showed that state-of-the-art throughput is attainable signature-free, the question of latency is still open. Several recent signature-free protocols have low latency in theory, but they are all very intricate, and no practical implementation has so far been presented. In this work, we propose Simple-IT, a new leader-based, signature-free BFT consensus protocol that achieves a theoretical latency of 4 message delays (one more than the optimum), and only 3 on its optimistic path. Crucially, Simple-IT is simple enough to be amenable to implementation and to practical optimizations such as speculative pipelining, and, as we show experimentally in a geo-distributed testbed, it achieves both throughput and latency competitive with state-of-the-art quantum-vulnerable protocols.",
+        "authors": [
+            "Qianyu Yu",
+            "Juan Villacis",
+            "Giuliano Losa",
+            "Zhuolun Xiang",
+            "Xuechao Wang"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14404v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14394v1": {
+        "title": "Simulation-Based Performance Evaluation of Sharded Blockchain Architectures",
+        "link": "http://arxiv.org/abs/2606.14394v1",
+        "abstract": "Public blockchains continue to struggle with scalability because improving throughput is not as simple as increasing block size or reducing block interval. Larger blocks increase validation and transmission cost, while shorter intervals raise the likelihood of propagation delays, forks, and stale blocks. These limits motivate sharding, where transaction processing is divided across multiple parallel shard groups. In this work, we present a configurable SimPy-based discrete-event simulator for evaluating sharded blockchain architectures under controlled workload and network assumptions. The simulator models mining, verification, inter-shard coordination, block dissemination, measured throughput, average block time, and communication overhead. Our simulator achieves 1.6M TPS at 256 shards under a local datacenter-like setup and 0.6M TPS in a global WAN setup, showing strong throughput gains from parallel execution. However, the gains are not unbounded: beyond a certain number of shards, coordination traffic, synchronization, and network overhead begin to dominate, leading to diminishing returns.",
+        "authors": [
+            "Om Amit Gandhi",
+            "Ioan Raicu"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14394v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14356v1": {
+        "title": "PLAIground: SLO-Driven Runtime Model Selection for Compound AI Systems in the Edge-Cloud-Space Continuum",
+        "link": "http://arxiv.org/abs/2606.14356v1",
+        "abstract": "Applications in the 3D Computing Continuum, which unifies edge, cloud, and space, require combining multiple AI tasks such as object detection, time-series analytics, and natural language processing into Compound AI systems. These systems must satisfy stringent Service Level Objectives (SLOs) on accuracy, latency, and cost. A key mechanism for maintaining SLO compliance of Compound AI systems is runtime model selection, where AI models are dynamically switched for each workflow task. However, existing distributed and compound AI frameworks do not natively support runtime model selection. We present PLAIground, a framework that enables runtime model selection for Compound AI systems. PLAIground introduces Compoundable AI Model (CAIM) abstraction, which decouples task semantics from AI model implementations via Task and Data Contracts, enabling model switching without workflow changes. Additionally, PLAIground introduces Pixie, an SLO-driven runtime model selection algorithm, which dynamically selects the most suitable model for each task during execution. Our evaluation on two realistic Compound AI workflows demonstrates that Pixie achieves up to 91.3% accuracy while maintaining SLO compliance where fixed-model strategies either violate cost and latency budgets up to 21x or miss accuracy targets by 4%.",
+        "authors": [
+            "Milos Gravara",
+            "Cynthia Marcelino",
+            "Andrija Stanisic",
+            "Stefan Nastic"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AI"
+        ],
+        "id": "http://arxiv.org/abs/2606.14356v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14350v1": {
+        "title": "Design Methodology and Performance Trade-offs Management for Distributed and Compound AI Systems",
+        "link": "http://arxiv.org/abs/2606.14350v1",
+        "abstract": "Artificial Intelligence (AI) systems must typically satisfy service-level objectives including accuracy, latency, and cost. The prevailing model-centric approaches select a monolithic model at design time and apply identical computation regardless of input difficulty, cannot decompose tasks across specialized components, and have knowledge that is fixed at training time. During runtime, this can lead to performance degradation and increasing costs. Because the model is the main design variable, it determines the majority of system behavior, coupling operational objectives to a single design-time choice. Addressing these limitations requires shifting from model-centric to system-centric design. Compound AI systems realize this shift by orchestrating multiple models, algorithms, and tools as distributed AI systems through explicit control logic. The performance of such systems depends on their workflow topology, the models assigned to each task, and the parameters governing runtime behavior. We present a design methodology that organizes this space along two dimensions, workflow topology and configuration selection, and identifies eight design patterns, each consolidating techniques to address a specific limitation of monolithic deployment. We validate our methodology through three case studies. Across our case studies, Compound AI configurations approach accuracy of monolithic models within 2.5 to 4 percentage points while reducing latency by up to 60% and cost by up to 71%. We show that model selection and parameter configuration jointly determine system performance, but the resulting design space grows combinatorially, as workflows compose more patterns and components. Thus, we identify five open challenges that define a roadmap from manually configured prototypes towards systems that automatically discover and maintain SLO-compliance in Compound and Distributed AI systems.",
+        "authors": [
+            "Milos Gravara",
+            "Andrija Stanisic",
+            "Stefan Nastic"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AI"
+        ],
+        "id": "http://arxiv.org/abs/2606.14350v1",
+        "submit_date": "2026-06-12",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "scaling"
+        ],
+        "tldr": "Proposes a system-centric methodology for compound AI systems to optimize latency, cost, and accuracy via workflow topology and configuration. Achieves up to 60% lower latency and 71% lower cost while maintaining accuracy within 4 percentage points of monolithic models.",
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14228v1": {
+        "title": "Selective Field Transmission: Bandwidth Efficient Communication under Standardized Message Schemas",
+        "link": "http://arxiv.org/abs/2606.14228v1",
+        "abstract": "In this paper, we introduce and evaluate Selective Field Transmission (SFT), a middleware mechanism that decouples transmission content from statically defined message types in publish-subscribe systems. Industrial and robotics developers often face a dilemma: They can follow established best practices and use standard message types, such as in the Robot Operating System 2 (ROS 2) and COVESA projects, to benefit from reusable and interoperable interfaces, or they can introduce proprietary, project-specific message types tailored to receiver requirements to reduce bandwidth. SFT resolves this trade-off by dynamically adapting the transmitted message components to each receivers actual needs while preserving unmodified standard interfaces. Receivers declare or automatically derive the required message components, which are communicated to the publisher. The publisher then serializes and transmits only the required component subset per receiver with minimal developer intervention. Our evaluation shows that SFT achieves significant bandwidth reductions without measurable per-message latency overhead, with savings proportional to the number and size of unused fields.",
+        "authors": [
+            "David Philipp Klüner",
+            "David Murach",
+            "Stefan Kowalewski",
+            "Alexandru Kampmann"
+        ],
+        "categories": [
+            "cs.NI",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14228v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14093v1": {
+        "title": "On the Limits of Causal Observation in Shared-Memory Systems",
+        "link": "http://arxiv.org/abs/2606.14093v1",
+        "abstract": "Determining whether one concurrent operation completed before another began is a fundamental prerequisite for reasoning about the correctness of concurrent systems. We formalize this challenge as the Causal Observability Problem (COP): assign timestamps to the observable boundary events of a concurrent execution, invocations and responses, that faithfully reflect real-time operation order. A solution is complete if it never misses a genuine precedence, and sound if it never reports a spurious one. We prove that a strongly consistent solution, one that is simultaneously complete and sound, is unachievable at the observable boundary. We then show that the placement of instrumentation events relative to operation boundaries deterministically governs what a monitor can guarantee: internal placement yields completeness, external placement yields soundness, and neither achieves both. This dichotomy holds independently of the underlying timestamp mechanism. We instantiate this framework with three non-blocking implementations of a Causal Monitor object: FAInc (centralized atomic counter), Striped (decentralized counter), and Collect (iterative register snapshot). FAInc and Striped are linearizable; Collect is only quiescently consistent. Despite this internal consistency gap, we prove that all three provide identical COP guarantees: placement alone determines observable behavior. We validate these claims empirically on a 64-core NUMA architecture, showing that Striped matches Collect in throughput while preserving linearizability, resolving the cache-contention bottleneck of FAInc at high thread counts.",
+        "authors": [
+            "Gilde Valeria Rodríguez",
+            "Armando Castañeda",
+            "Miguel Piña"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14093v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14073v1": {
+        "title": "Extreme-Scale Atomistic Simulation of Real-Temperature Magnetic Skyrmion Dynamics by Coupled Spin-Lattice Modeling",
+        "link": "http://arxiv.org/abs/2606.14073v1",
+        "abstract": "Real-temperature topological magnetic dynamics in functional materials is governed by coupled lattice and spin evolution, yet remains inaccessible to predictive simulation at device-relevant scales. As a flagship example, thermally driven helix-to-skyrmion transformation in FeGe requires atomistic resolution, explicit lattice motion, and micrometer-scale domains to resolve device-scale topological texture formation. We combine a spin-constrained density-functional-theory-trained neuro-evolution potential with a structure-preserving spin-lattice integrator within one machine-learned framework. Architecture-specific optimizations, kernel fusion, SVE2 vectorization, and NUMA-aware data layout deliver a seven orders-of-magnitude speedup over prior spin-aware methods. Deployed on LineShine exascale supercomputer, the full application scales to 12.45 million CPU cores with 89.7% weak-scaling efficiency, enabling simulations of 1.34 trillion atoms and an equal number of spins while reaching 48.5 PFLOPS in double precision. The simulations directly resolve real-temperature skyrmion nucleation and reorganization at previously inaccessible scales, establishing a new regime for predictive simulation of coupled spin-lattice topological magnetic dynamics.",
+        "authors": [
+            "Pin Chen",
+            "Cheng-bing Chen",
+            "Hai Liu",
+            "Yuewen Huang",
+            "Kangyou Zhong",
+            "Hai-Jun Zhao",
+            "Liu-Liu Han",
+            "Guixin Guo",
+            "Jiang Li",
+            "Dan Huang",
+            "Ben Xu",
+            "Yutong Lu"
+        ],
+        "categories": [
+            "cs.DC",
+            "cond-mat.mtrl-sci"
+        ],
+        "id": "http://arxiv.org/abs/2606.14073v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14069v1": {
+        "title": "Vivace: Exact Temporal OLAP over Interval Histories via Independent Serverless Execution",
+        "link": "http://arxiv.org/abs/2606.14069v1",
+        "abstract": "Temporal online analytical processing (OLAP) analyzes past states of data whose values change over time. Such histories are naturally stored as interval histories, in which each row records the period during which a value remained valid. Because temporal analyses typically arrive in infrequent, intermittent bursts, serverless execution that launches functions only at query time offers a cost advantage over always-on clusters. Splitting a computation that a single process performs as a whole across independent serverless functions, however, breaks correctness in two ways. A function may not receive the rows that determine the state of its time range, and naively summing partial results yields incorrect answers for duration-weighted and cumulative-threshold queries. Existing SQL engines and serverless analytics do not address both problems together.\n  This paper presents Vivace, a serverless system for exact temporal OLAP over interval histories. Vivace resolves the two problems in separate stages. Before any query arrives, a pre-query layout step partitions the interval history, replicating boundary-crossing intervals so each function computes its range completely from a single file. At query time, a merge step combines partial results under operator-specific rules. Associative aggregates merge intermediate values, and ranking re-orders candidates within each time range. We prove that this partitioned execution matches single-process computation up to canonical form. Evaluated on AWS Lambda with real-world datasets, Vivace reduces latency and monetary cost by up to 82% and 84%, respectively, against an equivalent SQL baseline that queries the history directly, demonstrating robust generality and efficiency.",
+        "authors": [
+            "Woohyeok Park",
+            "Taeyoon Kim",
+            "Hyunjoon Kim",
+            "Kungyong Lee"
+        ],
+        "categories": [
+            "cs.DB",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14069v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.14007v1": {
+        "title": "VaultxGPU: GPU-Accelerated Blockchain Consensus",
+        "link": "http://arxiv.org/abs/2606.14007v1",
+        "abstract": "Blockchain consensus mechanisms based on Proof-of-Work consume significant energy, with Bitcoin alone estimated at approximately 150 TWh per year. Proof-of-Space reduces this cost by replacing repeated computation with storage, but plot generation remains bottlenecked by CPU hashing throughput. Prior work on VaultX demonstrated a high-performance CPU-based Proof-of-Space plotter using multi-threaded Blake3 hashing, achieving plotting speeds 4 to 50x faster than Chia depending on hardware configuration. In this paper, we present VaultxGPU, a GPU-accelerated extension of the VaultX plotter that offloads the Blake3 hashing pipeline to the GPU using custom kernels. We implement the plotter in both CUDA for NVIDIA hardware and SYCL for AMD and Intel GPUs, keeping Table 1 entirely in GPU VRAM and fusing the sort and match stages into a single kernel to minimize data movement. We evaluate VaultxGPU across K-values 27 through 31 against CPU baselines. Our SYCL GPU implementation achieves a 59.2x speedup over a single-threaded CPU baseline, completing a K=31 plot in 45.4 seconds compared to 2688 seconds, and outperforms even the best 384-thread CPU configuration. These results confirm that GPU acceleration is the correct direction for scaling Proof-of-Space plotting beyond what CPU parallelism can achieve.",
+        "authors": [
+            "Samuel Taiwo Fatunmbi",
+            "Om Amit Gandhi",
+            "Luke Logan"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.14007v1",
+        "submit_date": "2026-06-12",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.13968v1": {
+        "title": "STREAM: Multi-Tier LLM Inference Middleware with Dual-Channel HPC Token Streaming",
+        "link": "http://arxiv.org/abs/2606.13968v1",
+        "abstract": "Researchers and practitioners working with large language models face a fragmented landscape: local models are free and private but hardware limits the model size and context windows a researcher can use; institutional HPC centers offer powerful GPU resources at no marginal cost and keep data within institutional boundaries, but operate behind firewalls and are designed for batch jobs rather than interactive use; commercial cloud APIs provide frontier-model quality on demand but impose significant cost and data retention policies unsuitable for sensitive research data. No existing system unifies all three. STREAM (Smart Tiered Routing Engine for AI Models) addresses this gap with four contributions: (1) a three-tier routing architecture combining local, HPC, and cloud inference with a local LLM-based complexity judge; (2) a dual-channel HPC streaming architecture that separates the Globus Compute control plane (authentication and job dispatch) from a WebSocket relay data plane (token delivery), enabling sub-second TTFT (0.54 s median, 21.1x over batch mode's 11.40 s) through institutional firewalls without VPN or firewall rule changes, with end-to-end AES-256-GCM encryption ensuring the relay operator cannot read token payloads; (3) tier-aware context summarization that prevents long conversations from forcing simple queries onto expensive tiers; and (4) an HPC-as-API proxy mode that exposes HPC inference as an OpenAI-compatible endpoint callable from any standard client with no HPC expertise, a deployment pattern made practical only by the sub-second TTFT of contribution (2). Llama 3.2 3B achieves 85.1% free-tier retention on a 1,200-query benchmark spanning ten domains. Measured TTFT: 0.26 s local, 0.54 s HPC (relay), 1.68 s cloud.",
+        "authors": [
+            "Anas Nassar",
+            "Steve Mohr",
+            "Leonard Apanasevich",
+            "Himanshu Sharma"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AI"
+        ],
+        "id": "http://arxiv.org/abs/2606.13968v1",
+        "submit_date": "2026-06-11",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "networking",
+            "offloading"
+        ],
+        "tldr": "Proposes STREAM, a multi-tier LLM inference middleware unifying local, HPC, and cloud resources. Introduces dual-channel token streaming separating control and data planes for low-latency firewall traversal. Achieves 0.54s median TTFT on HPC tier, 21.1x faster than batch mode.",
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.13954v1": {
+        "title": "Lattice Aggregation in Distributed Verification under Crash and Byzantine Failures",
+        "link": "http://arxiv.org/abs/2606.13954v1",
+        "abstract": "We introduce c-Lattice Aggregation, a fault-tolerant reconstruction problem for distributed verification under crash and Byzantine failures. In our setting, n asynchronous processes supervise a concurrent execution I: each process holds a local sample, and must collaboratively reconstruct I from partial, potentially overlapping observations. A protocol solves c-Lattice Aggregation if at least c correct processes output the complete execution I, while all correct outputs are comparable and bounded by I. This strengthens Lattice Agreement [Attiya, Herlihy and Rachman, 1995] and Byzantine Lattice Agreement [Di Luna et al., 2020; Zheng and Garg, 2020].\n  We parameterize inputs by a redundancy parameter x -- every element of I appears in at least x initial samples -- and establish tight feasibility thresholds. Under crash failures with at most t faulty processes, Lattice Aggregation is solvable if and only if x >= t + 1. Under Byzantine failures with t < n/3, c-Lattice Aggregation is solvable if and only if x >= 2t + c. All bounds are tight: we present matching algorithms based on SCD-broadcast [Imbs et al., 2018; Khanchandani and Wattenhofer, 2024] and indistinguishability-based lower bounds.\n  Finally, we define globally dependent languages -- those for which no partial view can certify correctness, including consensus, linearizability, k-set agreement, and leader election -- and prove that soundness of any monitoring system is achievable if and only if c-Lattice Aggregation is solved, yielding the first complete characterization of fault-tolerant verification under Byzantine failures.",
+        "authors": [
+            "Gilde Valeria Rodríguez",
+            "Borzoo Bonakdarpour",
+            "Armando Castañeda",
+            "Sergio Rajsbaum"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.13954v1",
+        "submit_date": "2026-06-11",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.13865v1": {
+        "title": "RTL-Arrow: Hardware-to-Cloud Bridge",
+        "link": "http://arxiv.org/abs/2606.13865v1",
+        "abstract": "Hardware Security at Willamette is a Willamette University affiliated research group studying the hardware-software interface of security critical services. Within our program, we noticed many researchers spent considerable development time learning to understand and manually parse traces-of-execution of hardware designs which are used to identifying whether vulnerabilities or weaknesses arise at the hardware, software, or interface level. We propose the \"RTL-Arrow\" framework, a framework to compile performant binaries which bridge the hardware/data divide. We translate the outputs of simulated hardware execution, as \"value change dumps\" into modern data science workflows as cloud-ready \"dataframes\", to standardize program verification across the hardware and software levels. We describe our approach, its benefits, and lessons learned from the process of packaging and distributing these libraries for our security research program.",
+        "authors": [
+            "Calvin Deutschbein",
+            "Jimmy Ostler"
+        ],
+        "categories": [
+            "cs.CR",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.13865v1",
+        "submit_date": "2026-06-11",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.13834v1": {
+        "title": "Solving Subgraph Extraction Problems Using $Δ$Search",
+        "link": "http://arxiv.org/abs/2606.13834v1",
+        "abstract": "Many NP-hard graph problems can be modeled as optimal subgraph extraction problems with feasibility constraints. From Network Design to Facility Location, from Robotics to Graph Drawing, the subgraph extraction pattern emerges across diverse domains. Despite this commonality, these problems are typically solved with domain-specific heuristics. Usually, these problems balance competing objectives such as maximizing coverage or minimizing cost while satisfying structural constraints such as connectivity, planarity and reachability. In this work, we introduce $Δ$Search, a general and fast heuristic framework that exploits the insight of Reward-Penalty optimization for solving a large class of subgraph extraction problems. The framework is easy to use as it only requires feasibility constraints and optimality criteria to be provided by the user to express the subgraph extraction problem. We also show how exact methods can be augmented with $Δ$Search to improve their performance by aggressive pruning of the search space. We evaluate our framework on monotone graph problems such as Maximum Planar Subgraph (MPS) and Minimum Connected Dominating Set, Weighted Monotone problems such as Maximum Weighted Independent Set and Minimum Weighted Steiner Tree, and non-monotone graph problems such as Prize Collecting Vertex Cover (PCVC) and Uncapacitated Facility Location Problem (UFLP). Our results show that $Δ$Search matches or surpasses state of the art heuristics for MPS, UFLP and PCVC problems with similar runtime. For the remaining problems, $Δ$Search achieves approximately 89% of the solution quality of the state-of-the-art algorithms without any problem-specific tuning",
+        "authors": [
+            "Rebin Silva Valan Arasu",
+            "Rajiv Gupta"
+        ],
+        "categories": [
+            "cs.PF",
+            "cs.DC",
+            "eess.SY"
+        ],
+        "id": "http://arxiv.org/abs/2606.13834v1",
+        "submit_date": "2026-06-11",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.13725v1": {
+        "title": "A Modern Large-Scale Memory Characterization Laboratory",
+        "link": "http://arxiv.org/abs/2606.13725v1",
+        "abstract": "Real memory chip characterization yields insights into fundamental operational characteristics of modern memory, enabling new mechanisms that improve memory performance, robustness, security, and energy efficiency. We describe our large-scale DRAM characterization laboratory for understanding DRAM. A key building block of this laboratory is DRAM Bender, a versatile and easy-to-use modern DRAM characterization infrastructure. We have updated DRAM Bender to i) introduce support for new types of characterization experiments, ii) expand on its DRAM interface standard support, and iii) make it easier to use at large scale. This paper introduces these updates for the first time. We hope our infrastructure enables the community to discover new problems and solve critical memory scaling issues, enabling the overcoming of the huge memory bottleneck that plagues modern computing systems.",
+        "authors": [
+            "Ataberk Olgun",
+            "Haocong Luo",
+            "Ismail Emir Yuksel",
+            "F. Nisa Bostanci",
+            "A. Giray Yaglikci",
+            "Onur Mutlu"
+        ],
+        "categories": [
+            "cs.AR",
+            "cs.CR",
+            "cs.DC",
+            "cs.PF"
+        ],
+        "id": "http://arxiv.org/abs/2606.13725v1",
+        "submit_date": "2026-06-11",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
+    },
+    "http://arxiv.org/abs/2606.13882v1": {
+        "title": "A Principled Framework for Safe Algorithm Updates in Automated Insulin Delivery Systems",
+        "link": "http://arxiv.org/abs/2606.13882v1",
+        "abstract": "Background: AID algorithms require ongoing software updates and bug fixes. In co-adapted systems, where users tune settings around existing algorithmic behavior, bug fixes can paradoxically disrupt glycemic control. No principled framework evaluates the safety of AID algorithm updates.\n  Methods: Our two-part framework classifies bugs and evaluates the clinical equivalence of AID system software updates. Bugs are classified as factual, heuristic, or computational, each with distinct management strategies. Classifications were validated from porting Trio's oref algorithm from Javascript to a bug-fixed Swift implementation. We compared implementations using shadow execution on 736,480 invocations from eight Trio users. The second component assesses clinical equivalence with error analysis on paired glucose values, applied to both Trio implementations using mechanistic in silico and data-driven replay simulation.\n  Results: In mechanistic in silico simulation, the Swift and Javascript implementations produced nearly identical Time in Range (84.9% vs. 84.9%) and Glycemia Risk Index (23.5% vs. 23.9%), with more than 99% of paired glucose in Parkes Error Grid Zones A and B, meeting our clinical equivalence threshold. Shadow execution showed low mismatch rates in oref components (iob 0.43%, autosens 1.22%, determineBasal 0.07%, meal 0.01%), with clinically meaningful differences in 0.03% of iob invocations. Data-driven replay simulations of bugs revealed more than 99% of downstream paired glucose in Parkes Error Grid Zones A and B, also meeting our clinical equivalence threshold.\n  Conclusions: Our framework integrates bug-fixing principles with multi-method clinical evaluation to assess AID algorithm update safety. It is system-agnostic and applicable to all widely used OS-AID systems, with case studies highlighting the need for systematic remediation of factual and computational bugs.",
+        "authors": [
+            "Thomas Screven",
+            "Ziqiang \"Joe\" Zhu",
+            "Deniz Cengiz",
+            "Rayhan A. Lal",
+            "Korey K. Hood",
+            "Samuel T. King"
+        ],
+        "categories": [
+            "cs.SE",
+            "cs.OS"
+        ],
+        "id": "http://arxiv.org/abs/2606.13882v1",
+        "submit_date": "2026-06-11",
+        "relevant": false,
+        "indexed_date": "2026-06-15"
     }
 }

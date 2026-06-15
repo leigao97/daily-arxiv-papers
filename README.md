@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2677-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.12-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2679-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.15-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,12 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-15
+* `serving` `scaling` [Design Methodology and Performance Trade-offs Management for Distributed and Compound AI Systems](http://arxiv.org/abs/2606.14350v1)
+  > **TL;DR**: Proposes a system-centric methodology for compound AI systems to optimize latency, cost, and accuracy via workflow topology and configuration. Achieves up to 60% lower latency and 71% lower cost while maintaining accuracy within 4 percentage points of monolithic models.
+* `serving` `networking` `offloading` [STREAM: Multi-Tier LLM Inference Middleware with Dual-Channel HPC Token Streaming](http://arxiv.org/abs/2606.13968v1)
+  > **TL;DR**: Proposes STREAM, a multi-tier LLM inference middleware unifying local, HPC, and cloud resources. Introduces dual-channel token streaming separating control and data planes for low-latency firewall traversal. Achieves 0.54s median TTFT on HPC tier, 21.1x faster than batch mode.
+
 ### 2026-06-12
 * `diffusion` `serving` `scaling` [GF-DiT: Scheduling Parallelism for Diffusion Transformer Serving](http://arxiv.org/abs/2606.13501v1)
   > **TL;DR**: Addresses inefficient static parallelism for heterogeneous Diffusion Transformer (DiT) serving. Proposes GF-DiT, a runtime with asynchronous trajectory tasks and group-free collectives for dynamic GPU parallelism adaptation. Achieves up to 6.01× higher throughput versus fixed configurations.
