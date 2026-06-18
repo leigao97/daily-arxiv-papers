@@ -135138,5 +135138,579 @@
         "submit_date": "2026-06-16",
         "relevant": false,
         "indexed_date": "2026-06-17"
+    },
+    "http://arxiv.org/abs/2606.19271v1": {
+        "title": "TurboServe: Serving Streaming Video Generation Efficiently and Economically",
+        "link": "http://arxiv.org/abs/2606.19271v1",
+        "abstract": "Streaming video generation is emerging as a new serving workload in which users interact with long-lived sessions that generate video progressively, chunk by chunk. Unlike offline video generation or typical LLM serving, streaming video generation must preserve session state across active and idle periods, repeatedly schedule ongoing sessions, and deliver each chunk under a tight latency target. This creates two key serving challenges in multi-user, multi-GPU environments: session duration heterogeneity, where long-running sessions make placement decisions suboptimal over time, and temporal user-demand heterogeneity, where the number of active sessions fluctuates sharply across bursts and idle periods.\n  We present TurboServe, the first serving system designed specifically for streaming video generation workloads. TurboServe formulates serving as an online scheduling problem that jointly coordinates session placement and GPU provisioning. Its closed-loop scheduling algorithm combines a migration-aware placement controller, which rebalances sessions across GPUs to reduce the maximum per-chunk latency, with a load-driven autoscaling controller, which adapts the GPU budget to workload variation for improved cost efficiency. To support these decisions at runtime, TurboServe implements coalesced chunk processing for batching concurrent active sessions on the same GPU, GPU-CPU offloading for session suspension and resumption, and NCCL-based GPU-GPU migration for online rebalancing. We evaluate TurboServe on real-world production traces from Shengshu Technology across multiple model sizes and GPU clusters with up to 64 NVIDIA B300 GPUs. Compared with baseline serving configurations, TurboServe reduces worst-case per-chunk latency by 37.5% and total GPU operating cost by 37.2% on average. Our code is publicly available at https://github.com/shengshu-ai/TurboServe.",
+        "authors": [
+            "Youhe Jiang",
+            "Haoxu Wang",
+            "Haotong Bao",
+            "Kai Jiang",
+            "Jianfei Chen",
+            "Jun Zhu",
+            "Fangcheng Fu",
+            "Jintao Zhang"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19271v1",
+        "submit_date": "2026-06-17",
+        "relevant": true,
+        "tags": [
+            "video",
+            "serving",
+            "offloading"
+        ],
+        "tldr": "Addresses efficient serving of streaming video generation under session and demand heterogeneity. Proposes TurboServe, an online scheduler with migration-aware placement, autoscaling, GPU-CPU offloading, and coalesced processing. Achieves 37.5% lower worst-case per-chunk latency and 37.2% GPU cost reduction.",
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.19163v1": {
+        "title": "Pulse: Training Acceleration for Large Diffusion Models with Automatic Pipeline Parallelism",
+        "link": "http://arxiv.org/abs/2606.19163v1",
+        "abstract": "Diffusion models are now a dominant approach for high-fidelity image and video generation, yet scaling their training across GPU clusters remains challenging. Unlike transformer-only architectures, diffusion backbones commonly adopt UNet-style encoder-decoder structures with heterogeneous layers and long-range skip connections. Under conventional pipeline parallelism, these non-local dependencies force large skip activations and their gradients to traverse multiple pipeline boundaries, making peer-to-peer (P2P) communication a dominant bottleneck and substantially reducing pipeline efficiency. In this paper, we present PULSE, an automatic pipeline-parallel training strategy that makes skip locality a first-class optimization objective. PULSE eliminates skip-induced communication by collocating skip-connected encoder-decoder layers on the same device and caching skip activations locally for later use in backpropagation. To realize this placement while maintaining high pipeline utilization, PULSE co-designs: (1) a skip-aware dynamic-programming partitioner that balances heterogeneous stage workloads under symmetric collocation constraints, (2) an ILP-based schedule synthesizer that generates bubble-efficient wave schedules for the resulting stage-to-device mapping, and (3) a hybrid parallelism tuner that selects pipeline/data-parallel degrees and microbatch sizes under memory and network constraints. Our extensive experiments show that the volume of communication can be reduced by 89 percent, and the training throughput can be increased by up to 2.3x on communication-bound hardware, compared with state-of-the-art parallelism strategies.",
+        "authors": [
+            "Boran Sun",
+            "Guoyong Jiang",
+            "Lin Zhang",
+            "Chen Chen",
+            "Yuechen Tao",
+            "Zhishu Che",
+            "Jieling Yu",
+            "Shan Chang",
+            "Huaxi Gu",
+            "Fangming Liu",
+            "Bo Li"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19163v1",
+        "submit_date": "2026-06-17",
+        "relevant": true,
+        "tags": [
+            "training",
+            "diffusion",
+            "networking"
+        ],
+        "tldr": "Addresses communication bottlenecks in pipeline-parallel training of diffusion models with skip connections. Proposes PULSE, which co-locates skip-connected layers and uses skip-aware partitioning to eliminate gradient transfers. Reduces communication volume by 89% and improves throughput by 2.3× on communication-bound hardware.",
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.19119v1": {
+        "title": "PuDGhost: Experimental Analysis of Computation Result Corruption in Processing-using-DRAM Operations on Real DRAM Chips and Implications for Future Systems",
+        "link": "http://arxiv.org/abs/2606.19119v1",
+        "abstract": "Processing-using-DRAM (PuD) is a promising computation paradigm that alleviates frequent data movement between main memory and processing units by using each DRAM column as a computation engine via simultaneous multiple-row activation (SiMRA). Unfortunately, DRAM density scaling may hinder PuD's benefits: denser cell arrays bring rows and columns closer, making regular DRAM operations susceptible to noise and interference from neighboring cells. Yet no prior work investigates whether interference from rows or columns not intended to participate in computation can compromise PuD robustness.\n  In this work, we reveal PuDGhost, an interference phenomenon where a PuD operation in a given column produces erroneous results due to interference from 1) data in non-activated DRAM rows and 2) data in other columns that compute concurrently under the same SiMRA operation. PuDGhost violates the ideal picture that each column's computation depends solely on its own operand data, threatening future PuD systems. We present the first extensive characterization of PuDGhost using 96 real DDR4 DRAM chips from 12 modules, quantifying these two interference sources under various conditions. Among our 15 new empirical observations, we highlight two major results: 1) data in adjacent non-activated rows affects SiMRA outputs by up to 10% for random inputs, and 2) data in concurrently computing columns affects SiMRA outputs by up to 48% for random inputs. Guided by these findings, we propose countermeasures across multiple layers of the PuD computing stack. Specifically, we evaluate on real DDR4 DRAM chips: 1) robust column screening that reduces the risk of using unreliable columns in the presence of PuDGhost, and 2) a compute row layout that mitigates PuDGhost via dedicated rows between compute rows. Our solutions greatly improve PuD computation accuracy and provide a foundation for robust future PuD systems.",
+        "authors": [
+            "Daichi Tokuda",
+            "İsmail Emir Yüksel",
+            "Tatsuya Kubo",
+            "Ataberk Olgun",
+            "Haocong Luo",
+            "Nisa Bostanci",
+            "Jikun Wang",
+            "A. Giray Yağlıkçı",
+            "Shinya Takamaeda-Yamazaki",
+            "Onur Mutlu"
+        ],
+        "categories": [
+            "cs.AR",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19119v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.19059v1": {
+        "title": "A performance portable fast Ewald summation for Stokes flow",
+        "link": "http://arxiv.org/abs/2606.19059v1",
+        "abstract": "We present GPU algorithms for Ewald summation methods for accelerating N-body Stokes flow problems in periodic domains. Like most N-body codes, Ewald sums use a near-field/far-field decomposition. The near field involves particle-to-particle (P2P) interactions. The far field primarily involves particle-to-grid (P2G) and grid-to-particle (G2P) interactions, as well as Fast Fourier Transforms. For each interaction, we investigate several algorithmic variants. Our implementation uses PyKokkos, a Python interface for the Kokkos C++ parallel programming framework, which supports portability to AMD/NVIDIA GPU and ARM/x86 CPU architectures. Double and single-precision numerical results, alongside analytical performance models, confirm the efficiency of our algorithms on AMD and NVIDIA GPU and on ARM and AMD CPU architectures. The P2P interaction achieves around 73% compute efficiency on NVIDIA H200, 84% on NVIDIA A100, 60% on AMD MI300, 52% on Grace CPU, and 68% on AMD Epyc CPU. A straightforward implementation of the P2G kernel can become a computational bottleneck. We introduce a novel P2G algorithm that achieves up to 16$\\times$ speedup compared to a baseline GPU implementation. The overall Ewald sum code processes approximately 8 million particles per second on a H200 GPU, and about a half-million particles per second on a Grace CPU, for nine digits of accuracy. We also perform a multi-GPU weak scaling test on up to 256 million particles (64 GPUs) that shows bounded communication cost for all stages except the all-to-all particle sorting, which can be reduced to neighbor communication in the relevant time-stepping regime.",
+        "authors": [
+            "Gabriel Kosmacher",
+            "Ziyu Du",
+            "Joar Bagge",
+            "George Biros"
+        ],
+        "categories": [
+            "math.NA",
+            "cs.DC",
+            "physics.comp-ph"
+        ],
+        "id": "http://arxiv.org/abs/2606.19059v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.19025v1": {
+        "title": "FoMoE: Breaking the Full-Replica Barrier with a Federation of MoEs",
+        "link": "http://arxiv.org/abs/2606.19025v1",
+        "abstract": "Pre-training Large Language Models (LLMs) typically demands large-scale infrastructure with tightly coupled hardware accelerators. While increasing model and dataset scale remains the dominant driver of performance, Mixture-of-Experts (MoEs) architectures have recently achieved state-of-the-art results by decoupling parameter count from computational cost. This efficiency enables training massive models on constrained compute budgets, yet it typically requires the high-speed interconnects of a single datacenter. To overcome these physical limits, recent approaches such as DiLoCo and Photon use low-communication data-parallel methods to enable scaling across geographically distributed, weakly connected data centers. However, these methods suffer from a fundamental inefficiency: they require full model replicas at every site, which imposes prohibitive memory constraints and communication overheads. In this work, we introduce FoMoE, a system that breaks the full-replica paradigm by partitioning expert layers across workers. We demonstrate that FoMoE: (I) reduces communication costs by up to 1.42x over efficient baselines and 45.44x over DDP via partial expert replication in the studied regimes; (II) achieves empirical throughput speedups of up to 1.4x through a novel skip-token mechanism; and (III) shows stable routing in the trained proxy regimes and projects the communication/memory benefits to 100B-scale configurations through system modelling.",
+        "authors": [
+            "Lorenzo Sani",
+            "Zeyu Cao",
+            "Meghdad Kurmanji",
+            "Alex Iacob",
+            "Andrej Jovanovic",
+            "Yan Gao",
+            "Wanru Zhao",
+            "Nicholas D. Lane"
+        ],
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "cs.DC",
+            "eess.SY"
+        ],
+        "id": "http://arxiv.org/abs/2606.19025v1",
+        "submit_date": "2026-06-17",
+        "relevant": true,
+        "tags": [
+            "training",
+            "MoE",
+            "networking"
+        ],
+        "tldr": "Addresses high memory and communication overheads in distributed MoE training across weak interconnects. Proposes FoMoE, partitioning expert layers across workers with partial replication and skip-token mechanisms. Reduces communication costs by up to 45.44x over DDP and achieves 1.4x throughput speedup.",
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.19004v1": {
+        "title": "Spotlight: Synergizing Seed Exploration and Spot GPUs for DiT RL Post-Training",
+        "link": "http://arxiv.org/abs/2606.19004v1",
+        "abstract": "Reinforcement learning (RL) post-training of Diffusion Transformers (DiTs) is prohibitively expensive, requiring thousands of high-end GPUs. Existing works explore two directions to reduce cost: seed exploration improves training convergence by selecting high-contrast samples, yet adds compute to the critical path; spot GPUs offer 69--77\\% lower cost, yet sit idle during training because DiT rollouts finish nearly simultaneously, which prevents LLM-style pipelining of rollout with training. Spot preemptions further break Sequence Parallelism (SP) groups, fragmenting GPU topology.\n  We present Spotlight, the first system that harvests spot GPUs for DiT RL post-training. Spotlight rests on two key insights we devise: (1)~we show that exploration can tolerate stale model weights because exploration that uses the model weights from the previous iteration preserves the relative ranking of random seeds, allowing exploration to run on idle spot GPUs during training. (2)~SP reconfiguration can reuse on-node state, reducing group recovery from minutes to sub-second launches. Built on these insights, Spotlight introduces three techniques: a bandit-based exploration planner that maximizes reward variance within the training time budget, elastic sequence parallelism that reconfigures SP groups on the fly via persistent schedulers and intra-node weight copying, and a preemption-aware pull-based request scheduler that balances load and commits in-flight state upon preemption. We implement Spotlight on the open-source RL platform ROLL and evaluate it on Qwen-Image post-training. Spotlight reaches the same target validation score $4\\times$ faster than baselines, reducing total cost by $1.4$-$6.4\\times$ while achieving superior image quality on DeepSeek-OCR and Geneval datasets with resolution $512\\times512$ and $1280\\times1280$.",
+        "authors": [
+            "Ruiqi Lai",
+            "Dakai An",
+            "Wei Gao",
+            "Ju Huang",
+            "Siran Yang",
+            "Jiamang Wang",
+            "Lin Qu",
+            "Dmitrii Ustiugov",
+            "Wei Wang"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AI",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.19004v1",
+        "submit_date": "2026-06-17",
+        "relevant": true,
+        "tags": [
+            "training",
+            "RL",
+            "diffusion"
+        ],
+        "tldr": "Addresses high cost and inefficiency in RL post-training for Diffusion Transformers by optimizing seed exploration and spot GPU utilization. Introduces Spotlight with stale-weight-tolerant exploration, elastic sequence parallelism, and preemption-aware scheduling. Achieves 4× faster training and up to 6.4× cost reduction.",
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.19003v1": {
+        "title": "On the Notions of Bounded Bypass, and How to Make any Deadlock-Free MUTEX Protocol Satisfy One of Them",
+        "link": "http://arxiv.org/abs/2606.19003v1",
+        "abstract": "In the literature on mutual exclusion, bounded bypass has been used for a long time as a strengthening of starvation-freedom, but, to the best of our knowledge, it still lacks a satisfying definition as a liveness property on its own. Moreover, we have encountered MUTEX protocols for which this notion needs to be slightly weakened in order to be met.\n  To solve these issues, we first provide a formal definition of bounded bypass (that also corrects a previous definition from Raynal) and then introduce the notions of post-doorway and intermittent bounded bypass, two liveness properties that lie between starvation-freedom and bounded bypass. Essentially, intermittent bounded bypass weakens bounded bypass by ignoring the possible bypasses that may happen during the execution of a certain finite set of write operations to shared registers. Orthogonally, post-doorway bounded bypass ignores the bypasses that may happen during a finite initial phase of the lock protocol.\n  Furthermore, we study an algorithm proposed by Yoah Bar-David in 1998 to enhance the liveness properties of any deadlock-free MUTEX protocol and prove that: (1) in the setting of atomic registers, this algorithm upgrades any deadlock-free mutual exclusion protocol to a bounded bypass one, with a bound that is quadratic in the number of processes; and (2) in the setting of safe and regular registers, the very same algorithm ensures the intermittent version of bounded bypass, still with a quadratic (but slightly different) bound.\n  Finally, we provide logical formulae for the different notions of bounded bypass defined in this paper and use them to confirm all claims made here, by using model checking. This had a positive impact on the theoretical development of the work, since it allowed us to identify and correct small mistakes/ambiguities in definitions and proofs.",
+        "authors": [
+            "Rob van Glabbeek",
+            "Daniele Gorla",
+            "Myrthe Spronck"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19003v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18966v1": {
+        "title": "A Composable CRDT Layer for Byzantine-Resilient Deterministic Reconstruction",
+        "link": "http://arxiv.org/abs/2606.18966v1",
+        "abstract": "Conflict-free Replicated Data Types (CRDTs) ensure Strong Eventual Consistency without coordination, but typically assume benign participants and rely on validation or exclusion to handle Byzantine behavior.\n  We address this problem through deterministic state reconstruction: rather than deciding which updates are admissible, all accepted updates are incorporated, while only a subset contributes to the reconstructed state. We instantiate this approach in Melda, a non-intrusive delta-state CRDT for JSON documents, and show that its reconstruction model guarantees convergence even under arbitrary update injection: adversarial updates are either structurally rejected or treated as inputs to the reconstruction process.\n  We formalize this model and prove that replicas deriving state from the same set of updates cannot diverge despite equivocation, omission, or message reordering. We further show that authentication, authorization, and confidentiality can be layered without affecting convergence.\n  Overall, this approach suggests that Byzantine tolerance can be achieved by decoupling update propagation from state derivation, allowing agreement on updates to be handled independently by external dissemination or consensus mechanisms.",
+        "authors": [
+            "Amos Brocco"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.CR"
+        ],
+        "id": "http://arxiv.org/abs/2606.18966v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18958v1": {
+        "title": "LiveStack: OS Support for Cluster-Scale Full-Stack Live Simulation",
+        "link": "http://arxiv.org/abs/2606.18958v1",
+        "abstract": "Cluster-scale full-stack simulation is essential for evaluating distributed software stacks and emerging hardware components before deployment. Such simulation must achieve both full-stack fidelity for the unmodified production stack and the simulation performance required for iterative configuration exploration. However, no existing method achieves both. We present LiveStack, an OS-level approach to cluster-scale full-stack simulation built on top of the Linux virtualization stack. LiveStack comprises four subsystems: simulation-oriented scheduling, live memory hierarchy management, simulation-aware IPC, and distributed simulation orchestration. Together, they coordinate live and modeled components under shared simulated time while controlling interference among co-located live hosts. These mechanisms point toward simulation-native OS support, where simulation control and orchestration become core OS responsibilities.",
+        "authors": [
+            "Yiliang Wan",
+            "Haifeng Sun",
+            "Yihan Yang",
+            "Jonas Kaufmann",
+            "Antoine Kaufmann",
+            "Jialin Li"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.OS"
+        ],
+        "id": "http://arxiv.org/abs/2606.18958v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18940v1": {
+        "title": "Urban Limits as Design Constraints: Identifying Suitable Locations for Distributed, Photovoltaic-Powered Servers",
+        "link": "http://arxiv.org/abs/2606.18940v1",
+        "abstract": "Urban territories face growing tensions between increasing digital demand, limited resources, and socially constrained built environments. Although distributed computing paradigms such as edge and fog computing are widely presented as solutions for reducing latency and energy dissipation, the scientific literature largely overlooks where such infrastructures can be physically and socially deployed within cities, and typically neglects urban constraints, environmental impacts, and equity considerations.\n  This paper proposes a methodology for identifying suitable urban locations for deploying distributed servers under structural, environmental, and social limits. Relying exclusively on existing infrastructures and anthropised surfaces, it combines legal frameworks, ongoing urban projects, citizen consultations, and scientific literature to construct a place-based glossary of viable site typologies, evaluated through energy, spatial, and qualitative criteria. Applied to the French city of Montpellier, our results illustrate how urban constraints and local resources shape the feasibility of decentralised, solar-powered digital infrastructures, and highlight the value of territorialised approaches for rethinking digital services within urban limits.",
+        "authors": [
+            "Justin Chikhaoui",
+            "Thomas Leduc",
+            "Daniel Siret",
+            "Abdoulaye Gamatie"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18940v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18900v1": {
+        "title": "Compressed-Resident Genomics: Full-Pipeline Device-Resident GPU LZ77 Decode with Position-Invariant Random Access",
+        "link": "http://arxiv.org/abs/2606.18900v1",
+        "abstract": "Genomic archives grow faster than decompression keeps up: the European Nucleotide Archive holds tens of petabytes of fastq.gz, and gzip is fundamentally sequential. GPU decompressors (nvCOMP DEFLATE at ~50GB/s on A100) decode whole files with no random access; CPU genomic tools (CRAM, samtools) support region seeks but only at CPU speed. We extend ACEAPEX, an absolute-offset parallel LZ77 codec included in the official lzbench 2.3 release, with three contributions absent from our prior work. First, a full device-resident GPU decode pipeline (entropy and match resolution both on-device) reaching up to 260GB/s on FASTQ, closing the match-phase-only gap of the earlier paper. Second, position-invariant random access with a compact coordinate index: an arbitrary read decodes in 0.362ms, ~6x faster than warm samtools faidx, with a read-to-block index 6.3x smaller than a .fai. Third, a range-decode strategy that decouples output size from VRAM, sustaining 165.7GB/s on a 50GB genome where whole-file decode runs out of memory. All results are bit-perfect. We also measure Meta's open DietGPU ANS on H100 at 592GB/s decode, faster than the proprietary entropy stage we currently use, showing a fully open high-throughput stack is viable. Code is MIT-licensed.",
+        "authors": [
+            "Yakiv Shavidze"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18900v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18741v1": {
+        "title": "ReMP: Low-Downtime Runtime Model-Parallelism Reconfiguration for LLM Serving",
+        "link": "http://arxiv.org/abs/2606.18741v1",
+        "abstract": "Current large language model (LLM) inference systems universally deploy ultra-large-scale models using a combination of Tensor Parallelism (TP) and Pipeline Parallelism (PP). However, existing systems treat the model parallelism topology as a static configuration that cannot be flexibly adjusted at runtime. This rigid design creates a fundamental contradiction with the dynamically changing inference workloads in real-world scenarios. State-of-the-art systems lack online reconfiguration capabilities and can only switch configurations by restarting the service, resulting in several minutes of service interruption, KV cache loss, and prohibitive recomputation overhead. To address this problem, this paper presents ReMP, a runtime model parallelism reconfiguration framework that supports low downtime. ReMP achieves dynamic adjustment through three key techniques: (1) decoupling the model parallelism topology from runtime state to avoid full service reconstruction; (2) designing a two-dimensional KV cache migration mechanism to preserve reusable cache states after TP/PP changes; and (3) implementing end-to-end online reconfiguration. Experiments demonstrate that ReMP can complete most topology switches within 1-7 seconds on models ranging from 7B to 70B parameters, achieving speedups of tens to over a hundred times compared to the restart approach. Moreover, ReMP significantly outperforms fixed configurations under dynamic workloads, delivering superior performance in terms of TTFT, TPOT, and output throughput.",
+        "authors": [
+            "Haipeng Yuan",
+            "Kaining Zheng",
+            "Yongshu Bai",
+            "Yuchen Zhang",
+            "Yunquan Zhang",
+            "Baodong Wu",
+            "Xiang Gao",
+            "Daning Cheng"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18741v1",
+        "submit_date": "2026-06-17",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "scaling",
+            "offloading"
+        ],
+        "tldr": "Solves rigid model parallelism in LLM serving by introducing ReMP, a framework with topology decoupling and KV cache migration for online reconfiguration. Achieves topology switches in 1-7 seconds, up to 100× faster than restarts.",
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18715v1": {
+        "title": "Closed-Form and Constant-Time New-Source Selection for Fault-Tolerant Broadcasting in Dense Gaussian Networks",
+        "link": "http://arxiv.org/abs/2606.18715v1",
+        "abstract": "Fault-tolerant broadcasting in dense Gaussian networks is recovered by re-rooting the broadcast at a new source at maximum graph distance from the faulty nodes. This paper extends the re-rooting framework by replacing its boundary-search source-selection step with a quotient-lattice-aware algebraic construction. The first contribution is a constant-time counting method for valid new sources, formulated as an intersection of two diameter-$k$ boundary sets in the Gaussian quotient. The exact count is obtained by a fixed union of side-pair intervals over nine quotient-lattice copies, giving a closed-form procedure without scanning the network or boundary. The second contribution is a shifted direct selector for two arbitrary faulty nodes. Given faulty nodes $A$ and $B$, the problem is translated to $C=\\operatorname{mod}_{G_k}(B-A)$, and the selector finds $P$ satisfying $d(P,0)=d(P,C)=k$. For each of nine quotient-lattice shifts, sixteen signed linear systems are checked. Nonparallel systems are solved via Cramer's rule; parallel systems are handled by interval-endpoint selection. At most $9\\times16=144$ shifted sign cases are evaluated, giving $O(1)$ selection under the word-RAM model. Validation reports zero count mismatches over $26{,}623$ tested nodes, $500{,}000$ valid outputs over $500{,}000$ sampled fault pairs, and $40{,}000$ successful re-rooted broadcast trials. The shifted selector achieves a $5.92\\times$ speedup over boundary search at $k=200$, remaining stable as $k$ increases. These results make new-source selection algebraic, bounded, and independent of network size.",
+        "authors": [
+            "Bader Albader"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.IT",
+            "cs.NI"
+        ],
+        "id": "http://arxiv.org/abs/2606.18715v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18714v1": {
+        "title": "Closed-Form and Constant-Time New-Source Selection for Fault-Tolerant Broadcasting in Dense Eisenstein--Jacobi Networks",
+        "link": "http://arxiv.org/abs/2606.18714v1",
+        "abstract": "Fault-tolerant broadcasting in dense Eisenstein--Jacobi networks requires efficient recovery when faulty nodes disrupt the original broadcast structure. A re-rooting-based method guarantees that, for any two faulty nodes, a valid new source exists at maximum graph distance from both faults. However, identifying such a source without scanning the network or testing all boundary candidates remains an open practical problem. This paper presents a closed-form, constant-time algorithm for counting and selecting a valid new source in dense Eisenstein--Jacobi networks under two node faults. The two-fault problem is reduced to a boundary-intersection problem involving the origin and a difference node. The distance-$t$ boundary, where $t$ is the network diameter, is partitioned into six directed sides of the Eisenstein--Jacobi hexagon. Since the network is a quotient structure, intersection equations are solved modulo the defining lattice, requiring evaluation of seven quotient-lattice shifts across all $6\\times 6$ side pairs, yielding at most $252$ algebraic systems. The first algorithm counts all valid new sources for faults at $0$ and $A$. The second algorithm selects one valid new source for arbitrary fault pairs by solving translated side-pair systems, verifying each candidate, and shifting back. Each system is either a non-parallel $2\\times 2$ linear system with at most one candidate, or a parallel system whose feasible candidates form an integer interval. Both algorithms run in $O(1)$ time under the fixed-word arithmetic model. Computational validation over $500{,}000$ sampled fault pairs and $40{,}000$ re-rooting trials confirms correctness: the selector always returns a valid new source, and the recovered broadcast reaches all non-faulty nodes.",
+        "authors": [
+            "Bader Albader"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.IT",
+            "cs.NI"
+        ],
+        "id": "http://arxiv.org/abs/2606.18714v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18712v1": {
+        "title": "Re-Rooting-Based Fault-Tolerant One-to-All Broadcasting in Dense Eisenstein--Jacobi Networks",
+        "link": "http://arxiv.org/abs/2606.18712v1",
+        "abstract": "Dense Eisenstein--Jacobi networks are degree-six algebraic interconnection topologies with regular structure, vertex symmetry, small diameter, and efficient communication algorithms. These properties make them suitable for parallel and on-chip communication systems in which collective operations such as one-to-all broadcasting are frequent. Existing optimal broadcasting algorithms for dense hexagonal/Eisenstein--Jacobi networks assume fault-free operation. However, a faulty internal forwarding node may interrupt message propagation and prevent complete delivery. This paper proposes a lightweight re-rooting-based fault-tolerant broadcasting method for dense Eisenstein--Jacobi networks. The main idea is to relocate the effective broadcast source to a new source node such that each faulty node is located at graph distance equal to the network diameter from the new source. Consequently, faulty nodes become leaf-level nodes in the broadcast process and are not required to forward the message. We present source-selection algorithms for one- and two-node failures and prove that for any pair of faulty nodes in a dense Eisenstein--Jacobi network there exists a common distance-diameter node that can serve as a valid re-rooted source. The source-selection procedure requires linear time in the network diameter. Equivalently, since $N=3t^2+3t+1$, the selection cost is $O(\\sqrt{N})$ in the number of nodes. Since the standard one-to-all broadcast completes in one diameter time and the relocation phase is also bounded by one diameter, the proposed method completes in at most twice the network diameter. We also show that the two-fault guarantee does not generally extend to arbitrary three-fault configurations by giving an explicit counterexample. The proposed approach improves broadcast reliability without constructing redundant spanning trees, backup paths, or additional broadcast structures.",
+        "authors": [
+            "Bader Albader"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.IT",
+            "cs.NI"
+        ],
+        "id": "http://arxiv.org/abs/2606.18712v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18642v1": {
+        "title": "HI-HCQC: A Tightly-Coupled Hardware Interface with High-Efficiency Communication for Hybrid Classical-Quantum Computing",
+        "link": "http://arxiv.org/abs/2606.18642v1",
+        "abstract": "Hybrid classical-quantum computing requires frequent data exchange between classical processors and quantum control hardware. However, existing superconducting quantum control systems are commonly connected through loosely coupled interfaces such as Ethernet, resulting in high communication latency and limited task throughput. To address this issue, we present HI-HCQC, an RFSoC-based hardware interface for tightly coupled hybrid classical-quantum computing. HI-HCQC integrates high-speed RF-DACs, RF-ADCs, programmable logic, embedded processors, clock synchronization circuits, and a PCIe Gen3 x8 interface, enabling direct microwave pulse synthesis, qubit readout, and high-throughput data transfer between host servers and quantum measurement-control units. Experimental results show that HI-HCQC supports six control channels and one multiplexed readout channel, achieves stable microwave generation and acquisition, and successfully performs qubit spectroscopy, Rabi oscillation, T1 measurement, single-shot readout, randomized benchmarking, and CZ-gate characterization. Compared with a conventional control system, HI-HCQC reduces end-to-end execution latency for representative quantum gate and circuit tasks and significantly improves task throughput. These results demonstrate that PCIe-coupled RFSoC control hardware provides a practical foundation for scalable and efficient hybrid classical-quantum computing systems.",
+        "authors": [
+            "Shibo Liang",
+            "Junchao Wang",
+            "Zeyuan Wang",
+            "Feng Wang",
+            "Xiaoyu Li",
+            "Lei Li",
+            "FuDong Liu",
+            "Zheng Shan"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18642v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18042v2": {
+        "title": "Latency Prediction for LLM Inference on NPU Systems",
+        "link": "http://arxiv.org/abs/2606.18042v2",
+        "abstract": "Deploying Large Language Models (LLMs) requires exploring a large configuration space spanning parallelization strategies, batching techniques, and scheduling policies. Exhaustive measurement across this space is impractical, making latency prediction essential for system optimization. While NPUs have emerged as accelerators designed for LLM inference, no prediction methodology has been established for them. Specifically, applying prior work to LLM inference latency prediction on NPUs faces three challenges: undisclosed microarchitecture of commercial NPUs, unpredictable compiler optimizations, and latency non-linearity induced by bucketing.\n  We present LENS, a latency estimator that predicts NPU inference latency without information on the microarchitecture or compiler, and captures the non-linear latency induced by bucketing. LENS profiles each bucket with two end-to-end (E2E) measurements and composes the results to predict latency for arbitrary input-output length combinations. We validate LENS across NPUs from multiple vendors, several LLMs, and diverse workloads, achieving a mean prediction error of 2.15\\%. We further compare LENS against two methodologically related baselines, confirming the validity of its approach.",
+        "authors": [
+            "Juhyun Park",
+            "Seungwoo Jeong",
+            "Jingyu Lee",
+            "Kyungyong Lee"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18042v2",
+        "submit_date": "2026-06-17",
+        "relevant": true,
+        "tags": [
+            "serving"
+        ],
+        "tldr": "Addresses NPU-specific LLM inference latency prediction challenges due to undisclosed hardware, compiler behaviors, and bucketing. Proposes LENS, a measurement-based estimator requiring only two end-to-end profiles per bucket. Achieves 2.15% mean prediction error across vendors and models.",
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18600v1": {
+        "title": "ShuntServe: Cost-Efficient LLM Serving on Heterogeneous Spot GPU Clusters",
+        "link": "http://arxiv.org/abs/2606.18600v1",
+        "abstract": "As large language model (LLM) services become widely adopted, the cost of GPU resources for serving these models in cloud environments has emerged as a critical concern. Spot instances offer up to 90% cost savings over on-demand instances, but their frequent interruptions and limited availability pose significant challenges for continuous LLM serving. GPU spot instances, in particular, exhibit lower and more volatile availability than CPU-based instances, making homogeneous clusters that depend on a single GPU type vulnerable to correlated failures. Heterogeneous clusters spanning multiple GPU types can address this by leveraging complementary availability patterns across diverse spot pools, yet existing LLM serving systems are designed for homogeneous environments and suffer from load imbalance when deployed on heterogeneous GPUs. This paper presents ShuntServe, a cost-efficient LLM serving system for heterogeneous spot GPU clusters. ShuntServe employs a roofline model-based analytical serving performance estimator and a dynamic programming-based model placement optimizer that jointly determines node configuration, parallelization strategy, and layer assignment to maximize throughput across heterogeneous GPUs. To enhance fault tolerance when using spot instances, ShuntServe combines output-preserving request migration with concurrent initialization via a shared tensor store, minimizing migration downtime by overlapping replacement node preparation with ongoing serving. Evaluation on Llama-3.1-70B and Qwen3-32B with a heterogeneous AWS cluster of L4, A10G, and L40S GPUs shows that ShuntServe achieves 1.42x and 1.35x higher throughput than state-of-the-art baselines and attains 31.9% and 31.2% cost efficiency improvements over on-demand instances for offline and online serving, respectively.",
+        "authors": [
+            "Seungwoo Jeong",
+            "Moohyun Song",
+            "Juhyun Park",
+            "Kyungyong Lee"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18600v1",
+        "submit_date": "2026-06-17",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "scaling",
+            "offloading"
+        ],
+        "tldr": "Enables cost-efficient LLM serving on volatile spot GPU clusters. Proposes ShuntServe with roofline-based performance estimation, dynamic model placement, and fault tolerance via request migration with shared tensor storage. Achieves 1.42x higher throughput and 31.9% cost efficiency gains over on-demand instances.",
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18588v1": {
+        "title": "Splaxel: Efficient Distributed Training of 3D Gaussian Splatting for Large-scale Scene Reconstruction via Pixel-level Communication",
+        "link": "http://arxiv.org/abs/2606.18588v1",
+        "abstract": "3D Gaussian Splatting (3DGS) enables high-fidelity and real-time 3D scene reconstruction, but scaling training to large-scale scenes requires optimizing hundreds of millions of Gaussians across multiple GPUs. Existing distributed approaches either partition scenes into isolated regions, causing global inconsistency, or rely on global Gaussian-level exchanges, which lead to substantial growth in inter-GPU communication and quickly dominate iteration time.\n  We propose Splaxel, a communication-efficient distributed 3DGS training framework based on pixel-level local rendering and global composition. Instead of synchronizing Gaussians, each GPU renders its local subset and exchanges only partial pixel values, maintaining mathematical consistency while keeping communication cost stable as the scene size increases. Splaxel further reduces pixel-level redundancy through geometric and transmittance visibility prediction and improves GPU utilization via conflict-free camera-view consolidation. Evaluated on large-scale datasets with up to 120M Gaussians, Splaxel achieves up to 7.6$\\times$ speedup over the state-of-the-art distributed 3DGS framework while preserving high reconstruction quality.",
+        "authors": [
+            "Wenqi Jia",
+            "Zhewen Hu",
+            "Ying Huang",
+            "Yu Gong",
+            "Stavros Kalafatis",
+            "Yuke Wang",
+            "Wei Niu",
+            "Chengming Zhang",
+            "Ang Li",
+            "Sheng Di",
+            "Yuede Ji",
+            "Bo Fang",
+            "Miao Yin"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.CV"
+        ],
+        "id": "http://arxiv.org/abs/2606.18588v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18483v1": {
+        "title": "Flexible Distributed Particle Filtering for the Internet of Things via Aggregate Computing",
+        "link": "http://arxiv.org/abs/2606.18483v1",
+        "abstract": "State estimation from uncertain, distributed observations is central in many cyber-physical applications. While Distributed Particle Filtering (DPF) algorithms address nonlinear and non-Gaussian estimations in distributed settings, most solutions remain tied to specific architectures and communication assumptions, limiting adaptability in open, heterogeneous deployments-most notably, the Internet of Things (IoT). In this paper, we propose a field-based formulation of Distributed Particle Filtering grounded in Aggregate Computing (AC). By expressing estimation and information dissemination as computational fields, our approach decouples the core filtering logic from coordination and data-flow strategies. This enables systematic customisation of key design dimensions, including fusion-center placement and resilience, aggregated measurement functions, as well as the type and scope of information propagation. Through a set of in-silico experiments, we show how diverse DPF configurations can be derived within a unified framework, highlighting trade-offs among accuracy, communication cost, and robustness. Overall, the proposed approach positions AC as an effective abstraction layer for engineering adaptable DPF solutions in open IoT environments.",
+        "authors": [
+            "Angela Cortecchia",
+            "Davide Domini",
+            "Giovanni Ciatto",
+            "Roberto Casadei",
+            "Danilo Pianini",
+            "Mirko Viroli"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18483v1",
+        "submit_date": "2026-06-16",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18463v1": {
+        "title": "Mixed-Precision Communication-Avoiding SGD for Generalized Linear Models on GPUs",
+        "link": "http://arxiv.org/abs/2606.18463v1",
+        "abstract": "Distributed stochastic gradient descent (SGD) is limited by communication rather than computation, since each iteration requires an AllReduce across processes. Communication-avoiding SGD (CA-SGD) amortizes communication over $s$ iterations by replacing $s$ consecutive AllReduces with a single AllReduce of an $sb\\times sb$ Gram matrix, trading more computation and bandwidth for fewer synchronization points. Modern GPUs with matrix hardware and reduced-precision formats offset this by accelerating the Gram GEMM and shrinking BF16 traffic. We study mixed-precision CA-SGD for generalized linear models on NVIDIA GPUs. Our finite-precision analysis decomposes the local rounding error of one CA-SGD outer iteration into nine independent precision choices, depending on the hardware only through its low-precision unit roundoffs, so the resulting recipes transfer in principle across GPU generations. The recipe stores the input matrix and margin vector in low precision, computes the Gram matrix from low-precision inputs with high-precision accumulation, communicates it in high precision, and performs the inner recurrence and weight updates in high precision. On NERSC Perlmutter A100 GPUs, mixed-precision CA-SGD matches FP32 SGD loss within $0.5\\%$ on logistic, linear, and Poisson problems and reaches $5.1$--$6.8\\times$ speedup over FP32 SGD on epsilon, SUSY, HIGGS, synth, and Poisson-synth. Our software is available at https://doi.org/10.5281/zenodo.20448273",
+        "authors": [
+            "Aditya Devarakonda",
+            "Irene Simó Muñoz",
+            "Giulia Guidi"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.LG",
+            "math.NA",
+            "stat.ML"
+        ],
+        "id": "http://arxiv.org/abs/2606.18463v1",
+        "submit_date": "2026-06-16",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18431v1": {
+        "title": "Beyond Prediction: Tail-Aware Scheduling for LLM Inference",
+        "link": "http://arxiv.org/abs/2606.18431v1",
+        "abstract": "LLM serving exhibits extreme length variability, making size-based scheduling difficult in practice. Recent LLM schedulers approximate SJF/SRPT using predicted decode lengths or ranks and primarily report mean-centric metrics such as TTFT and TBT. We show that these prediction-driven policies can be fragile under distribution shifts, bursty arrivals, and GPU memory pressure, while offering limited control over the tail latency (P90-P99) that dominates user experience, even with perfect decode-length knowledge. We introduce a distribution-aware, prediction-free scheduling framework that replaces explicit length prediction with soft priority boosting driven by lightweight statistical signals. Our design co-optimizes scheduling and cache-aware preemption to account for memory-coupled decode dynamics across workload mixes. Evaluated on production and open-source traces, our method reduces P99 TTLT by up to 35-50% relative to SRPT with perfect length knowledge and reduces TTFT by 34-47% across workloads, including reasoning-heavy and chat-heavy tasks. These results demonstrate a robust alternative for optimizing tail latency in online LLM serving.",
+        "authors": [
+            "Yueying Li",
+            "Yuanfan Chen",
+            "Jiayang Chen",
+            "Esha Choukse",
+            "Haoran Qiu",
+            "G. Edward Suh",
+            "Rodrigo Fonseca",
+            "Ziv Scully",
+            "Udit Gupta"
+        ],
+        "categories": [
+            "cs.LG",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18431v1",
+        "submit_date": "2026-06-16",
+        "relevant": true,
+        "tags": [
+            "serving"
+        ],
+        "tldr": "Addresses tail latency in online LLM serving under variable request lengths. Proposes a prediction-free scheduler with soft priority boosting and cache-aware preemption using lightweight statistics. Reduces P99 TTLT by 35-50% versus SRPT with perfect length knowledge.",
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18425v1": {
+        "title": "From Specification to Execution: AI Assisted Scientific Workflow Management",
+        "link": "http://arxiv.org/abs/2606.18425v1",
+        "abstract": "Scientific workflow management systems (WMS) support scalable and reproducible execution of complex pipelines, but workflow design, implementation, and debugging remain largely manual and require significant expertise. Recent approaches using large language models (LLMs) show promise for workflow generation from natural language, but often rely on direct code synthesis, which limits transparency, reproducibility, and integration with workflow systems. We present an AI-assisted approach to scientific workflow management that combines specification-driven workflow generation, automated debugging, and distributed execution. The method introduces a structured specification phase that separates workflow intent, design, and implementation, allowing validation prior to code generation. We also develop an LLM-based debugging agent that diagnoses and resolves failures across multiple system layers. To support distributed execution and user interaction, we integrate Pegasus, a widely used WMS, with a Model Context Protocol (MCP) layer, providing a unified interface for workflow submission, monitoring, and control. We evaluate the approach using a federated learning workflow for medical imaging, chosen for its parallel, iterative, and dependency-intensive structure. The system generated and executed large-scale workflows with thousands of jobs, reduced debugging effort, and allowed non-expert users to construct workflows with expert-level design patterns. These results indicate that end-to-end AI-assisted workflow generation and execution is feasible, and point toward AI-driven platforms for managing the scientific workflow lifecycle.",
+        "authors": [
+            "Komal Thareja",
+            "Hamza Safri",
+            "Rajiv Mayani",
+            "Anirban Mandal",
+            "Ewa Deelman"
+        ],
+        "categories": [
+            "cs.SE",
+            "cs.AI",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18425v1",
+        "submit_date": "2026-06-16",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18384v1": {
+        "title": "SCOPE-FL: A Strategy-proof Chain-based Optimal pareto efficient Federated Learning System",
+        "link": "http://arxiv.org/abs/2606.18384v1",
+        "abstract": "Hierarchical Federated Learning (HFL) enables scalable collaborative model training across distributed devices while preserving data privacy. However, existing HFL client selection mechanisms suffer from a fundamental strategic inefficiency. By prioritizing stability over Pareto efficiency (PE), they produce suboptimal resource allocations, and without strategy proofness (SP), participants are incentivized to misrepresent their true preferences, both failures degrading system overall welfare in the Pareto sense in practice. To address it, we propose SCOPE-FL (Strategy-proof Chain-based Optimal pareto efficient Federated Learning), a synchronous HFL framework that formulates client selection as a two-sided school choice problem solved through the Top Trading Cycle (TTC) algorithm that simultaneously guarantees PE and SP. For reward distribution, SCOPE-FL employs a scalable Shapley value approximation based on One-Round Reconstruction (OR), ensuring compensation proportional to each client's contribution. The entire mechanism executes via blockchain smart contracts, providing the tamper-proof environment required for the SP guarantees to hold in practice. A comprehensive evaluation on MNIST, Fashion-MNIST, and CIFAR-10 demonstrates that SCOPE-FL outperforms state-of-the-art approaches, including DA, IAS, and other methods across model accuracy, convergence rate, and reward efficiency, while achieving communication latency comparable to DA and blockchain overhead significantly lower than DA at scale.",
+        "authors": [
+            "Seyed Salar Ghazi",
+            "Kaiwen Zhang",
+            "Mehdi feizi",
+            "Hans-Arno Jacobsen"
+        ],
+        "categories": [
+            "cs.LG",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.18384v1",
+        "submit_date": "2026-06-16",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18312v1": {
+        "title": "TIGER: Inverting Transformer Gradients via Embedding-Subspace Distance Optimization",
+        "link": "http://arxiv.org/abs/2606.18312v1",
+        "abstract": "Federated learning allows multiple clients to jointly train a shared model by sending gradient updates to a central server while keeping raw inputs local. However, prior gradient inversion attacks show that these updates can reveal enough information to reconstruct client inputs. Existing attacks on transformers either optimize dummy inputs to match the true client updates, which is costly and unstable for modern models, or exploit the low rank of attention gradients to identify a subspace containing the true layer embeddings, followed by a discrete membership test for candidate tokens. However, this token test is brittle under numerical noise, i.e., from quantization or Differential Privacy (DP), and scales poorly for encoder models with non-causal attention. We introduce TIGER, a continuous gradient inversion attack that turns this subspace signal into a differentiable objective. Instead of searching over tokens or matching full gradients, TIGER directly optimizes token embeddings to minimize their distance to the subspace. Our experiments demonstrate that on encoder-only models, TIGER substantially improves both reconstruction quality and runtime over existing attacks, while on decoder models, TIGER is more robust than prior subspace-based attacks, enabling the first successful reconstructions in DP-defended federated learning settings.",
+        "authors": [
+            "William Kalikman",
+            "Ivo Petrov",
+            "Dimitar I. Dimitrov",
+            "Martin Vechev"
+        ],
+        "categories": [
+            "cs.CR",
+            "cs.DC",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.18312v1",
+        "submit_date": "2026-06-16",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.18400v1": {
+        "title": "CloakLM: Obfuscating GPU Memory Layout to Mitigate Model Ex-filtration for Serving",
+        "link": "http://arxiv.org/abs/2606.18400v1",
+        "abstract": "Large foundation models deployed on third-party and shared accelerator infrastructure face a practical risk of model exfiltration that existing defenses do not fully address. In common serving deployments, model providers control the VM or bare-metal serving stack but not the surrounding hardware substrate. The host to GPU interconnect, accelerator fabric, and neighboring infrastructure components remain outside the tenant's trust boundary and have been shown to be exploitable. Hermes demonstrates lossless DNN reconstruction from passive PCIe observation, while TunnelS exfiltrates HBM contents at high throughput via driver-level access without disrupting inference. Co-tenant VMs can further access memory-mapped interfaces or misconfigured RDMA regions without physical co-location. These attacks exploit a common property of ML systems: model weights are stored in large, contiguous, and repeatedly accessed memory regions, making intercepted PCIe transfers and HBM dumps rich enough to reveal model structure and parameters.\n  We present CloakLM, a software-only memory-obfuscation framework that removes this structural regularity without changing the inference stack's logical view of memory. CloakLM combines three mechanisms: PCIe traffic shaping, inter- and intra-layer weight shuffling, and physical HBM page remapping. Authorized execution retains a valid virtual memory layout with negligible overhead, while unauthorized observers see fragmented and semantically incoherent state.\n  CloakLM integrates with vLLM and PyTorch, requires no hardware changes, and complements confidential computing. Evaluation on distributed inference workloads using LLaMA and Qwen models shows near-native performance while significantly increasing resistance to PCIe snooping and HBM dump attacks, making inference-time model exfiltration substantially less practical.",
+        "authors": [
+            "Kunal Jain",
+            "Seokjin Go",
+            "Divya Mahajan"
+        ],
+        "categories": [
+            "cs.OS",
+            "cs.CR"
+        ],
+        "id": "http://arxiv.org/abs/2606.18400v1",
+        "submit_date": "2026-06-16",
+        "relevant": false,
+        "indexed_date": "2026-06-18"
     }
 }
