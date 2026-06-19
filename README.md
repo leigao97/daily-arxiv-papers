@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2711-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.18-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2717-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.19-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,20 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-19
+* `serving` `edge` `offloading` [Execution-State Capsules: Graph-Bound Execution-State Checkpoint and Restore for Low-Latency, Small-Batch, On-Device Physical-AI Serving](http://arxiv.org/abs/2606.20537v1)
+  > **TL;DR**: Addresses low-latency, small-batch on-device LLM serving with frequent state changes. Proposes execution-state capsules for graph-bound checkpoint and restore of complete execution state. Achieves sub-millisecond restore and up to 27x TTFT speedup over cold prefill.
+* `training` [ARGUS: Production-Scale Tracing and Performance Diagnosis for over 10,000-GPU Clusters](http://arxiv.org/abs/2606.20374v1)
+  > **TL;DR**: Addresses prohibitive overhead and trace volume in fine-grained LLM training observability. Proposes ARGUS, a hierarchical tracing system with 3,700x event compression and automated diagnosis. Achieves <2% overhead versus 5%-30% in profilers, enabling anomaly detection on 10,000+ GPU clusters.
+* `training` `networking` [Quantum ring all-reduce: communication and privacy advantages for distributed learning](http://arxiv.org/abs/2606.20344v1)
+  > **TL;DR**: Investigates quantum communications for communication-efficient and private distributed training. Proposes quantum ring all-reduce using pre-shared entanglement and superdense coding, reducing per-link online communication by a factor of two. Achieves composable ε-secure aggregation with 2x overhead in GHZ copies.
+* `edge` `serving` `hardware` [Edge-Inference Governors Need Memory-Clock State](http://arxiv.org/abs/2606.16106v2)
+  > **TL;DR**: Investigates deadline misses in edge ML inference due to ignoring memory-clock state. Proposes an EMC-aware DVFS governor that models latency with EMC to select energy-minimal feasible clocks. Reduces misses from 25-28% to ≤1.3% under QoS budget.
+* `training` `LoRA` `multi-modal` [Online Dynamic Batching with Formal Guarantees for LLM Training](http://arxiv.org/abs/2606.19989v1)
+  > **TL;DR**: Addresses inefficient LLM training batch construction due to late cost observability. Proposes Online Dynamic Batching, a DataLoader-side system with deadlock-free synchronization. Achieves 1.58-4.43x throughput gains on fine-tuning tasks without model or kernel changes.
+* `serving` `disaggregation` `sparse` [SAC: Disaggregated KV Cache System for Sparse Attention LLMs with CXL](http://arxiv.org/abs/2606.19746v1)
+  > **TL;DR**: Addresses inefficiencies in KV cache fetching for sparse attention LLMs during inference. Proposes SAC, a CXL-based disaggregated system that fetches only required top-k KV entries on demand. Achieves 2.1x higher throughput compared to RDMA baselines.
+
 ### 2026-06-18
 * `video` `serving` `offloading` [TurboServe: Serving Streaming Video Generation Efficiently and Economically](http://arxiv.org/abs/2606.19271v1)
   > **TL;DR**: Addresses efficient serving of streaming video generation under session and demand heterogeneity. Proposes TurboServe, an online scheduler with migration-aware placement, autoscaling, GPU-CPU offloading, and coalesced processing. Achieves 37.5% lower worst-case per-chunk latency and 37.2% GPU cost reduction.

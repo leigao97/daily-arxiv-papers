@@ -135712,5 +135712,368 @@
         "submit_date": "2026-06-16",
         "relevant": false,
         "indexed_date": "2026-06-18"
+    },
+    "http://arxiv.org/abs/2606.20537v1": {
+        "title": "Execution-State Capsules: Graph-Bound Execution-State Checkpoint and Restore for Low-Latency, Small-Batch, On-Device Physical-AI Serving",
+        "link": "http://arxiv.org/abs/2606.20537v1",
+        "abstract": "Mainstream LLM serving systems reuse prefix work mainly through paged or radix key-value (KV) caches. This is highly effective for high-throughput, high-concurrency serving, but it manages only one positional fragment of execution state: the KV cache. We study the opposite regime: low-latency, small-batch, on-device physical-AI serving, where interactive LLM agents, speech systems, and robot policies repeatedly branch, reset, interrupt, and re-enter under tight responsiveness budgets. We introduce execution-state capsules, a graph-bound checkpoint and restore mechanism for the complete restorable state at a committed boundary. FlashRT is a white-box, backend-facing kernel runtime whose evaluated NVIDIA CUDA backend runs captured graph plans over contiguous static buffers with no block-table indirection. Because the live state is a closed set of named buffers, a capsule can snapshot, restore, fork, or roll back the whole execution boundary, including KV, recurrent state, convolution state, MTP state, and metadata. This moves reuse from token-addressed KV fragments to graph-bound execution-state boundaries. On an RTX 5090, capsule restore is byte-exact at the stored-state level and token-identical under greedy decode. A KV-only ablation diverges, showing that recurrent state is load-bearing. GPU-resident snapshot and restore are sub-millisecond, and TTFT speedup over cold prefill grows from 3.9x at 2k tokens to 27x at 16k tokens. On Jetson AGX Thor and DGX Spark, the same correctness and structural properties hold. Capsules are not a replacement for high-throughput KV-cache serving; they define a complementary latency-first serving point for explicit execution-state reuse.",
+        "authors": [
+            "Liang Su"
+        ],
+        "categories": [
+            "cs.LG",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.20537v1",
+        "submit_date": "2026-06-18",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "edge",
+            "offloading"
+        ],
+        "tldr": "Addresses low-latency, small-batch on-device LLM serving with frequent state changes. Proposes execution-state capsules for graph-bound checkpoint and restore of complete execution state. Achieves sub-millisecond restore and up to 27x TTFT speedup over cold prefill.",
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.20520v1": {
+        "title": "Sovereign Execution Brokers: Enforcing Certificate-Bound Authority in Agentic Control Planes",
+        "link": "http://arxiv.org/abs/2606.20520v1",
+        "abstract": "Autonomous agents are increasingly connected to cloud, deployment, and data-control workflows, but production mutation authority should not reside inside non-deterministic reasoning processes. Existing access-control mechanisms authorize identities, while assurance layers certify proposed actions; neither alone provides a mandatory enforcement point for certified authority at the moment of mutation. This paper introduces the Sovereign Execution Broker (SEB), a runtime enforcement boundary for certificate-bound agentic infrastructure. SEB consumes certificates issued by the Sovereign Assurance Boundary (SAB), verifies that the requested mutation matches the certified execution contract, checks validity windows, policy epochs, revocation epochs, and live-state drift, mints scoped execution identity, invokes infrastructure APIs, and records signed decision and outcome records. By separating proposal, admission, and execution, SEB turns certified authority into a short-lived, revocable, auditable runtime capability, provided that production mutation APIs reject non-broker identities. We present the SEB execution model, certificate and replay-verification predicates, scoped identity semantics, bypass-prevention deployment patterns, failure behavior, and a concrete prototype implementation. We evaluate the prototype on AWS and Kubernetes clusters, measuring latency overheads, revocation propagation, drift detection, and security under fault injection.",
+        "authors": [
+            "Jun He",
+            "Deying Yu"
+        ],
+        "categories": [
+            "cs.CR",
+            "cs.AI",
+            "cs.DC",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.20520v1",
+        "submit_date": "2026-06-18",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.20496v1": {
+        "title": "CoarseSolvers for Exascale Solution of Poisson Problems",
+        "link": "http://arxiv.org/abs/2606.20496v1",
+        "abstract": "WepresentatwolevelSchwarzmethodasanalternativetoAlgebraicMultigridmethod(AMG) used as the last level (coarse) solver of the p-multigrid pMG preconditioner for pressure Poission equation resulting from Spectral/Finite element descretization of incompressible Navier-Stokes eqaution. Proposed Schwarz method consits of a local problem in the original pMG coarse space and a global coarse problem. Main contribution of the paper is a novel, structured and a non-nested coarse space for the global coarse problem. Structured nature of the proposed global coarse space enable communication-free interpolation between the original p-multgrid coarse space and the global coarse problem. We demonstrate the effectiveness of the proposed method compared to the state of the art AMG solver BoomerAMG by a series of experiments performed using Nek5000/RS, a suite of highly scalable incompressible Navier-Stokes solvers, on Summit/Frontier supercomputers at Oak Ridge Leadership Computing Facility.",
+        "authors": [
+            "Thilina Ratnayaka",
+            "Paul Fischer",
+            "Luke Olson"
+        ],
+        "categories": [
+            "math.NA",
+            "cs.DC",
+            "cs.MS"
+        ],
+        "id": "http://arxiv.org/abs/2606.20496v1",
+        "submit_date": "2026-06-18",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.20374v1": {
+        "title": "ARGUS: Production-Scale Tracing and Performance Diagnosis for over 10,000-GPU Clusters",
+        "link": "http://arxiv.org/abs/2606.20374v1",
+        "abstract": "Large-scale LLM training requires always-on, fine-grained observability for effective performance diagnosis at scale. Coarse resource monitors alone cannot localize root causes, and fine-grained profilers incur prohibitive (5%-30%) overheads and massive trace volumes, making always-on deployment impractical in large production clusters.\n  We propose ARGUS, a low-overhead, fine-grained, always-on tracing and real-time analysis system for training workloads in 10,000+ GPU-scale production clusters. ARGUS decomposes observation along the training call hierarchy into CPU call stacks, framework semantics, and GPU kernel execution, with always-on collection under a combined overhead of less than 2%. It builds a unified data pipeline and compresses raw kernel events by approximately 3,700x from 10 MB to 2.7 KB per rank per step. Its progressive diagnosis framework automatically isolates anomalous windows, straggler ranks, and degraded kernels through iteration-time, phase-level, and kernel-level analysis. Deployed for over six months on a 10,000+ GPU production cluster, ARGUS has supported continuous fail-slow detection and performance optimization. Our case studies further demonstrate its effectiveness across representative anomalies, including compute stragglers, link degradation, pipeline-bubble amplification, FlashAttention JIT stalls, and compute stragglers masked by communication symptoms.",
+        "authors": [
+            "Jiasheng Zhou",
+            "Longbin Zeng",
+            "Clavis Chen",
+            "Ruiming Lu",
+            "Qinwei Yang",
+            "Leyi Ye",
+            "Ray Ying",
+            "Key Zhang"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.20374v1",
+        "submit_date": "2026-06-18",
+        "relevant": true,
+        "tags": [
+            "training"
+        ],
+        "tldr": "Addresses prohibitive overhead and trace volume in fine-grained LLM training observability. Proposes ARGUS, a hierarchical tracing system with 3,700x event compression and automated diagnosis. Achieves <2% overhead versus 5%-30% in profilers, enabling anomaly detection on 10,000+ GPU clusters.",
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.20344v1": {
+        "title": "Quantum ring all-reduce: communication and privacy advantages for distributed learning",
+        "link": "http://arxiv.org/abs/2606.20344v1",
+        "abstract": "Machine learning models have scaled to unprecedented sizes, making training across distributed devices the de facto standard in the field. In this work, we explore how quantum communications can make distributed training both more communication-efficient and information-theoretically private, for both classical and quantum learning models. Ring all-reduce is the foundational communication primitive for large-scale distributed training. We present a quantum version that reduces per-link online communication by a provably optimal factor of two using pre-shared entanglement and superdense coding, without requiring the learning model or gradient computation to change. Beyond bandwidth, the primitive enables privacy guarantees that are information-theoretically impossible for any classical protocol, achieving composable ε-secure aggregation, via verified entanglement, at a 2x overhead in GHZ copies. Our hybrid quantum-classical communication architecture yields simultaneous communication and security advantages for large scale distributed training, regardless of whether the learning itself is quantum or classical. Finally, we characterise quantum advantages in gradient conflict detection for server-to-client communication under bandwidth constraints, a setting that arises after ring all-reduce is completed, when full gradient broadcast to external clients is infeasible. Two variants of the problem admit different separations. For margin-based alignment testing (\\textsc{GapIP}_τ), the quantum advantage is quadratic in the margin parameter: \\widetilde{O}(τ^{-1}\\log P) qubits versus \\widetilde{O}(\\min(\\τ^{-2},P)) bits. For sign-consistency auditing against a private parameter matching (\\textsc{TieAudit}_ε), the advantage represents an exponential separation in communication complexity: Ω(\\sqrt{P}) bits whereas O(ε^{-2}\\log P) qubits suffice.",
+        "authors": [
+            "María Gragera Garcés",
+            "Lirandë Pira"
+        ],
+        "categories": [
+            "quant-ph",
+            "cs.DC",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.20344v1",
+        "submit_date": "2026-06-18",
+        "relevant": true,
+        "tags": [
+            "training",
+            "networking"
+        ],
+        "tldr": "Investigates quantum communications for communication-efficient and private distributed training. Proposes quantum ring all-reduce using pre-shared entanglement and superdense coding, reducing per-link online communication by a factor of two. Achieves composable ε-secure aggregation with 2x overhead in GHZ copies.",
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.20128v1": {
+        "title": "The Correctness Illusion in LLM-Generated GPU Kernels",
+        "link": "http://arxiv.org/abs/2606.20128v1",
+        "abstract": "Benchmarks for LLM-generated GPU kernels (KernelBench, TritonBench, GEAK) score correctness through fixed-shape, small-sample allclose-style checks. The number of inputs varies between benchmarks. The shape, dtype, and tolerance are fixed for each kernel. We test that oracle empirically. We construct a controlled corpus of 24 Triton and CPU stand-in kernels (15 correct controls and 9 LLM-style buggy variants seeded with documented transcription errors) and re-evaluate it under op-schema-aware seeded fuzzing with a high-precision (fp64) CPU reference and per-(op, dtype) absolute tolerances. The seeded oracle flags 9 of 9 buggy kernels and passes 15 of 15 correct controls, at zero precision cost on controls. We extend the corpus to 26 ops (adding a flash-attention pair) and re-run the same protocol on five GPU classes (RTX 3060, A10, L40S, A100 SXM4, H100 NVL). The verdicts are identical across all five GPUs: 10 of 10 illusions caught and 16 of 16 controls clean. The corpus result is about LLM-style transcription bugs that the allclose-on-one-shape oracle certifies as correct, not about the bug rate of any specific deployed LLM. Every flagged failure replays byte-for-byte from a stored seed.",
+        "authors": [
+            "Dipankar Sarkar"
+        ],
+        "categories": [
+            "cs.SE",
+            "cs.DC",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.20128v1",
+        "submit_date": "2026-06-18",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.16106v2": {
+        "title": "Edge-Inference Governors Need Memory-Clock State",
+        "link": "http://arxiv.org/abs/2606.16106v2",
+        "abstract": "Frequency-aware latency estimators let deadline-aware DVFS governors schedule edge ML inference by modeling latency over CPU and GPU clocks, but they cannot observe the memory clock (EMC) -- a missing deployment state that decides whether a governor meets its deadlines and at what energy. We show this with a deployed, measured governor on a Jetson Orin NX: an EMC-blind GPU-only fit misses 25-28% of cycles at tight deadlines, whereas an EMC-aware refit holds misses to at most 1.3% under a 2% QoS miss budget by selecting a budget-feasible clock -- the energy-minimal one for periodic vision (calibrated module-rail power). The failure generalizes across three workload classes -- MobileNetV2, a ViT transformer, and Qwen2.5 LLM token decode (where saturated decode makes the aware policy lower-energy than the infeasible blind choice): a CPUxGPU estimator sends the deployed governor to an infeasible operating point, and only an EMC-aware model identifies the feasible side of the energy frontier. The effect is real and outside the CPUxGPU state abstraction: across two Orin SKUs sharing the same lockable EMC points it shifts median latency by up to ~45%, replicates on both, and survives a fused TensorRT fp16 engine. CPUxGPU models do not absorb it: per-lockable-point EMC tables are needed, a scoped inversion shows monotone assumptions can pick the wrong direction, and clustered misses make aggregate QoS rates understate deployment risk. We release the harness; this complements, not rebuts, the state of the art within its CPUxGPU scope.",
+        "authors": [
+            "Jaehoon Kang"
+        ],
+        "categories": [
+            "cs.PF",
+            "cs.AR",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.16106v2",
+        "submit_date": "2026-06-18",
+        "relevant": true,
+        "tags": [
+            "edge",
+            "serving",
+            "hardware"
+        ],
+        "tldr": "Investigates deadline misses in edge ML inference due to ignoring memory-clock state. Proposes an EMC-aware DVFS governor that models latency with EMC to select energy-minimal feasible clocks. Reduces misses from 25-28% to ≤1.3% under QoS budget.",
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19989v1": {
+        "title": "Online Dynamic Batching with Formal Guarantees for LLM Training",
+        "link": "http://arxiv.org/abs/2606.19989v1",
+        "abstract": "Modern LLM training breaks a core assumption behind offline batch samplers: the true training cost of a sample is only observable after preprocessing, augmentation, templating, tokenization, and multimodal visual-token expansion. Unless one pays for a preprocessing- and augmentation-dependent length cache, batch construction is therefore blind to the quantity that determines padding, memory use, and GPU saturation. We introduce Online Dynamic Batching (ODB), a DataLoader-side drop-in system that moves batch formation to this point of accurate observability while preserving DDP step alignment. We formalize this synchronization requirement as the Distributed Group Alignment Problem and prove deadlock-free bounded termination with default join-mode identity coverage and opt-in non-join sample-quota closure. ODB requires no model, optimizer, or attention-kernel changes and is released as online-dynamic-batching with lightweight trainer adapters. Across public 2B/8B Qwen3-VL runs on UltraChat/LLaVA/ShareGPT4o, ODB improves literal emitted-sample throughput vs. fixed-batch Standard by 1.58-2.51x on single-node Full FT/LoRA and 1.71-3.78x on two-node Full FT, with Standard-comparable quality; production MM-Mix reaches 4.43x. Against GMT/BMT offline token-budget oracles, ODB is within 15% on UltraChat/LLaVA and faster on high-CV ShareGPT4o: 2.24-2.39x single-node Full FT/LoRA and 3.06-3.69x two-node Full FT. Together, ODB occupies the online/drop-in regime for high-heterogeneity LLM fine-tuning: large throughput gains at Standard-comparable quality, formal DGAP guarantees, and no length-cache precompute or kernel rewrites.",
+        "authors": [
+            "Dian Li",
+            "Zekun Wang",
+            "Yaoru Wang",
+            "Jiahong Yan"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.LG"
+        ],
+        "id": "http://arxiv.org/abs/2606.19989v1",
+        "submit_date": "2026-06-18",
+        "relevant": true,
+        "tags": [
+            "training",
+            "LoRA",
+            "multi-modal"
+        ],
+        "tldr": "Addresses inefficient LLM training batch construction due to late cost observability. Proposes Online Dynamic Batching, a DataLoader-side system with deadlock-free synchronization. Achieves 1.58-4.43x throughput gains on fine-tuning tasks without model or kernel changes.",
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19969v1": {
+        "title": "The Bi-Channel Networking Paradigm for Database Systems in the Cloud",
+        "link": "http://arxiv.org/abs/2606.19969v1",
+        "abstract": "When network links were slow, cloud and distributed database systems could rely on generic kernel abstractions and treat network communication as a black box. With today's fast cloud networks, this approach breaks down: database performance becomes limited by the CPU overhead of the kernel TCP stack. Replacing TCP with user-space UDP can reduce this overhead, but it requires reimplementing essential guarantees, such as reliability and ordering. To solve this conundrum, database systems should no longer treat networking as a black box but co-design it with database operations. We propose the bi-channel paradigm for database systems, which separates communication into two channels: A high-performance data path for latency- and bandwidth-sensitive operations, and a reliable control path for coordination and recovery. We implement the paradigm by combining user-space UDP and kernel-based TCP, though other stack combinations are possible. This design exploits modern NIC capabilities while preserving TCP's reliability. We demonstrate the paradigm's efficiency and simplicity in two representative settings: a distributed shuffle saturating 200 Gbit/s with three CPU cores, and a replicated key-value store processing millions of messages per second.",
+        "authors": [
+            "Georg Kreuzmayr",
+            "Muhammad El-Hindi",
+            "Benjamin Wagner",
+            "Tobias Ziegler",
+            "Viktor Leis"
+        ],
+        "categories": [
+            "cs.DB",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19969v1",
+        "submit_date": "2026-06-18",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19869v1": {
+        "title": "EVM Workloads in the Wild: Evidence for Multi-Dimensional Gas Metering, State Growth, Delayed Execution, and Parallelism",
+        "link": "http://arxiv.org/abs/2606.19869v1",
+        "abstract": "Gas metering on EVM-compatible blockchains assumes that execution conditions are stable: that the resource mix is constant enough to justify collapsing execution costs into a single scalar with fixed relative prices, and that state drift between submission and execution does not materially alter a transaction's outcome. We measure the extent to which this assumption fails.\n  We present a trace-level measurement study of EVM workloads on Ethereum (L1) and Base (L2) throughout 2025, sampling 3,000 blocks per day per chain. We decompose each transaction into opcode-level execution gas, intrinsic gas, refunds, and persistent state deltas. To measure state sensitivity, we re-execute transactions from September 2025 on older states and record how gas usage and storage access patterns change.\n  We find the resource mix to be far from stable: on Base, storage reads and compute account for 29.2% and 24.3% of execution gas, while Ethereum devotes 34.9% to storage writes. Ethereum's gas limit doubling during 2025 shifted its own profile toward compute-heavier, Base-like patterns. Base also exhibits a higher fraction of cold storage reads (49.7% versus 39.6% on Ethereum). Persistent state growth, a permanent cost priced as a transient one, reaches 456 GB on Base versus 38 GB on Ethereum.\n  Execution outcomes are equally unstable: gas estimates vary across nearby historical states for 46.0% of transactions on Base, compared to 13.9% on Ethereum, with especially high sensitivity for MEV and DeFi activity. Storage access patterns also diverge across states, limiting the effectiveness of access lists and complicating parallel execution.\n  Our work provides an empirical foundation for multi-dimensional gas metering and explicit pricing of state growth. They show that state-sensitive execution behavior complicates workload estimation, directly affecting transaction predictability and user experience.",
+        "authors": [
+            "Lioba Heimbach",
+            "Kushal Babel",
+            "Jason Milionis"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19869v1",
+        "submit_date": "2026-06-18",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19834v1": {
+        "title": "Multi-Orientation Edge-Minimum Repair for Non-Redundant Fault-Tolerant Broadcasting in Dense Eisenstein--Jacobi Networks",
+        "link": "http://arxiv.org/abs/2606.19834v1",
+        "abstract": "Dense Eisenstein--Jacobi (EJ) networks are degree-six algebraic interconnection networks whose finite quotient geometry is naturally represented by a hexagonal axial-coordinate ball. This paper studies non-redundant one-to-all broadcast repair in the dense EJ network generated by $α=(t+1)+tω$, where $t$ is the network diameter. We propose EJ-MOEM, a multi-orientation edge-minimum repair method that evaluates a constant-size family of hexagonal broadcast-tree orientations, selects a fault-aware candidate, contracts the fault-pruned tree into healthy components, and reconnects these components using external component-crossing repair edges. The resulting structure is a rooted spanning tree of the healthy subgraph: every healthy node receives the message exactly once, no faulty node is used, and the original healthy tree components are preserved. We prove that, for a chosen orientation whose fault-pruned component graph is connected, exactly $c-1$ external repair edges are necessary and sufficient, where $c$ is the number of healthy components. We also prove a depth-certificate theorem for EJ coordinate-reduction trees: every one-fault placement admits a repair of depth at most $t+1$, and every two-fault placement admits a repair of depth at most $t+2$. The proof uses the three-strip representation of EJ hexagons, a sector-suffix attachment lemma, a non-adjacent-sector separation lemma, and a six-direction shielding classification for paired cuts. Extended validation includes exhaustive one- and two-fault enumeration for $t=2,\\ldots,12,14,16,18$ (up to $N=1027$ and 525,825 two-fault placements at $t=18$), structured theorem-critical tests through $t=30$, and large random tests through $t=200$, all with 100\\% success and no violation of the theorem.",
+        "authors": [
+            "Bader Albader"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.IT",
+            "cs.NI"
+        ],
+        "id": "http://arxiv.org/abs/2606.19834v1",
+        "submit_date": "2026-06-18",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19833v1": {
+        "title": "Fault-Tolerant Shared-Relay Communication in Circulant Interconnection Networks",
+        "link": "http://arxiv.org/abs/2606.19833v1",
+        "abstract": "Circulant interconnection networks provide symmetric addressing, compact generator descriptions, and uniform local connectivity. This paper maps a degree--redundancy landscape for a fault-tolerant two-hop primitive in directed circulants: given $n$ nodes and degree budget $m$, how large can the worst-case shared-relay multiplicity $R(n,m)$ be? A node is a shared relay for an ordered terminal pair if it has outgoing links to both terminals; an $f$-relay-fault-tolerant circulant requires at least $f+1$ such relays for every pair. The underlying feasibility condition is a cyclic difference-multiplicity condition, which we use as a mathematical tool rather than claim as a new object. The contribution is the network-design framework around this tool: the parameters $R(n,m)$ and $D_f(n)$, a negative theorem for interval circulants, relay-table preprocessing and lookup algorithms, adversarial and random failure guarantees, load-balance scope, certified upper-bound interpretation of heuristic designs, exact small-$n$ calibration, a software lookup-versus-search microbenchmark, and a reproducible study of 526,539 generator sets. The results show that generator choice critically determines worst-case relay survivability: optimized threshold designs achieve $f$-relay-fault tolerance within about $1.16$--$1.63$ of the counting lower bound, while standard interval generators can fail structurally even at much larger degrees.",
+        "authors": [
+            "Bader Albader",
+            "Galal Hassan",
+            "Mohamed R. Al-Mulla"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.IT",
+            "cs.NI"
+        ],
+        "id": "http://arxiv.org/abs/2606.19833v1",
+        "submit_date": "2026-06-18",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19832v1": {
+        "title": "Certified Euclidean-Residue Minimal-Alignment Switch Decompositions for Three Edge-Disjoint Hamiltonian Cycles in Eisenstein--Jacobi Networks",
+        "link": "http://arxiv.org/abs/2606.19832v1",
+        "abstract": "Eisenstein--Jacobi (EJ) networks are degree-six quotient-lattice interconnection networks. For a generator $α=a+bρ$, let $N=a^2+ab+b^2$ and $d=\\gcd(a,b)$. If $d=1$, the three natural unit directions already give three edge-disjoint Hamiltonian cycles. If $d>1$, each unit direction splits into $d$ cycles and the EDHC problem becomes a cycle-splicing problem. Existing non-coprime EJ decompositions prove existence by using a rectangular representation and exchange schedules. This paper develops a different, local switch calculus in the natural Cayley geometry. The first two Hamiltonian cycles are built using the minimum possible $d-1$ intercomponent switches each, and the third factor is obtained as the unused edge complement. The contribution is deliberately not a new existence theorem for all non-coprime EJ networks; rather, it is a compact, formula-driven, minimal-switch decomposition for Euclidean-residue families whose complement incidence is proved symbolically. The proof separates four ingredients: component-label collapse, anchor cancellation, noncollision of lifted switch representatives, and connected complement incidence. No infinite-family theorem in this manuscript is proved by finite witnesses or by computational enumeration. The theorem scope is stated for the parameter ranges where an algebraic complement-incidence certificate is written down. Tables and CSV data are used only to verify and reproduce the formulas, never as proof of an infinite-family theorem.",
+        "authors": [
+            "Bader Albader"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.IT",
+            "cs.NI"
+        ],
+        "id": "http://arxiv.org/abs/2606.19832v1",
+        "submit_date": "2026-06-18",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19746v1": {
+        "title": "SAC: Disaggregated KV Cache System for Sparse Attention LLMs with CXL",
+        "link": "http://arxiv.org/abs/2606.19746v1",
+        "abstract": "The scaling of LLMs toward long-context inference has shifted the primary serving system bottleneck from computation to memory capacity. Traditional solutions for dense attention models rely on RDMA-based disaggregated memory pools, which perform coarse-grained fetching of the entire prefix KV cache from remote storage to local memory before decoding. However, this approach is fundamentally inefficient for emerging sparse attention models. While only a small fraction of KV entries are active during decoding, these systems still fetch the full KV cache locally, leading to severe transmission bottlenecks and local memory wastage. To address this, we propose SAC, the first efficient disaggregated KV cache system optimized for sparse attention models. By leveraging the low-latency, cache-line granularity load/store semantics of Compute Express Link (CXL), SAC fetches only the required top-k KV entries on demand during inference. Evaluations on DeepSeek-V3.2 using SGLang show that SAC achieves 2.1x higher throughput, 9.7x lower TTFT, and 1.8x lower TBT compared to RDMA-based baselines, establishing CXL-based disaggregation as the superior infrastructure for emerging sparse attention models.",
+        "authors": [
+            "Ruiyang Ma",
+            "Teng Ma",
+            "Junru Li",
+            "Hantian Zha",
+            "Xuchun Shang",
+            "Qingda Hu",
+            "Zheng Liu",
+            "Xinjun Yang",
+            "Tao Ma",
+            "Guojie Luo"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19746v1",
+        "submit_date": "2026-06-18",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "disaggregation",
+            "sparse"
+        ],
+        "tldr": "Addresses inefficiencies in KV cache fetching for sparse attention LLMs during inference. Proposes SAC, a CXL-based disaggregated system that fetches only required top-k KV entries on demand. Achieves 2.1x higher throughput compared to RDMA baselines.",
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19576v1": {
+        "title": "REMOP: REmote-Memory-aware OPerator Optimization",
+        "link": "http://arxiv.org/abs/2606.19576v1",
+        "abstract": "Remote and disaggregated memory tiers expand the effective memory capacity of analytical database engines, but they also reshape the cost structure of out-of-memory query processing. When an operator spills beyond local DRAM, moving pages to remote memory incurs both data-transfer time and a fixed round-trip latency per transfer. Classical operator analyses and buffer-allocation heuristics primarily target disk spilling by minimizing total I/O volume. Under remote memory, these strategies can be suboptimal because they may trigger excessive transfer rounds. We present REMOP, a remote-memory-aware operator optimization framework that uses transfer-round-aware intra-operator memory policies to improve out-of-memory execution under tight memory budgets. REMOP introduces the number of transfer rounds into the latency cost model and derives operator-specific buffer-partitioning strategies, instantiating the approach for blocked nested-loop join, external merge sort, and external hash join in DuckDB. Our evaluation on a two-node compute-memory testbed shows that REMOP reduces transfer rounds by up to 97% and operator runtime by up to 48% on spill-heavy microbenchmarks, and lowers the average runtime of spilling TPC-H and TPC-DS queries by 22.7% and 26.4% end-to-end.",
+        "authors": [
+            "Shiquan Zhang",
+            "Yunhao Mao",
+            "Yuqiu Zhang",
+            "Gengrui Zhang",
+            "Jeyhun Karimov",
+            "Hans-Arno Jacobsen"
+        ],
+        "categories": [
+            "cs.DB",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19576v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19537v1": {
+        "title": "Mesh Inference: A Formal Model of Collective Intelligence Without a Center",
+        "link": "http://arxiv.org/abs/2606.19537v1",
+        "abstract": "We present a formal model of mesh inference: how a population of independent agents, each holding private state and exchanging only admitted, typed observations, derives a conclusion none of them holds alone, with no central coordinator and no agent exposed. No agent shares weights, gradients, or hidden state, and the agents may span different teams, networks, and organizations. Motivated by the observation that asking a model is energy-minimizing inference, we model the mesh as a coupled free energy that each agent relaxes locally. We show that a single admission/emission policy governs three properties. First, mesh inference converges to a unique answer for any admission, symmetric or not, because the coupling is always an M-matrix. Second, it is identification-complete: it derives the centralized optimum exactly when the contributing views are carrier-connected. Third, it is observation-only: no node transmits its internals, and confidentiality is the dual of identification. Content-addressed lineage is the only global side-channel. In the linear-Gaussian regime every derived answer is determined, hence equal to the centralized optimum, at O(diam^2) latency, the measured price of removing the center. One such derivation is one turn of a center-free learning loop, which we formalize as architecture rather than prove. The open problem we state is when asking improves the collective rather than corrupting it: whether the non-linear closure derives an upgraded answer or a confident error. To our knowledge, this is the first formal model of mesh inference.",
+        "authors": [
+            "Hongwei Xu"
+        ],
+        "categories": [
+            "cs.MA",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19537v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19529v1": {
+        "title": "The Sheaf Laplacian: A Topological Framework for Data Fusion and Consensus in Distributed Sensing Networks",
+        "link": "http://arxiv.org/abs/2606.19529v1",
+        "abstract": "We argue here that traditional network models, which are overwhelmingly based on the mathematical construct of a simple graph, are fundamentally insufficient for capturing the complexity of modern distributed systems. Such systems are characterized by heterogeneous agents with diverse capabilities, high-dimensional and multi-modal data streams, and intricate, context-dependent relationships that cannot be adequately described by a simple connection or a scalar weight. The limitations of these classical models necessitate a new mathematical language, one with far greater expressive power. We have found that sheaf theory provides us with such a language. Moreover, we show that the sheaf Laplacian is a suitable mechanism for data fusion and establishing consensus within distributed sensing networks.",
+        "authors": [
+            "Manuel Hernández",
+            "Eduardo Sánchez-Soto"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19529v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
+    },
+    "http://arxiv.org/abs/2606.19519v1": {
+        "title": "A Topos-Theoretic Interpretation of Blockchain Systems: Sheaves of Consensus and the Logic of Decentralized Truth",
+        "link": "http://arxiv.org/abs/2606.19519v1",
+        "abstract": "The predominant formal models for blockchain systems, particularly smart contracts, have largely been drawn from the classical theory of computation, with the finite state machine (FSM) or labeled transition system serving as the primary conceptual tool. However, the FSM relegates the most difficult and novel aspect of a blockchain -- the achievement of consensus in a decentralized environment -- to a complex, often messy, implementation detail that lies outside the formal model itself. But the process of consensus is not an ancillary feature; it is the very essence of the computational phenomenon. To model it faithfully, a new mathematical language is required. The central thesis of this work is that topos theory, the theory of categories of sheaves, provides the native mathematical language for systems defined by local consistency and the construction of global truth.",
+        "authors": [
+            "Manuel Hernández",
+            "Eduardo Sánchez-Soto"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.19519v1",
+        "submit_date": "2026-06-17",
+        "relevant": false,
+        "indexed_date": "2026-06-19"
     }
 }
