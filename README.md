@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2717-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.19-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2732-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.23-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,38 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-23
+* `multimodal` `offloading` `kernel` [Kamera: Unified Position-Invariant Multimodal KV Cache for Training-Free Reuse](http://arxiv.org/abs/2606.23581v1)
+  > **TL;DR**: Addresses recompute in multimodal agents from repeated content re-encoding due to position-dependent KV caches. Proposes a training-free low-rank conditioning patch for position-invariant KV reuse via exact RoPE re-rotation. Achieves full task accuracy on benchmarks and reconstructs KV within bf16 rounding error.
+* `training` [The Energy Consumption of Transformer Fine-Tuning: A Roofline-Inspired Scaling Model](http://arxiv.org/abs/2606.23546v1)
+  > **TL;DR**: Addresses accurate energy consumption prediction for Transformer fine-tuning across model sizes and parallelism. Proposes a roofline-inspired framework with compute, memory, and hardware efficiency proxies and a parallelization factor. Achieves accurate energy predictions across heterogeneous configurations.
+* `serving` `offloading` `kernel` [Concordia: JIT-Compiled Persistent-Kernel Checkpointing for Fault-Tolerant LLM Inference](http://arxiv.org/abs/2606.23521v1)
+  > **TL;DR**: Addresses GPU state loss during LLM inference failures. Proposes Concordia, a runtime with JIT-compiled delta-checkpoint handlers in a persistent kernel via PTX/SASS instrumentation and lock-free task processing. Enables recovery without full restarts by logging deltas to CXL/DRAM.
+* `serving` `offloading` `multi-modal` [LiveServe: Interaction-Aware Serving for Real-Time Omni-Modal LLMs](http://arxiv.org/abs/2606.22983v1)
+  > **TL;DR**: Addresses inefficiencies in real-time serving of omni-modal LLMs by incorporating audio playback and barge-in events. Proposes LiveServe with interaction-aware scheduling and next-use KV cache management. Reduces P90 audio TTFP by 1.55× on average and improves throughput by 1.15×.
+* `training` `networking` [Factored Gossip DiLoCo: Reducing Blocking Communication in DiLoCo](http://arxiv.org/abs/2606.22768v1)
+  > **TL;DR**: Reduces blocking communication in distributed training of billion-parameter language models via gossip-based approximate synchronization. Factorizes synchronization into non-blocking mixing (overlapping computation) and blocking mixing for worker agreement. Substantially improves compute utilization over DiLoCo while maintaining comparable training progress and robustness in low-bandwidth settings.
+* `MoE` `serving` `disaggregation` [ASAP: A Disaggregated and Asynchronous Inference System for MoE Prefill](http://arxiv.org/abs/2606.22541v1)
+  > **TL;DR**: Reduces synchronization stalls in MoE prefill serving caused by DP imbalance. Introduces ASAP, a system disaggregating attention and MoE stages via asynchronous execution and specialized communication primitives. Improves SLO-compliant prefill throughput by 90% over synchronous baselines.
+* `RAG` `networking` [FeLoG: Scalable and Efficient Distributed Graph Embedding with Feedback Loop Mechanism](http://arxiv.org/abs/2606.22180v1)
+  > **TL;DR**: Addresses inefficiencies in distributed graph embedding training for RAG systems. Proposes feedback-coupled sampling, activity-aware communication compression, and round-interleaved pipelining. Achieves 27.9x speedup and reduces communication cost by 53.1%.
+* `offline` [StickyInvoc: Rethinking Task Models for High-throughput Workflows in the LLM Era](http://arxiv.org/abs/2606.22175v1)
+  > **TL;DR**: Reduces overhead in batch LLM inference workflows by decoupling state management. Introduces sticky tasks for persistent model state and invocation tasks for computation, amortizing setup costs. Achieves 3.6x speedup for 150k inferences on 20 GPUs.
+* `training` `MoE` `networking` [FoMoE: Breaking the Full-Replica Barrier with a Federation of MoEs](http://arxiv.org/abs/2606.19025v2)
+  > **TL;DR**: Addresses communication and memory inefficiency in distributed MoE training across loosely connected hardware. Introduces FoMoE, partitioning expert layers across workers and skipping non-resident experts during local training. Reduces communication costs by up to 45.44x over DDP and achieves 1.4x throughput speedup.
+* `offline` `scaling` [BatchGen: An Architecture for Scalable and Efficient Batch Inference](http://arxiv.org/abs/2606.21712v1)
+  > **TL;DR**: Addresses inefficiency in large-scale batch inference with load variation. Proposes a sequence coroutine compute model for dynamic work reorganization. Achieves up to 2.3× faster batch completion on a 128-GPU cluster.
+* `serving` `agentic` [SwarmX: Agentic Scheduling for Low-Latency Agentic Systems](http://arxiv.org/abs/2606.21401v1)
+  > **TL;DR**: Addresses scheduling inefficiencies in agentic AI systems with prompt-dependent model-call structures. Proposes SwarmX, a scheduler using neural predictors for tail-aware routing and scaling decisions. Reduces tail latency by 61.5% and doubles throughput versus state-of-the-art schedulers under SLOs.
+* `serving` `offloading` [Recency/Frequency Adaptive KV Caching for Large Language Model Serving](http://arxiv.org/abs/2606.21238v1)
+  > **TL;DR**: Addresses inefficient KV cache management in diverse LLM serving workloads. Introduces adaptive caching that dynamically allocates space between recency and frequency of KV blocks. Achieves up to 10.8% higher cache hit rate compared to vLLM on synthetic document QA workloads.
+* `recommendation` `kernel` [DPIFrame: A Dual-Level Parallelism Acceleration Framework for CTR Model Inference](http://arxiv.org/abs/2606.21101v1)
+  > **TL;DR**: Addresses inefficient CTR model inference on GPU due to serial-parallel mismatch. Proposes DPIFrame with dual-level parallelism, multi-table lookup, and GPU stream scheduling. Reduces embedding latency by 23.0× compared to PyTorch.
+* `agentic` [AOHP: An Open-Source OS-Level Agent Harness for Personalized, Efficient and Secure Interaction](http://arxiv.org/abs/2606.23449v1)
+  > **TL;DR**: Addresses inefficiencies and security risks in running AI agents on conventional operating systems. Proposes AOHP, an OS-level harness on Android with personalized service composition, efficient interfaces, and secure information flow. Achieves 51.55% reduction in token cost.
+* `serving` `edge` `offloading` [FlexServe: A Fast and Secure LLM Serving System for Mobile Devices with Flexible Resource Isolation](http://arxiv.org/abs/2606.23370v1)
+  > **TL;DR**: Addresses high overhead in secure LLM inference on mobile devices via TrustZone. Proposes FlexServe with recallable resource isolation (Flex-Mem/Flex-NPU) decoupling access and management permissions. Achieves 10.05× average TTFT speedup over baseline.
+
 ### 2026-06-19
 * `serving` `edge` `offloading` [Execution-State Capsules: Graph-Bound Execution-State Checkpoint and Restore for Low-Latency, Small-Batch, On-Device Physical-AI Serving](http://arxiv.org/abs/2606.20537v1)
   > **TL;DR**: Addresses low-latency, small-batch on-device LLM serving with frequent state changes. Proposes execution-state capsules for graph-bound checkpoint and restore of complete execution state. Achieves sub-millisecond restore and up to 27x TTFT speedup over cold prefill.
