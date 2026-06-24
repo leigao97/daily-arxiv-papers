@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2732-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.23-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2737-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.24-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,18 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-24
+* `serving` `MoE` `disaggregation` [CrossPool: Efficient Multi-LLM Serving for Cold MoE Models through KV-Cache and Weight Disaggregation](http://arxiv.org/abs/2606.24506v1)
+  > **TL;DR**: Addresses GPU memory inefficiency in serving cold MoE models with underutilized KV-cache. Proposes CrossPool, disaggregating FFN weights and KV-cache into separate pools with a planner, scheduler, and kernels for reduced overhead. Reduces P99 tail batch time by up to 10.4×.
+* `RL` `diffusion` `video` [Accelerating Disaggregated RL for Visual Generative LLMs with Diffusion-Based Parallelism and Trainer-Assisted Generation](http://arxiv.org/abs/2606.24369v1)
+  > **TL;DR**: Designs an efficient disaggregated RL system for diffusion generative LLMs to overcome inefficient colocated execution. Introduces generation-axis pipeline, time-step parallelism, trainer-assisted generation, and asynchronous execution. Achieves 1.56-2.10x throughput improvement over state-of-the-art systems.
+* `training` `networking` [Quantum ring all-reduce: communication and privacy advantages for distributed learning](http://arxiv.org/abs/2606.20344v2)
+  > **TL;DR**: Investigates communication inefficiency and privacy in distributed training. Proposes a quantum ring all-reduce using pre-shared entanglement and superdense coding. Reduces per-link online communication by a factor of two.
+* `serving` `offloading` `kernel` [The Serialized Bridge: Understanding and Recovering LLM Serving Performance under Blackwell GPU Confidential Computing](http://arxiv.org/abs/2606.23969v1)
+  > **TL;DR**: Investigates LLM serving throughput degradation under GPU confidential computing due to serialized VM-GPU bridge. Proposes scheduling flags and worker-thread drains to restore asynchronous concurrency in data transfers. Recovers 92% of throughput loss in high-concurrency scenarios and reduces KV-cache restore penalty by 131%.
+* `edge` `serving` [EnerInfer: Energy-Aware On-Device LLM Inference](http://arxiv.org/abs/2606.23001v1)
+  > **TL;DR**: Addresses energy inefficiency and thermal issues in on-device LLM inference by exploiting configuration slack. Proposes EnerInfer, a framework with model-structure-aware prediction and thermal-aware dynamic switching for efficient NPU/DDR frequency selection. Achieves up to 65% energy efficiency improvement on phones without QoE violation.
+
 ### 2026-06-23
 * `multimodal` `offloading` `kernel` [Kamera: Unified Position-Invariant Multimodal KV Cache for Training-Free Reuse](http://arxiv.org/abs/2606.23581v1)
   > **TL;DR**: Addresses recompute in multimodal agents from repeated content re-encoding due to position-dependent KV caches. Proposes a training-free low-rank conditioning patch for position-invariant KV reuse via exact RoPE re-rotation. Achieves full task accuracy on benchmarks and reconstructs KV within bf16 rounding error.
