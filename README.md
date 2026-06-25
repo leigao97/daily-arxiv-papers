@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2737-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.24-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2745-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.25-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,24 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-25
+* `training` `quantization` `networking` [NEURON-Fabric: Architecture-Runtime Co-Design for Controlled Low-Bit Gradient Communication](http://arxiv.org/abs/2606.25759v1)
+  > **TL;DR**: Addresses training instability from static low-bit gradient communication in distributed learning. Proposes NEURON-Fabric, a profile-guided runtime with model-aware bindings and fallback to FP32 based on online monitoring. Reduces gradient-communication traffic while preserving accuracy near full-precision levels in billion-parameter models.
+* `training` `LoRA` [TL++: Accuracy and Privacy Preserving Traversal Learning for Distributed Intelligent Systems](http://arxiv.org/abs/2606.25627v1)
+  > **TL;DR**: Addresses efficient and private distributed training across data silos. Proposes TL++, a framework with base mode exchanging cut-layer activations/gradients and secure mode using secret sharing. Achieves 13.1-fold communication reduction on CIFAR-10 compared to full-model synchronization.
+* `RL` `diffusion` `training` [Accelerating Disaggregated RL for Visual Generative LLMs with Diffusion-Based Parallelism and Trainer-Assisted Generation](http://arxiv.org/abs/2606.24369v2)
+  > **TL;DR**: Addresses inefficient RL systems for diffusion-based generative LLMs constrained by colocated execution. Introduces DigenRL, a disaggregated framework with generation-axis pipelining, time-step parallelism, and trainer-assisted generation to minimize pipeline bubbles. Achieves 1.56-2.10× higher throughput than state-of-the-art systems on 16-32 GPUs.
+* `kernel` [EmuGEMM: Fused Tensor Core Kernels for Precision Emulation in Matrix Multiplication](http://arxiv.org/abs/2606.25453v1)
+  > **TL;DR**: Addresses inefficiency in high-precision GEMM due to data movement bottlenecks from precision emulation. Proposes EmuGEMM, fused Tensor Core kernels that eliminate redundant memory round-trips in Ozaki schemes. Achieves up to 3,654 Top/s on Blackwell and outperforms cuBLAS ZGEMM by 5.5x.
+* `scaling` `networking` [Power-Flexible AI Data Centers: A New Paradigm for Grid-Responsive Compute](http://arxiv.org/abs/2606.25098v1)
+  > **TL;DR**: Investigates power-flexible AI data centers for grid-responsive computing. Proposes an architecture integrating workload scheduling and power telemetry for dynamic cluster power control. Demonstrated on a 130 kW GPU cluster with effective load reduction and geographic migration preserving service levels.
+* `serving` `edge` `networking` [Speculation at a Distance: Where Edge-Cloud Speculative Decoding Actually Pays Off](http://arxiv.org/abs/2606.25091v1)
+  > **TL;DR**: Investigates when distributed speculative decoding (DSD) with edge-draft models benefits LLM inference latency and capacity. Uses analytical models to compare DSD with co-located SD under WAN delays. DSD increases multi-tenant capacity by (1 + γ t_d / t_v) times under server saturation.
+* `scaling` `RL` `hardware` [Energy Efficient Scheduling of AI/ML Workloads on Multi Instance GPUs with Dynamic Repartitioning](http://arxiv.org/abs/2606.25082v1)
+  > **TL;DR**: Investigates energy-efficient scheduling of AI/ML workloads on MIG GPUs amid fluctuating demands. Proposes a reinforcement learning-based dynamic repartitioning framework for job scheduling and GPU configuration. Achieves up to 68% improvement in energy-tardiness metric compared to no partitioning.
+* `edge` `serving` [EnerInfer: Energy-Aware On-Device LLM Inference](http://arxiv.org/abs/2606.23001v2)
+  > **TL;DR**: Addresses energy inefficiency and thermal issues in on-device LLM inference. Proposes EnerInfer, a framework using model-structure-aware prediction and ranking-driven feedback for dynamic NPU/memory frequency configuration. Achieves up to 65% higher energy efficiency on phones without quality degradation.
+
 ### 2026-06-24
 * `serving` `MoE` `disaggregation` [CrossPool: Efficient Multi-LLM Serving for Cold MoE Models through KV-Cache and Weight Disaggregation](http://arxiv.org/abs/2606.24506v1)
   > **TL;DR**: Addresses GPU memory inefficiency in serving cold MoE models with underutilized KV-cache. Proposes CrossPool, disaggregating FFN weights and KV-cache into separate pools with a planner, scheduler, and kernels for reduced overhead. Reduces P99 tail batch time by up to 10.4×.

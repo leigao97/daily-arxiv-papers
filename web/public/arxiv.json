@@ -137604,5 +137604,481 @@
         ],
         "tldr": "Addresses energy inefficiency and thermal issues in on-device LLM inference by exploiting configuration slack. Proposes EnerInfer, a framework with model-structure-aware prediction and thermal-aware dynamic switching for efficient NPU/DDR frequency selection. Achieves up to 65% energy efficiency improvement on phones without QoE violation.",
         "indexed_date": "2026-06-24"
+    },
+    "http://arxiv.org/abs/2606.25922v1": {
+        "title": "Interference-Aware Cross-Application Placement: A Multi-Objective Optimization Approach for Microservice Clusters",
+        "link": "http://arxiv.org/abs/2606.25922v1",
+        "abstract": "In modern cloud architectures, multiple applications often run within the same clustered environment, sharing underlying resources. This resource sharing can cause interference among applications, leading to degraded latency and reduced system stability. As containerized microservices become increasingly central to cloud-native applications, their performance can suffer from complex interference scenarios related to resource competition. Meanwhile, most existing microservice approaches address interference either by detecting and localizing performance issues or by optimizing latency alone, without explaining why specific co-locations cause cross-application interference, and how this can inform service placement optimization. This work closes that gap by building a spatio-temporal data structure that captures the causal effects of cross-application interference. These causal effects are mathematically formalized as necessary and sufficient conditional probabilities that inform a multi-objective optimizer (Optuna). Cross-application profiling is used to simulate traces and estimate interference probabilities, while per-service latency baselines are provided by performance data, such as 95th-percentile response times (p95). Our approach supports network penalties, application isolation requirements, and adjustable weighting of necessary and sufficient causal metrics. Experimental results on real multi-application workloads show that interference-aware placements significantly reduce cross-application interference and improve response performance. Ultimately, the causality-driven multi-objective formulation gives cloud operators explicit control over interference, latency, and communication overhead when configuring service placements.",
+        "authors": [
+            "Iqra Zafar",
+            "Christian Medeiros Adriano",
+            "Holger Giese"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25922v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25879v1": {
+        "title": "AI-Assisted Computational Reproducibility on the FABRIC Testbed",
+        "link": "http://arxiv.org/abs/2606.25879v1",
+        "abstract": "Computational reproducibility remains difficult despite being central to scientific research. In this paper, we show how the international FABRIC testbed, combined with large language model (LLM) coding assistants through LoomAI, can simplify reproducing published experiments across multiple domains. We reproduced three case studies on FABRIC, covering BBR-family congestion-control evaluations, LAMMPS molecular dynamics scaling benchmarks on a CPU-only MPI cluster, and stress protein homeostasis genomics pipelines.\n  Rather than focusing only on matching numerical outputs, we evaluate whether the reproduced experiments support the same scientific conclusions as the original studies. The AI assistant was effective in setting up the environment, adapting code, and debugging, but struggled with the analysis stages that lacked clearly defined workflows, which required human guidance to establish execution order and data dependencies.\n  Across the case studies, the AI-assisted workflow reduced reproduction effort by roughly 4--6 times. We conclude with practical recommendations for improving AI-assisted reproducibility on research testbeds.",
+        "authors": [
+            "Komal Thareja",
+            "Paul Ruth",
+            "Berent Aldikacti",
+            "Michael Zink"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AI"
+        ],
+        "id": "http://arxiv.org/abs/2606.25879v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25759v1": {
+        "title": "NEURON-Fabric: Architecture-Runtime Co-Design for Controlled Low-Bit Gradient Communication",
+        "link": "http://arxiv.org/abs/2606.25759v1",
+        "abstract": "Large-scale neural-network training repeatedly aggregates gradients across devices, making communication a central cost in distributed learning. Low-bit gradient aggregation can reduce this cost, but applying it as a static replacement for full-precision communication can destabilize training because safe precision depends on training phase, model structure, runtime bucketization, and the communication substrate.\n  This paper presents NEURON-Fabric, a profile-guided runtime system for controlled low-bit gradient communication. NEURON-Fabric uses calibrated operating profiles, model-aware runtime bindings, online training-health monitoring, and reducer-capacity checks to decide when low-bit aggregation should be admitted, when execution should fall back to FP32, and which model regions are eligible for each route. The runtime preserves model semantics inside mixed DDP buckets and treats reducer admission as an architecture-runtime co-design problem rather than as a standalone compression operator.\n  Across vision, Transformer, and autoregressive language-model workloads, NEURON-Fabric validates the path from calibration to distributed communication-hook execution. Static low-bit communication can collapse training accuracy, while profile-guided control preserves accuracy near full-precision references or calibrated targets and reduces modeled gradient-communication traffic in the evaluated settings. Transformer and billion-parameter language-model checks show that the same routing and fallback mechanisms execute across model families and multi-node deployments. Reducer-side replay and reducer-path measurements identify when compact sign-count aggregation is expected to reduce communication cost and when endpoint capacity should trigger fallback.",
+        "authors": [
+            "Ziqiang Wang",
+            "Changcheng Huang",
+            "Chung-Horng Lung"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25759v1",
+        "submit_date": "2026-06-24",
+        "relevant": true,
+        "tags": [
+            "training",
+            "quantization",
+            "networking"
+        ],
+        "tldr": "Addresses training instability from static low-bit gradient communication in distributed learning. Proposes NEURON-Fabric, a profile-guided runtime with model-aware bindings and fallback to FP32 based on online monitoring. Reduces gradient-communication traffic while preserving accuracy near full-precision levels in billion-parameter models.",
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25738v1": {
+        "title": "Endeavor: Efficient PairHMM for Detection of DNA Variants in Genome-Scale Datasets",
+        "link": "http://arxiv.org/abs/2606.25738v1",
+        "abstract": "DNA variant calling represents a key operation in bioinformatics pipelines that aims at identifying genetic variants. Given an evidenced explosion in genomic data availability, there is an urgent need for a high-performant, portable and efficient solution for variant calling, which can further improve our understanding of genomic structure and genetic basis for complex diseases. In its most common formulation, the Pair Hidden Markov Model (PairHMM) algorithm for variant calling stands as the main bottleneck in the pipeline, accounting for up to 70% of the execution time in large-scale genomic datasets. The state-of-the-art approaches for accelerating PairHMM in CPUs and GPUs do not scale to long DNA sequences and only explore very limited anti-diagonal data parallelism, which yields poor performance. In this work, Endeavor is proposed as a new parallelization strategy for PairHMM that redefines its traditional formulation to explore row-level fine-grained parallelism without loss in solution accuracy. Based on this, a novel and portable SIMD-based approach is derived for efficient and high-performance processing of short and long sequences in CPUs and GPUs, leveraging novel levels of parallelism and synchronization to achieve high throughput in sequences up to 100k basepairs for the first time. Evaluation on Intel and AMD CPUs shows that Endeavor outperforms GKL up to 2.14x in peak throughput and GATK HaplotypeCaller by at least 2x in real-world datasets, while NVIDIA and AMD GPUs achieve up to 2.05x speedups in genome-scale datasets when compared to state-of-the-art GPU-based methods.",
+        "authors": [
+            "Miguel Graça",
+            "Aleksandar Ilic"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25738v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.24748v2": {
+        "title": "A Natively Blocked, Device-Resident Algebraic Multigrid GPU Path in PETSc",
+        "link": "http://arxiv.org/abs/2606.24748v2",
+        "abstract": "Smoothed-aggregation algebraic multigrid (AMG) is widely used for the linear systems arising from finite-element discretizations of vector PDEs such as elasticity, but its GPU implementations have used scalar sparse matrix formats. These problems carry a natural block structure: matrix nonzeros occur in dense bs x bs blocks sharing one column index, so storing the blocks directly removes most of the index data and raises the arithmetic intensity of the bandwidth-bound kernels that dominate AMG on the GPU. Existing blocked GPU kernels (cuSPARSE, Kokkos Kernels) require equal row and column block sizes, but AMG for elasticity is rectangular-blocked: the near-null space of rigid-body modes makes the coarse block size (6 in 3D) differ from the fine (3), so the prolongator and the Galerkin triple product mix block sizes. We add a portable, Kokkos-backed blocked matrix type to PETSc with rectangular-block kernels, and make every step of the smoothed-aggregation setup operate on the block format directly, with no expansion to scalar form on the coarsening path. The two phases that recur when the hierarchy is reused across solves -- the Galerkin coarse-operator recompute (A_c = P^T A P) and the V-cycle -- are kept resident on the device in blocks, via a native blocked off-process prolongator gather over a PetscSF and a new blocked COO assembly path for dense rectangular blocks. On A100 GPUs for 3D elasticity, the cuSPARSE Galerkin product runs out of GPU memory on a 128^3 grid (6.3M unknowns) packed onto 8 GPUs, where the blocked format fits; the native Kokkos Kernels scalar path also fits, but with a much heavier Galerkin product. Where the formats run, the blocked format is at parity on one GPU and faster at scale: at 27 GPUs it is 1.24x faster on the V-cycle, 1.42x on SpMV, and 1.80x on the coarse-operator recompute, reaching 2.27x on the latter at 64 GPUs.",
+        "authors": [
+            "Mark F. Adams"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.24748v2",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25693v1": {
+        "title": "Dynamic Load Balancing for Uncertainty Quantification with Applications in Bayesian Inversion",
+        "link": "http://arxiv.org/abs/2606.25693v1",
+        "abstract": "Uncertainty Quantification (UQ) workflows present a particular scheduling challenge in high performance computing environments, as they typically generate large numbers of heterogeneous model evaluations with loose but non-trivial dependencies between tasks. A static one-size-fits-all approach in traditional schedulers is inadequate to handle heterogeneous tasks optimally. We introduce an improved load balancer in the UQ and Modelling Bridge (UM-Bridge) framework aimed at mitigating these issues; UM-Bridge is a language-agnostic interface developed to couple UQ software with numerical simulation. As a realistic example, we test the load balancer with a Bayesian inverse problem solved via multilevel delayed acceptance sampling. The underlying forward problem is a hierarchy of tsunami simulations enabled through ExaHyPE, whose runtimes span several orders of magnitude and loose dependencies between levels make the workload particularly challenging to schedule. Our results indicate the load balancer is effective at distributing the sampling requests with an average node idle time of close to a millisecond, while not making any prior assumptions about the workload.",
+        "authors": [
+            "C. M. Loi",
+            "M. Wille",
+            "A. Reinarz"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25693v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25627v1": {
+        "title": "TL++: Accuracy and Privacy Preserving Traversal Learning for Distributed Intelligent Systems",
+        "link": "http://arxiv.org/abs/2606.25627v1",
+        "abstract": "Distributed intelligent systems increasingly need to train across data silos without centralizing raw data. Federated learning keeps data local but can suffer under heterogeneous partitions and requires repeated full-model exchange. Split learning reduces communication through cut-layer activations, but standard protocols generally do not recover centralized mini-batch gradient behavior and may expose activations and gradients in plaintext. We present TL++, a two-mode traversal-learning framework that constructs virtual batches across nodes to recover centralized mini-batch gradient behavior under explicit synchronization assumptions. Base mode exchanges cut-layer activations and gradients rather than full models. Secure mode secret-shares each cut-layer activation and gradient between an orchestrator and a non-colluding helper, preventing either server from observing plaintext cut-layer tensors. This protection is limited to a semi-honest two-server setting; labels and loss-related outputs remain visible to the orchestrator. In the lightweight secure path evaluated here, exactness requires a linear or affine server path, while nonlinear operations require nonlinear MPC or approximation. We formalize TL++, analyze communication and computation costs, and evaluate it against federated and split-learning baselines on CIFAR-10 and BioGPT/PubMedQA using full fine-tuning and LoRA. On CIFAR-10, TL++ base cut 1 and exact secure cut 3 achieve accuracies of 91.41% (SD 0.19) and 90.93% (SD 0.17), respectively, exceeding the strongest measured non-TL++ baseline by more than 12 percentage points. TL++ base cut 1 also reduces per-step communication by 13.1-fold relative to full-model synchronization. PubMedQA results similarly favor TL++. Overall, TL++ approaches centralized-training performance while reducing communication and providing activation-level secret sharing.",
+        "authors": [
+            "Erdenebileg Batbaatar",
+            "Young Yoon"
+        ],
+        "categories": [
+            "cs.LG",
+            "cs.AI",
+            "cs.CR",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25627v1",
+        "submit_date": "2026-06-24",
+        "relevant": true,
+        "tags": [
+            "training",
+            "LoRA"
+        ],
+        "tldr": "Addresses efficient and private distributed training across data silos. Proposes TL++, a framework with base mode exchanging cut-layer activations/gradients and secure mode using secret sharing. Achieves 13.1-fold communication reduction on CIFAR-10 compared to full-model synchronization.",
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25595v1": {
+        "title": "Optimizing Semiconductor Device Simulations through Low-Precision Arithmetic",
+        "link": "http://arxiv.org/abs/2606.25595v1",
+        "abstract": "Architectural changes in GPUs, especially the promotion of low-precision computational units, pose significant challenges to traditional, FP64-based high-performance computing (HPC) applications, while also presenting opportunities. Adopting reduced-precision data formats is a promising avenue to exploit the increased throughput capabilities. However, straightforward data conversions may lead to degraded accuracy or even erroneous results. For a given application, only an in-depth analysis of its numerical stability can reveal the potential of low-precision arithmetic. In this work, we consider the open-source quatrex package, a quantum transport solver capable of breaking the sustained FP64 Eflop/s barrier, to illustrate trade-offs between accuracy losses and computational speed-ups when moving from high- to low-precision formats. We use three representative benchmark structures to explore the application's numerical properties. Applying the gained insights to a larger, more realistic system, we achieve up to 51% higher throughput while maintaining accurate results, on 40% fewer HPC resources than the FP64 reference.",
+        "authors": [
+            "Alexander Maeder",
+            "Denghui Lu",
+            "Nicolas Vetsch",
+            "Vincent Maillou",
+            "Anders Winka",
+            "Jiang Cao",
+            "Mauro Dossena",
+            "Alexandros Nikolaos Ziogas",
+            "Mathieu Luisier"
+        ],
+        "categories": [
+            "cs.CE",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25595v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25559v1": {
+        "title": "TwoStepDemocracy: Prototyping of self-evolving, democratic, and decentralized systems",
+        "link": "http://arxiv.org/abs/2606.25559v1",
+        "abstract": "Decentralised systems are often built to avoid central control, but their evolution almost always depends on centralised platforms, informal maintainer authority, and a surprising amount of unpaid goodwill. To address this uncomfortable mismatch, we introduce TwoStepDemocracy, a technical proof-of-concept for protocol-native software evolution.\n  The prototype combines costly cryptographic identities, peer-to-peer dissemination, issue and solution voting, and Bitcoin-based funding campaigns. Users can express demand by proposing and voting on issues; developers can submit concrete solutions; and accepted work can be linked to voluntary, non-custodial funding. The design deliberately separates demand, approval, and payment. This way, money can support a solution, but it never buys more voting power.\n  The prototype demonstrates that such a coordination layer can be built as a peer-to-peer implementation with local storage, signed governance objects, and Bitcoin integration. We studied performance, scalability, and costs across storage, identity management, and funding. The results show technical feasibility, but not yet social viability. A larger user study is still needed to evaluate whether real communities would, in practice, vote, fund, and coordinate through this mechanism.",
+        "authors": [
+            "Stan Verlaan",
+            "Johan Pouwelse"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25559v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25553v1": {
+        "title": "Latency-Aware Service Placement using Neural Combinatorial Optimisers for Edge--Cloud Systems",
+        "link": "http://arxiv.org/abs/2606.25553v1",
+        "abstract": "The growth of Internet of Things (IoT) applications and latency-sensitive services has increased the demand for efficient service placement across compute continuum platforms, such as edge--cloud systems. Modern applications are decomposed into interdependent microservices deployed over heterogeneous infrastructures, making placement under resource and network constraints an intractable NP-hard combinatorial optimisation problem. This study proposes a latency-aware Edge Placement Neural Combinatorial Optimiser (EP-NCO), a learning-based framework for service placement in compute continuum platforms. EP-NCO employs a dual-graph model to capture resource relationships and service dependencies within both computing infrastructure and application structure. Graph neural networks (GNNs) learn structural embeddings of infrastructure nodes and service components, whereas reinforcement learning policies construct feasible placements that account for execution latency, communication link delays, and bandwidth-sharing effects. Extensive simulations across multiple system scales demonstrate that EP-NCO consistently achieves high-quality placement decisions, reducing the total service response time by 46%--50% compared with metaheuristics (genetic algorithm and particle swarm optimisation) and by 25%--35% compared with controlled RL ablation baselines. Once trained, EP-NCO enables fast online inference, making it a practical solution for dynamic large-scale edge--cloud environments with hundreds of computing nodes, hosting thousands of applications, which is significantly beyond the capability of current scheduling systems.",
+        "authors": [
+            "Kimia Abedpour",
+            "Mohammadsadeq Garshasbi Herabad",
+            "Zheng Li",
+            "Javid Taheri"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25553v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.24369v2": {
+        "title": "Accelerating Disaggregated RL for Visual Generative LLMs with Diffusion-Based Parallelism and Trainer-Assisted Generation",
+        "link": "http://arxiv.org/abs/2606.24369v2",
+        "abstract": "Reinforcement learning (RL) has become a dominant post-training paradigm, driving the emergence of high-performance RL systems such as veRL for autoregressive large language models (LLMs). In parallel, diffusion-oriented RL algorithms, e.g., DanceGRPO and FlowGRPO, have rapidly expanded the scope of RL from language reasoning to diffusion-based visual and flow-based generation. However, efficient RL systems for diffusion generative LLMs remain underexplored. Existing implementations, e.g., veRL-Omni, still rely on colocated execution, which simplifies synchronization but couples rollout and training resources, limits heterogeneous deployment, and constrains independent scaling.\n  To this end, we introduce DigenRL, a disaggregated RL framework for diffusion-based generative LLMs that supports flexible resource allocation, accommodates heterogeneous GPUs, and facilitates efficient task scheduling. To maximally reduce the execution bubbles in the disaggregated architecture, we propose: 1) a generation-axis pipeline (GAP) and time-step parallelism (TSP) in the diffusion architecture to enable finer-grained pipelining between rollout and training; 2) an elastic trainer-assisted generation (TAG) approach to enable the trainer GPU resources to dynamically assist in executing rollout generations; and 3) a tightly one-step constrained asynchronous strategy to further utilize the tail bubble in the pipeline. Extensive experiments are conducted on three hardware testbeds with 16-32 GPUs using HunyuanVideo-13B, Wan2.1-14B, FLUX.1-12B, and QwenImage-20B generative models. Experimental results show that DigenRL achieves 1.56-2.10x throughput improvements over state-of-the-art diffusion RL systems, veRL-Omni and GenRL.",
+        "authors": [
+            "Sijie Wang",
+            "Zhengyu Qing",
+            "Zhiqiang Tan",
+            "Yiming Yin",
+            "Yeqing Zhang",
+            "Yaoyuan Wang",
+            "Qiang Wang",
+            "Xiaowen Chu",
+            "Shaohuai Shi"
+        ],
+        "categories": [
+            "cs.AI",
+            "cs.DC",
+            "cs.NI",
+            "cs.PF"
+        ],
+        "id": "http://arxiv.org/abs/2606.24369v2",
+        "submit_date": "2026-06-24",
+        "relevant": true,
+        "tags": [
+            "RL",
+            "diffusion",
+            "training"
+        ],
+        "tldr": "Addresses inefficient RL systems for diffusion-based generative LLMs constrained by colocated execution. Introduces DigenRL, a disaggregated framework with generation-axis pipelining, time-step parallelism, and trainer-assisted generation to minimize pipeline bubbles. Achieves 1.56-2.10× higher throughput than state-of-the-art systems on 16-32 GPUs.",
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25453v1": {
+        "title": "EmuGEMM: Fused Tensor Core Kernels for Precision Emulation in Matrix Multiplication",
+        "link": "http://arxiv.org/abs/2606.25453v1",
+        "abstract": "Modern GPUs devote an increasing silicon budget to low-precision matrix-multiplication units, widening the precision-throughput gap for scientific computing workloads. Ozaki Schemes I and II offer an alternative by reconstructing high-precision general matrix multiplication (GEMM) from low-precision operations, yet existing implementations leave substantial performance untapped. In particular, intermediate results are repeatedly materialized in global memory, making data movement the dominant bottleneck. We present EmuGEMM, fused integer Tensor Core kernels for NVIDIA Hopper and Blackwell GPUs that eliminate redundant memory round-trips in both Ozaki schemes. Using Scheme I, EmuGEMM sustains up to 1,639 Top/s on Hopper (83% of INT8 peak) and 3,654 Top/s on Blackwell (81%). For large matrices, EmuGEMM surpasses cuBLAS TF32 throughput by up to 1.4x on Hopper and 1.7x on Blackwell, at comparable accuracy. Using Scheme II, EmuGEMM extends to complex arithmetic and outperforms cuBLAS ZGEMM by up to 2.3x on Hopper and 5.5x on Blackwell.",
+        "authors": [
+            "Denghui Lu",
+            "Alexander Maeder",
+            "Mathieu Luisier",
+            "Alexandros Nikolaos Ziogas"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.MS",
+            "cs.PF"
+        ],
+        "id": "http://arxiv.org/abs/2606.25453v1",
+        "submit_date": "2026-06-24",
+        "relevant": true,
+        "tags": [
+            "kernel"
+        ],
+        "tldr": "Addresses inefficiency in high-precision GEMM due to data movement bottlenecks from precision emulation. Proposes EmuGEMM, fused Tensor Core kernels that eliminate redundant memory round-trips in Ozaki schemes. Achieves up to 3,654 Top/s on Blackwell and outperforms cuBLAS ZGEMM by 5.5x.",
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25409v1": {
+        "title": "CV-Rules: Serializability Verification of Concurrency Control Protocols via Explicit Transaction Ordering",
+        "link": "http://arxiv.org/abs/2606.25409v1",
+        "abstract": "We present CV-rules, an alternative characterization of serializability in which a transaction order constructed by a protocol satisfies two per-read conditions, C-rule (Causality) and V-rule (View Consistency), that constrain the reads-from relation and competing writers. While classical Multi-Version Serialization Graph (MVSG) reasoning characterizes serializability via its acyclicity, our approach requires explicit order construction, enabling direct proofs that build on the protocol's own mechanisms. We prove that CV-rules, serializability, and MVSG acyclicity are all equivalent. Moreover, the C/V separation reveals that serializability is polynomial-time decidable for any fixed bound on the width of the order forced by C-rule. We verify five protocols: Two-Phase Locking, Multi-Version Timestamp Ordering, Serial Safety Net (SSN), Aria, and SnapChain. For SSN and Aria, whose original papers defined only certification conditions, we identify explicit transaction orders arising from their mechanisms; we also prove that Aria's unique-write constraint is unnecessary for serializability. SnapChain, in contrast, is designed directly from CV-rules, enforcing V-rule by construction. All results except the complexity bounds are mechanized in Lean with no additional axioms and no admitted goals.",
+        "authors": [
+            "Takashi Hoshino",
+            "Shigeo Mitsunari",
+            "Takashi Kambayashi",
+            "Ryoji Kurosawa",
+            "Sho Nakazono"
+        ],
+        "categories": [
+            "cs.LO",
+            "cs.DB",
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25409v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25313v1": {
+        "title": "Programmable Probabilistic Computer with 1,000,000 p-bits",
+        "link": "http://arxiv.org/abs/2606.25313v1",
+        "abstract": "Probabilistic computers built from p-bits have been proposed as hardware accelerators for sampling and optimizing Ising models, but existing systems have been confined to a single chip, capped by its capacity and memory bandwidth. Here we break this limit by networking FPGAs into a single Ising machine far larger than any one device could hold, realizing a programmable probabilistic computer with one million p-bits. The machine performs Gibbs sampling at over a trillion flips per second while keeping every coupling weight in local on-chip memory. During execution, devices exchange nothing but 1-bit boundary states. This architecture exposes a question fundamental to any distributed sampler: how frequently boundary information must be refreshed for a partitioned machine to behave as an unpartitioned one. Using three-dimensional Edwards-Anderson spin glasses, we show that the answer is set by a single timing ratio, eta = f_comm/f_p-bit, of the boundary-exchange frequency to the local p-bit update frequency. Above a topology-dependent threshold, the distributed machine matches a monolithic GPU reference. Below it, residual energy still decays as a power law but with a reduced exponent, turning parallelism into a quantifiable throughput-accuracy tradeoff. A theoretical cluster mean-field model reproduces the same behavior, showing that this tradeoff is a universal property of partitioned stochastic dynamics. These results provide a programmable million-p-bit platform, demonstrated across spin glasses, Max-Cut, and Boolean satisfiability, together with a quantitative design rule for scaling probabilistic computers beyond the single-chip limit.",
+        "authors": [
+            "Navid Anjum Aadit",
+            "Xiuqi Zhang",
+            "Shuvro Chowdhury",
+            "Kevin Callahan-Coray",
+            "Kyle Lee",
+            "Saleh Bunaiyan",
+            "Sanjay Seshan",
+            "Clayton Thomas",
+            "Jason Twigg",
+            "Andrew Seawright",
+            "Forrest Brewer",
+            "Tathagata Srimani",
+            "Kerem Y. Camsari"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AR"
+        ],
+        "id": "http://arxiv.org/abs/2606.25313v1",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.23017v3": {
+        "title": "Nautilus: A Verifiable Hierarchical Federated Learning Framework for Vehicular-Edge-Cloud Systems",
+        "link": "http://arxiv.org/abs/2606.23017v3",
+        "abstract": "Federated Learning (FL) enables privacy-preserving collaborative learning for Internet of Vehicles (IoV) scenarios, but extreme heterogeneity of vehicular-edge-cloud resources severely limits system efficiency. Dynamic scheduling strategies mitigate this issue but introduce new trust concerns: verifying fair scheduling decisions and faithful client execution of compression instructions without privacy leakage remains an open challenge. We propose Nautilus, a verifiable efficient federated learning framework. First, a multi-dimensional resource-aware scheduling algorithm dynamically allocates compression ratios and training tasks based on vehicle bandwidth, latency and computing power, improving training efficiency. Second, a Zero-Knowledge Proof (ZKP) mechanism ensures scheduling fairness and execution compliance while preserving privacy. Experiments show the framework reduces communication overhead and accelerates convergence with guaranteed system integrity.",
+        "authors": [
+            "Linyang Wu",
+            "Linpeng Jia",
+            "Hanwen Zhang",
+            "Tiantian Duan",
+            "Yi Sun"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.23017v3",
+        "submit_date": "2026-06-24",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25099v1": {
+        "title": "Ambulance: saving BFT through racing",
+        "link": "http://arxiv.org/abs/2606.25099v1",
+        "abstract": "Today's practical Byzantine Fault Tolerant (BFT) state machine replication deployments are vulnerable to slowdowns. The main culprit is timeouts. Aggressive timeouts spuriously trigger expensive leader changes, while conservative timeouts leave the system idle and let slowdowns severely inflate latency. Two main alternatives exist: hedging, which improves recovery from slow leaders but still incurs a time-based hedging delay, and cooperative asynchronous protocols, which recover quickly from slowdowns but suffer from high common-case latency and low throughput. This paper presents Ambulance: a BFT state machine replication protocol that sidesteps this trade-off through protocol-rigged races, where replicas, rather than race against the clock, race against each other by executing protocol steps. This enables Ambulance to achieve high throughput and low latency comparable to state-of-the-art timeout-based BFT, while matching the robustness of cooperative approaches.",
+        "authors": [
+            "Neil Giridharan",
+            "Shubham Mishra",
+            "Lorenzo Alvisi",
+            "Natacha Crooks",
+            "Benjamin Marsh",
+            "Hein Meling",
+            "Kartik Nayak",
+            "Grzegorz Prusak"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25099v1",
+        "submit_date": "2026-06-23",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25098v1": {
+        "title": "Power-Flexible AI Data Centers: A New Paradigm for Grid-Responsive Compute",
+        "link": "http://arxiv.org/abs/2606.25098v1",
+        "abstract": "The rapid expansion of artificial intelligence (AI) infrastructure is driving unprecedented growth in electricity demand from data centers. Traditional power-system planning treats large computing facilities as inflexible peak loads, leading to costly infrastructure upgrades and long delays in grid interconnection. Recent work has shown that AI clusters can reduce electricity consumption during peak demand through software-based workload orchestration. This article explores how modern GPU-based AI data centers can operate as grid-interactive assets that respond dynamically to power system conditions. We describe an architecture integrating grid signals, workload scheduling, and power telemetry for fine-grained cluster power control. Experimental results from a real-world deployment on a 130 kW GPU cluster demonstrate multiple forms of flexibility, including rapid load reduction, sustained curtailment, and carbon-aware operation while preserving service levels for priority jobs. We further demonstrate performance-aware load shifting across geographically distributed clusters, enabling workloads to migrate toward regions with lower grid stress. Together, these capabilities transform AI infrastructure from static electricity consumers into flexible resources that support grid reliability, accelerate interconnection, and improve computing sustainability.",
+        "authors": [
+            "Chris Williams",
+            "Philip Colangelo",
+            "Ayse Coskun",
+            "Ethan Levine",
+            "Andy Neale",
+            "Ciaran Roberts",
+            "Shayan Sengupta",
+            "Nikhil Shirolkar",
+            "Varun Sivaram",
+            "Sarah Soares",
+            "Ethan Tiao",
+            "Scott Underwood",
+            "Daniel Wilson",
+            "Frank Sharp",
+            "Luke Wainwright",
+            "Harry Petty",
+            "Scott Wallace",
+            "Brandon Records"
+        ],
+        "categories": [
+            "cs.DC",
+            "cs.AI",
+            "cs.PF",
+            "eess.SY"
+        ],
+        "id": "http://arxiv.org/abs/2606.25098v1",
+        "submit_date": "2026-06-23",
+        "relevant": true,
+        "tags": [
+            "scaling",
+            "networking"
+        ],
+        "tldr": "Investigates power-flexible AI data centers for grid-responsive computing. Proposes an architecture integrating workload scheduling and power telemetry for dynamic cluster power control. Demonstrated on a 130 kW GPU cluster with effective load reduction and geographic migration preserving service levels.",
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25091v1": {
+        "title": "Speculation at a Distance: Where Edge-Cloud Speculative Decoding Actually Pays Off",
+        "link": "http://arxiv.org/abs/2606.25091v1",
+        "abstract": "Speculative decoding (SD) accelerates LLM inference by $1.5$-$3$ times when the draft and target models are co-located. This has motivated a distributed variant (DSD) that places the draft model on an edge device while the target stays in the cloud. We show with closed-form inequalities that DSD's per-request latency benefit is limited under WAN edge-cloud communication. If the server can host both models, co-located SD has lower latency and communication than synchronous DSD, with the same per-output FLOPs and model-weight memory. Pipelining can make DSD competitive with co-located SD only in low-RTT regimes where the round trip is shorter than the edge drafting time window; at WAN RTTs, the cloud round trip remains too large for pipelined DSD to beat co-located SD. Against cloud autoregressive decoding, DSD can reduce latency only inside a bounded window given the target-model speed, acceptance rate, and RTT. DSD is also infeasible against closed-source APIs without a verifier-only interface. The main case for DSD appears in multi-tenant capacity. Under cross-client overlap, offloading draft compute lets a saturated cloud server sustain $(1 + γ\\,t_d/t_v)$ times more concurrent clients at the same per-client rate, where $γ$ is the speculation length and $t_d, t_v$ are the per-step draft and verification times. DSD should therefore be evaluated primarily by multi-tenant capacity and server throughput, not only by single-request latency.",
+        "authors": [
+            "Yuan Lyu",
+            "Bharath Irukulapati",
+            "Jaya Prakash Champati"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25091v1",
+        "submit_date": "2026-06-23",
+        "relevant": true,
+        "tags": [
+            "serving",
+            "edge",
+            "networking"
+        ],
+        "tldr": "Investigates when distributed speculative decoding (DSD) with edge-draft models benefits LLM inference latency and capacity. Uses analytical models to compare DSD with co-located SD under WAN delays. DSD increases multi-tenant capacity by (1 + γ t_d / t_v) times under server saturation.",
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25082v1": {
+        "title": "Energy Efficient Scheduling of AI/ML Workloads on Multi Instance GPUs with Dynamic Repartitioning",
+        "link": "http://arxiv.org/abs/2606.25082v1",
+        "abstract": "Increasing demand from AI/ML workloads is exacerbating the rising energy consumption of data centers. Recent advances in hardware such as NVIDIA's Multi Instance GPUs (MIGs) offer improvements in flexibility and computational power and the opportunity for data centers to manage incoming jobs in energy-efficient ways, while maintaining acceptable performance. The challenge in achieving this multi-objective in a MIG environment through job scheduling is multi-faceted. Firstly, for a given MIG configuration, one seeks an easy-to-implement scheduling algorithm which selects a job from the queue as well as decides on which slice in the configuration the job runs. Secondly, for the identified scheduling algorithm, a particular MIG configuration may not always be suitable (as the workload fluctuates) and may need to be repartitioned. We tackle both problems using simulations and reinforcement learning (RL). We present a dynamic repartitioning scheduling framework for a single MIG as a solution to a multi-objective heterogeneous machine scheduling problem with preemption. In particular, we compare four scheduling algorithms and identify a promising one. Then, we employ reinforcement learning to perform dynamic repartitioning over a day. Furthermore, using a diurnal workload pattern based on real-world data center traces, we demonstrate the superiority of our dynamic repartitioning algorithm over twice-daily repartitioning ($26\\%$), static partitioning ($31\\%$) and no partitioning at all ($68\\%$) according to a multi-objective function of energy consumption and tardiness. Our results indicate specific preferred configurations at different times of the day under different queue conditions, suggesting a policy for predictive and automatic reconfiguration.",
+        "authors": [
+            "Ellie Lipe",
+            "Neel Karia",
+            "Connor Espenshade",
+            "Clifford Stein",
+            "Asser Tantawi",
+            "Olivier Tardieu"
+        ],
+        "categories": [
+            "cs.DC"
+        ],
+        "id": "http://arxiv.org/abs/2606.25082v1",
+        "submit_date": "2026-06-23",
+        "relevant": true,
+        "tags": [
+            "scaling",
+            "RL",
+            "hardware"
+        ],
+        "tldr": "Investigates energy-efficient scheduling of AI/ML workloads on MIG GPUs amid fluctuating demands. Proposes a reinforcement learning-based dynamic repartitioning framework for job scheduling and GPU configuration. Achieves up to 68% improvement in energy-tardiness metric compared to no partitioning.",
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.23001v2": {
+        "title": "EnerInfer: Energy-Aware On-Device LLM Inference",
+        "link": "http://arxiv.org/abs/2606.23001v2",
+        "abstract": "On-device LLM inference is increasingly attractive for privacy-preserving, reliable, and cost-effective deployment, yet its energy and thermal costs remain a critical bottleneck. Existing systems primarily optimize for decoding speed, implicitly assuming that faster execution is always preferable. We show instead that on-device LLM inference often has exploitable configuration slack: modestly lowering NPU and memory frequencies preserves quality of experience (QoE) while substantially improving energy efficiency and reducing heat.\n  Realizing this opportunity in production is challenging. The most energy-efficient NPU/DDR setting varies with the model, inference engine, platform, and runtime conditions, with no stable ranking across configurations. Commercial devices further lack component-level power sensing, and shell temperature evolves with request arrivals, response lengths, and thermal history. To address these challenges, we propose EnerInfer, the first on-device LLM inference framework that jointly manages energy efficiency, throughput, and thermal comfort for LLM workloads. EnerInfer replaces per-model profiling and sensor-heavy control with disaggregated, model-structure-aware prediction and ranking-driven online feedback. It predicts throughput and power for unseen LLMs across NPU/DDR frequency settings, selects QoE-satisfying efficient configurations under runtime interference, and uses lightweight limited-horizon thermal prediction to dynamically switch between energy-optimized and thermally constrained inference. Evaluations on real-world LLMs show that EnerInfer improves energy efficiency by up to 65%, 12%, and 24% on phones, a laptop, and a development board, respectively, without QoE violation.",
+        "authors": [
+            "Bohua Zou",
+            "Nian Liu",
+            "Binqi Sun",
+            "Matteo Mascherin",
+            "Debayan Roy",
+            "Yutao Liu",
+            "Yu Peng",
+            "Ning Jia",
+            "Haibo Chen"
+        ],
+        "categories": [
+            "cs.SE",
+            "cs.LG",
+            "cs.OS"
+        ],
+        "id": "http://arxiv.org/abs/2606.23001v2",
+        "submit_date": "2026-06-24",
+        "relevant": true,
+        "tags": [
+            "edge",
+            "serving"
+        ],
+        "tldr": "Addresses energy inefficiency and thermal issues in on-device LLM inference. Proposes EnerInfer, a framework using model-structure-aware prediction and ranking-driven feedback for dynamic NPU/memory frequency configuration. Achieves up to 65% higher energy efficiency on phones without quality degradation.",
+        "indexed_date": "2026-06-25"
+    },
+    "http://arxiv.org/abs/2606.25189v1": {
+        "title": "ActPlane: Programmable OS-Level Policy Enforcement for Agent Harnesses",
+        "link": "http://arxiv.org/abs/2606.25189v1",
+        "abstract": "AI agents increasingly run in production through harnesses, the software around the LLM, including an engine that enforces safety and effectiveness policies, e.g., 'run tests before committing.' Enforcing these policies requires bridging a semantic gap: policy intent is expressed in underspecified natural language, while enforcement must act on concrete system actions, e.g., which test to run. Many policies also define event ordering or data flow actions. Yet existing approaches fall short. Tool-call guardrails miss system actions that bypass the tool layer, while OS sandboxes control resource access instead of actions, returning opaque errors that confuse the agent. Our key insight is that policy context lives within the agent closest to the task, while enforcement must happen at the OS to cover all execution paths. We introduce ActPlane, a policy engine that lets agents declare policies and enforces them in the OS kernel with semantic feedback and isolation. ActPlane uses a simple information-flow control (IFC) DSL to support cross-event policies. We implement ActPlane with eBPF and evaluate it on policies from the empirical study, coding-task benchmarks, and safety benchmarks. ActPlane improves policy compliance, including on indirect execution paths that tool-call interception cannot observe, with 1.9%-8.4% overhead. ActPlane is at https://github.com/eunomia-bpf/ActPlane",
+        "authors": [
+            "Yusheng Zheng",
+            "Tianyuan Wu",
+            "Quanzhi Fu",
+            "Tong Yu",
+            "Wenan Mao",
+            "Wei Wang",
+            "Dan Williams",
+            "Andi Quinn"
+        ],
+        "categories": [
+            "cs.OS"
+        ],
+        "id": "http://arxiv.org/abs/2606.25189v1",
+        "submit_date": "2026-06-23",
+        "relevant": false,
+        "indexed_date": "2026-06-25"
     }
 }
