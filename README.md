@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2745-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.25-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2752-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.26-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,22 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-26
+* `training` [DMuon: Efficient Distributed Muon Training with Near-Adam Overhead](http://arxiv.org/abs/2606.27153v1)
+  > **TL;DR**: Reduces distributed training overhead for matrix-orthogonalization optimizers like Muon. Proposes DMuon, a drop-in module for existing pipelines without framework modifications. Achieves 1.48x-3.01x end-to-end step speedup and 6.85x-163.00x optimizer-step speedup, nearing AdamW latency.
+* `training` `RL` `disaggregation` [RolloutPipe: Overlapping Pipelined Rollout and Training in Disaggregated On-Policy LLM Reinforcement Learning](http://arxiv.org/abs/2606.26997v1)
+  > **TL;DR**: Addresses trainer GPU idle time in disaggregated on-policy RL for LLMs. Proposes RolloutPipe with complete-group pipelining and frontier-group dispatch to overlap rollout and training while maintaining policy correctness. Reduces rollout-to-train-end time by 30.7%-42.3%.
+* `training` `MoE` `scaling` [Simulating Unified Tensor Resharding in heterogeneous AI systems](http://arxiv.org/abs/2606.26633v1)
+  > **TL;DR**: Proposes Xsim, a heterogeneity-aware simulator for distributed LLM training. It models non-uniform workload partitioning, customized communication collectives, and reusable abstractions for pipeline parallelism. Achieves <5% error in training time prediction for data/tensor-parallel setups and ~2% error for pipeline-parallel configurations.
+* `serving` `MoE` `scaling` [Moebius: Serving Mixture-of-Expert Models with Seamless Runtime Parallelism Switch](http://arxiv.org/abs/2606.26607v1)
+  > **TL;DR**: Addresses efficient serving for Mixture-of-Experts models under varying workloads by enabling runtime switch between tensor and expert parallelism. Moebius reshards weights and KV cache without restart or request drops using fused GPU transfers. Achieves 1.16-1.25x speedup on RL rollouts and switches in 215-434 ms with 2.4% memory overhead.
+* `RAG` `sparse` `kernel` [GPUSparse: GPU-Accelerated Learned Sparse Retrieval with Parallel Inverted Indices](http://arxiv.org/abs/2606.26441v1)
+  > **TL;DR**: Addresses the inference bottleneck in learned sparse retrieval for RAG systems. Introduces GPUSparse with GPU-parallel inverted indices, batched scatter-add scoring, and fused Triton kernels. Achieves 235x speedup over CPU, reducing latency to 1.27ms per query.
+* `RAG` `kernel` `quantization` [TileMaxSim: IO-Aware GPU MaxSim Scoring with Dimension Tiling and Fused Product Quantization](http://arxiv.org/abs/2606.26439v1)
+  > **TL;DR**: Addresses inefficient GPU MaxSim scoring for retrieval models by developing TileMaxSim, an IO-aware Triton kernel with dimension tiling and fused product quantization. Achieves 82M docs/s throughput (71.6M/s on MS MARCO) and 98% latency reduction for 100K candidates while preserving exact retrieval quality.
+* `training` `hardware` `scaling` [Hot AI in Cold Space: Thermal-Crosstalk-Aware Scheduling for Sustainable Orbital AI Clusters](http://arxiv.org/abs/2606.26150v1)
+  > **TL;DR**: Addresses thermal bottlenecks degrading LLM training in orbital clusters due to proximity-thermal paradox. Proposes Thermal-Load Balancing (TLB) to dynamically migrate workloads to cooler units based on thermal variances. Restores Model Flops Utilization (MFU) and reduces thermal stress for sustainable scaling.
+
 ### 2026-06-25
 * `training` `quantization` `networking` [NEURON-Fabric: Architecture-Runtime Co-Design for Controlled Low-Bit Gradient Communication](http://arxiv.org/abs/2606.25759v1)
   > **TL;DR**: Addresses training instability from static low-bit gradient communication in distributed learning. Proposes NEURON-Fabric, a profile-guided runtime with model-aware bindings and fallback to FP32 based on online monitoring. Reduces gradient-communication traffic while preserving accuracy near full-precision levels in billion-parameter models.
