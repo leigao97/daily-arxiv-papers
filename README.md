@@ -3,8 +3,8 @@
 
 # Daily Arxiv Papers (LMSys)
 
-![Static Badge](https://img.shields.io/badge/total_papers-2752-blue?logo=gitbook)
-![Static Badge](https://img.shields.io/badge/update-2026.06.26-red?logo=fireship)
+![Static Badge](https://img.shields.io/badge/total_papers-2754-blue?logo=gitbook)
+![Static Badge](https://img.shields.io/badge/update-2026.06.29-red?logo=fireship)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.DC-green)](https://arxiv.org/list/cs.DC/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.OS-green)](https://arxiv.org/list/cs.OS/recent)
 [![Static Badge](https://img.shields.io/badge/arXiv-cs.LG-green)](https://arxiv.org/list/cs.LG/recent)
@@ -24,6 +24,12 @@ _Based on [awesome-papers-LMsys](https://github.com/zhixin612/awesome-papers-LMs
 **🔖TAGS**:`serving` `training` `offline` `thinking` `RL` `MoE` `RAG` `video` `multi-modal` `sparse` `quantization` `offloading` `hardware` `storage` `kernel` `diffusion` `agentic` `edge` `networking`
 
 ---
+### 2026-06-29
+* `serving` `MoE` `disaggregation` [CrossPool: Efficient Multi-LLM Serving for Cold MoE Models through KV-Cache and Weight Disaggregation](http://arxiv.org/abs/2606.24506v2)
+  > **TL;DR**: Addresses inefficient GPU memory utilization in serving cold MoE models by disaggregating weights and KV-cache into separate pools. Introduces CrossPool with KV-cache planning and layer-wise pipeline scheduling. Reduces P99 tail batch time by up to 10.4x compared to state-of-the-art systems.
+* `training` [Optimizing Teacher-Student Partitioning for Scalable Knowledge Distillation on HPC Systems](http://arxiv.org/abs/2606.27797v1)
+  > **TL;DR**: Addresses inefficient symmetric partitioning in knowledge distillation training. Proposes an HPC-aware method decoupling teacher-student parallelism via vertical/horizontal splits and analytical inflection point analysis. Achieves 67% higher throughput than TRL on production clusters.
+
 ### 2026-06-26
 * `training` [DMuon: Efficient Distributed Muon Training with Near-Adam Overhead](http://arxiv.org/abs/2606.27153v1)
   > **TL;DR**: Reduces distributed training overhead for matrix-orthogonalization optimizers like Muon. Proposes DMuon, a drop-in module for existing pipelines without framework modifications. Achieves 1.48x-3.01x end-to-end step speedup and 6.85x-163.00x optimizer-step speedup, nearing AdamW latency.
