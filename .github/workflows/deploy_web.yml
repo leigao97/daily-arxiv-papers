@@ -10,7 +10,7 @@ on:
 
   # Run when the crawler workflow completes successfully
   workflow_run:
-    workflows: ["Arxiv Paper Crawler"] # This should match the name of your crawler workflow
+    workflows: ["Sync Papers from Upstream"] # This should match the name of the sync workflow
     types:
       - completed
 

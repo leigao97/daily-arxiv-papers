@@ -1,48 +1,49 @@
-name: Arxiv Paper Crawler
+name: Sync Papers from Upstream
 
+# Instead of running our own arXiv crawler + LLM filter (which needs an API key
+# and credits), we mirror the already-processed results from the upstream repo
+# so this fork stays in sync automatically.
 on:
   schedule:
-    # UTC 02:00 = UTC+8 8:00
-    - cron: '0 0 * * *'
-    # UTC 10:00 = UTC+8 18:00
-    - cron: '0 10 * * *'
+    # UTC 02:00 = UTC+8 10:00
+    - cron: '0 2 * * *'
+    # UTC 12:00 = UTC+8 20:00
+    - cron: '0 12 * * *'
   workflow_dispatch:
 
 permissions:
   contents: write
-    
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+
 jobs:
-  crawl:
-    name: Crawl and Update Data
+  sync:
+    name: Sync papers from upstream
     runs-on: ubuntu-latest
+    env:
+      UPSTREAM: zhixin612/awesome-papers-LMsys
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v3
+        uses: actions/checkout@v4
 
-      - name: Setup Python
-        uses: actions/setup-python@v4
-        with:
-          python-version: '3.x'
-
-      - name: Install dependencies
+      - name: Fetch upstream data (arxiv.json + README)
         run: |
-          python -m pip install --upgrade pip
-          pip install requests beautifulsoup4 pytz arxiv openai python-dotenv
+          set -euo pipefail
+          RAW="https://raw.githubusercontent.com/${UPSTREAM}/main"
 
-      # Run the crawler script
-      - name: Run crawler and update daily arxiv
-        run: |
-          python tools/main.py
-        env:
-          API_KEY: ${{ secrets.OPENROUTER_API_KEY }}
+          # Paper index that the web UI renders — validate JSON before replacing.
+          curl -fsSL "$RAW/web/public/arxiv.json" -o /tmp/arxiv.json
+          python3 -c "import json; json.load(open('/tmp/arxiv.json'))"
+          mv /tmp/arxiv.json web/public/arxiv.json
 
-      # Commit and push changes if any
+          # README (the paper list) — overwrite wholesale from upstream.
+          # NOTE: we deliberately do NOT copy web/public/CNAME. Upstream's CNAME
+          # (paper.tju.chat) would point this fork's GitHub Pages deploy at a domain
+          # it doesn't control and break the site, which serves at leigao97.github.io.
+          curl -fsSL "$RAW/README.md" -o README.md
+
       - name: Commit changes
         run: |
           git config --local user.name "leigao97"
           git config --local user.email "leig@usc.edu"
-          git commit -a -m "Update daily arxiv papers" || echo "No changes to commit"
+          git add web/public/arxiv.json README.md
+          git commit -m "Sync daily arxiv papers from upstream" || echo "No changes to commit"
           git push
-        env: 
-         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
