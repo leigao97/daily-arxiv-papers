@@ -45,11 +45,18 @@ def llm_filter(papers: List[dict]) -> List[dict]:
         raw = resp.choices[0].message.content
         logger.debug(f"[LLM] title={p.get('title')} | output={raw}")
 
+        # Some (esp. reasoning) models can return empty/None content when the
+        # token budget is exhausted. Treat that as irrelevant instead of crashing.
+        if not raw:
+            logger.error(f"Empty LLM response for paper {p.get('title')}; marking irrelevant")
+            p.update({"relevant": False})
+            continue
+
         try:
             result = json.loads(raw)
             p.update(result)
-        except json.JSONDecodeError:
-            logger.error(f"Failed to parse JSON response for paper {p.get('title')}: {raw}")
+        except (json.JSONDecodeError, TypeError) as e:
+            logger.error(f"Failed to parse JSON response for paper {p.get('title')}: {raw} ({e})")
             p.update({"relevant": False})
 
     return papers

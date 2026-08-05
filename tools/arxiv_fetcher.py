@@ -54,7 +54,7 @@ def fetch_arxiv_papers(
                 time.sleep(3)
 
         for r in results:
-            logger.debug(f"Found paper: [{r.updated.strftime("%Y-%m-%d")}] {r.title}")
+            logger.debug(f"Found paper: [{r.updated.strftime('%Y-%m-%d')}] {r.title}")
             papers.append(
                 {
                     "title": r.title,
